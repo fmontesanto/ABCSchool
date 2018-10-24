@@ -7,8 +7,8 @@ import views.ProfesorView;
 
 public class Profesor extends Usuario{
 	private String domicilioClases;
-	private float anticipacionReserva;
-	private float puntuacion;
+	private Float anticipacionReserva;
+	private Float puntuacion;
 	private ArrayList<Resena> resenas;
 	
 	public Profesor (String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String password, String domicilioClases,float anticipacion) {

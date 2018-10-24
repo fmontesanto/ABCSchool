@@ -10,6 +10,7 @@ public abstract class Usuario {
 	protected String domicilio;
 	protected Date fechaNacimiento;
 	protected String password;
+	protected Integer idUsuario;
 	
 	public Usuario(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String password) {
 		this.dni=dni;

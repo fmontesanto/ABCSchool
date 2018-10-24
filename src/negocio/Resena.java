@@ -3,7 +3,8 @@ package negocio;
 import views.ResenaView;
 
 public class Resena {
-	private float puntuacion;
+	private Integer idResena;
+	private Float puntuacion;
 	private String comentario;
 	
 	public Resena(float puntuacion, String comentario) {

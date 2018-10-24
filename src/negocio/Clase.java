@@ -10,14 +10,16 @@ public class Clase {
 	//private Float duracion;
 	private Integer idClase;
 	private Profesor profesor;
+	private Reserva reserva;
 	
-	public Clase(Integer id, String materia, Float horario, String estado, Float duracion, Profesor profesor) {
+	public Clase(Integer id, String materia, Float horario, String estado, Float duracion, Profesor profesor, Reserva reserva) {
 		this.idClase = id;
 		this.materia=materia;
 		this.horario=horario;
 		this.estado=estado;
 		//this.duracion=duracion;
 		this.profesor=profesor;
+		this.reserva = reserva;
 	}
 	
 	public float getHorario() {
@@ -32,7 +34,8 @@ public class Clase {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public float getDuracion() {
+	
+	public Float getDuracion() {
 		return duracion;
 	}
 	public void setDuracion(float duracion) {
