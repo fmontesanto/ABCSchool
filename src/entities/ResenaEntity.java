@@ -28,6 +28,9 @@ public class ResenaEntity {
 	@JoinColumn (name="idProfesor")
 	protected ProfesorEntity profesor;
 
+	
+	public ResenaEntity() {}	
+	
 	public ResenaEntity(Float puntuacion, String comentario, ProfesorEntity profesor) {
 		super();
 		this.puntuacion = puntuacion;

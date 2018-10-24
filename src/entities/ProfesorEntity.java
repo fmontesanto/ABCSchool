@@ -28,7 +28,9 @@ public class ProfesorEntity extends UsuarioEntity {
 	
 	@OneToMany(mappedBy="profesor", cascade=CascadeType.ALL)
 	private List<ClaseEntity> clases;
-
+	
+	public ProfesorEntity() {}	
+	
 	public ProfesorEntity(String dni, String nombre, String mail, String telefono, String domicilio,
 			String fechaNacimiento, String password, String domicilioClases, Float anticipacionReserva,
 			Float puntuacion) {

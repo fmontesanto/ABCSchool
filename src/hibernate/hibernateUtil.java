@@ -5,6 +5,11 @@
 	import org.hibernate.SessionFactory;
 	import org.hibernate.cfg.AnnotationConfiguration;
 
+import entities.ClaseEntity;
+import entities.ProfesorEntity;
+import entities.ResenaEntity;
+import entities.UsuarioEntity;
+
 
 
 	public class hibernateUtil {
@@ -14,6 +19,10 @@
 		static {
 			try {
 				AnnotationConfiguration config = new AnnotationConfiguration();
+				config.addAnnotatedClass(ClaseEntity.class);
+				config.addAnnotatedClass(UsuarioEntity.class);
+				config.addAnnotatedClass(ProfesorEntity.class);
+				config.addAnnotatedClass(ResenaEntity.class);
 				sessionFactory = config.buildSessionFactory();
 				session = sessionFactory.openSession();
 			} catch (Throwable ex) {

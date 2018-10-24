@@ -40,9 +40,9 @@ public class ClaseEntity {
 	@JoinColumn (name="idProfesor")
 	protected ProfesorEntity profesor;
 	
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn(name="idReserva")
-	private ReservaEntity reserva;
+//	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+//	@JoinColumn(name="idReserva")
+//	private ReservaEntity reserva;
 	
 	
 	public ClaseEntity() {}
@@ -94,13 +94,13 @@ public class ClaseEntity {
 		this.profesor = profesor;
 	}
 
-	public ReservaEntity getReserva() {
+	/*public ReservaEntity getReserva() {
 		return reserva;
 	}
 
 	public void setReserva(ReservaEntity reserva) {
 		this.reserva = reserva;
-	}
+	}*/
 	
 
 	

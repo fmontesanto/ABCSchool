@@ -28,6 +28,8 @@ public class UsuarioEntity {
 	@Column(name="password")
 	private String password;
 	
+	public UsuarioEntity() {}	
+	
 	public UsuarioEntity(String dni, String nombre, String mail, String telefono, String domicilio,
 			String fechaNacimiento, String password) {
 		super();
