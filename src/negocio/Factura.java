@@ -6,17 +6,17 @@ import views.FacturaView;
 
 public class Factura {
 	private Date fecha;
-	private float monto;
+	private Float monto;
 	private String tipo;
 	private String remitente;
 	private String medioPago;
-	private int numero;
+	private Integer nroFactura;
 	
 	public int getNumero() {
-		return numero;
+		return nroFactura;
 	}
 	public void setNumero(int numero) {
-		this.numero = numero;
+		this.nroFactura = numero;
 	}
 	public Date getFecha() {
 		return fecha;
@@ -49,10 +49,10 @@ public class Factura {
 		this.medioPago = medioPago;
 	}
 	public boolean sosFactura(int numero) {
-		return this.numero==numero;
+		return this.nroFactura==numero;
 	}
 	public FacturaView getView() {
-		FacturaView factura=new FacturaView(monto, medioPago, medioPago, medioPago, numero, fecha);
+		FacturaView factura=new FacturaView(monto, medioPago, medioPago, medioPago, nroFactura, fecha);
 		return factura;
 	}
 	

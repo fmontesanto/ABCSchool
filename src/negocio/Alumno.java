@@ -1,11 +1,14 @@
 package negocio;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import views.AlumnoView;
 
 public class Alumno extends Usuario{
+	
 	private float saldoAFavor;
+	private ArrayList<Reserva> reservas;
 	
 	public Alumno(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String password) {
 		super( dni,  nombre,  mail,  telefono, domicilio, fechaNacimiento, password);
