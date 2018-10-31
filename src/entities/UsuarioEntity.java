@@ -31,7 +31,7 @@ public class UsuarioEntity {
 	public UsuarioEntity() {}	
 	
 	public UsuarioEntity(String dni, String nombre, String mail, String telefono, String domicilio,
-			String fechaNacimiento, String password) {
+			String fechaNacimiento, String contra) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
@@ -39,7 +39,7 @@ public class UsuarioEntity {
 		this.telefono = telefono;
 		this.domicilio = domicilio;
 		this.fechaNacimiento = fechaNacimiento;
-		this.password = password;
+		this.contra = contra;
 	}
 
 	public Integer getIdUsuario() {
@@ -98,12 +98,12 @@ public class UsuarioEntity {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getContra() {
+		return contra;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword(String contra) {
+		this.contra = contra;
 	}
 		
 }
