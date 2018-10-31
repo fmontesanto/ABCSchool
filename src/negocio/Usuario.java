@@ -52,11 +52,11 @@ public abstract class Usuario {
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
-	public String getPassword() {
-		return password;
+	public String getContra() {
+		return contra;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setContra(String contra) {
+		this.contra=contra;
 	}
 	
 	public String getDni() {

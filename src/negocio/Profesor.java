@@ -12,7 +12,7 @@ public class Profesor extends Usuario{
 	private ArrayList<Resena> resenas;
 	
 	public Profesor (String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String contra, String domicilioClases,float anticipacion) {
-		super(dni,nombre,mail,telefono, domicilio, fechaNacimiento,password);
+		super(dni,nombre,mail,telefono, domicilio, fechaNacimiento,contra);
 		this.anticipacionReserva=anticipacion;
 		this.domicilioClases=domicilioClases;
 	}
@@ -46,7 +46,7 @@ public class Profesor extends Usuario{
 	}
 	
 	public ProfesorView getView() {
-		ProfesorView profView=new ProfesorView( dni,  nombre,  mail,  telefono,  domicilio,  fechaNacimiento, password,  domicilioClases, anticipacionReserva, resenas);
+		ProfesorView profView=new ProfesorView(dni,  nombre,  mail,  telefono,  domicilio,  fechaNacimiento, contra,  domicilioClases, anticipacionReserva, resenas);
 		return profView;	
 	}
 	

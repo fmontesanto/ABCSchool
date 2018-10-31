@@ -11,7 +11,7 @@ public class Alumno extends Usuario{
 	private ArrayList<Reserva> reservas;
 	
 	public Alumno(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String contra) {
-		super( dni,  nombre,  mail,  telefono, domicilio, fechaNacimiento, password);
+		super( dni,  nombre,  mail,  telefono, domicilio, fechaNacimiento, contra);
 		this.saldoAFavor=0;
 	}
 
@@ -19,7 +19,6 @@ public class Alumno extends Usuario{
 		return saldoAFavor;
 	}
 
-	
 	public void agregarSaldo(float cantidad) {
 		saldoAFavor=+cantidad;
 	}
@@ -28,8 +27,7 @@ public class Alumno extends Usuario{
 		saldoAFavor=-cantidad;
 	}
 	public AlumnoView getView() {
-		AlumnoView alumnoView=new AlumnoView(this.getDni(),this.getNombre(),this.getMail(),this.getTelefono(),this.getDni(),this.getFechaNacimiento(),this.getPassword(), saldoAFavor);
-		return alumnoView;
+		return new AlumnoView(this.getDni(),this.getNombre(),this.getMail(),this.getTelefono(),this.getDni(),this.getFechaNacimiento(),this.getContra(), saldoAFavor);
 	}
 	public boolean sosAlumno (String alumno) {
 		return this.nombre==alumno;

@@ -10,8 +10,8 @@ public class ProfesorView extends UsuarioView{
 	private float puntuacion;
 	private ArrayList<ResenaView> resenasView;
 	
-	public ProfesorView(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String password, String domicilioClases,float anticipacion,ArrayList<Resena> resenas) {
-		super(dni, nombre, mail, telefono, domicilio, fechaNacimiento, password);
+	public ProfesorView(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String contra, String domicilioClases,float anticipacion,ArrayList<Resena> resenas) {
+		super(dni, nombre, mail, telefono, domicilio, fechaNacimiento, contra);
 		this.anticipacionReserva=anticipacion;
 		this.domicilioClases=domicilioClases;
 		this.resenasView=resenas2View(resenas);
