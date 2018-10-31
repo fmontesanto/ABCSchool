@@ -9,17 +9,17 @@ public abstract class Usuario {
 	protected String telefono;
 	protected String domicilio;
 	protected Date fechaNacimiento;
-	protected String password;
+	protected String contra;
 	protected Integer idUsuario;
 	
-	public Usuario(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String password) {
+	public Usuario(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String contra) {
 		this.dni=dni;
 		this.nombre=nombre;
 		this.mail=mail;
 		this.telefono=telefono;
 		this.domicilio=domicilio;
 		this.fechaNacimiento=fechaNacimiento;
-		this.password=password;
+		this.contra=contra;
 	}
 	
 	public String getNombre() {

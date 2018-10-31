@@ -10,7 +10,7 @@ public class Alumno extends Usuario{
 	private float saldoAFavor;
 	private ArrayList<Reserva> reservas;
 	
-	public Alumno(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String password) {
+	public Alumno(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String contra) {
 		super( dni,  nombre,  mail,  telefono, domicilio, fechaNacimiento, password);
 		this.saldoAFavor=0;
 	}

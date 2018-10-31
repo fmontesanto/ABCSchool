@@ -25,8 +25,8 @@ public class UsuarioEntity {
 	private String domicilio;
 	@Column(name="fechaNacimiento")
 	private String fechaNacimiento;
-	@Column(name="password")
-	private String password;
+	@Column(name="contra")
+	private String contra;
 	
 	public UsuarioEntity() {}	
 	

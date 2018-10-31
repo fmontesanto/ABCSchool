@@ -11,7 +11,7 @@ public class Profesor extends Usuario{
 	private Float puntuacion;
 	private ArrayList<Resena> resenas;
 	
-	public Profesor (String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String password, String domicilioClases,float anticipacion) {
+	public Profesor (String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String contra, String domicilioClases,float anticipacion) {
 		super(dni,nombre,mail,telefono, domicilio, fechaNacimiento,password);
 		this.anticipacionReserva=anticipacion;
 		this.domicilioClases=domicilioClases;
