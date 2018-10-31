@@ -1,0 +1,186 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+body{
+ background: url(../img/susan-yin-647448-unsplash.jpg) no-repeat center top;
+  display: flex;
+  min-height: 100vh;
+  background-size: cover;
+  font-family: sans-serif;
+}
+
+form{
+  margin: auto;
+  width: 50%;
+  max-width: 500px;
+  background: rgba(254, 255, 115, 1.0);
+background: -webkit-linear-gradient(bottom, rgba(254, 255, 115, 1.0), rgba(253, 255, 88, 1.0));
+background: -moz-linear-gradient(bottom, rgba(254, 255, 115, 1.0), rgba(253, 255, 88, 1.0));
+background: linear-gradient(to top, rgba(254, 255, 115,1.0), rgba(253, 255, 88, 0.6));
+  /*background-image: linear-gradient(to bottom right, rgba(255,0,0,0), rgba(255,0,0,1));
+  /*background-image: linear-gradient(to bottom right, tomato, blue);*/
+ /* background: #F3F3F3;*/
+  padding: 30px; /*relleno, espaciado interno*/
+  border: 1.5px solid rgba(255,255,255,255);
+  border-radius: 20px;
+}
+
+
+.avatar{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 260px);
+  left: calc(50% - 50px);
+  /*transition: all 0.5s;*/
+}
+
+.avatar:hover{
+  animation: rubberBand 1s 1;
+  /*margin-top: -12px;*/ /*va con transition*/
+}
+
+@keyframes cambiar{/*hace que un elemento se mueva*/
+  0%{margin-top: 0;}
+  25%{margin-top: -15px;}
+  50%{margin-top: 2px;}
+  75%{margin-top: -15px}
+  100%{margin-top: 0;}
+}
+
+ul{
+  text-align: center;
+}
+
+h2{
+  text-align: center;
+  margin-bottom: 20px;
+  color: rgba(0,0,0,0.5);
+}
+
+input{
+  display: block;
+  padding: 10px;
+  width: 100%;
+  margin: 30px 0; /*30 haci arriba, cero a los costado*/
+  font-size: 20px;
+  border-radius: 20px;
+  border: 0;
+}
+
+input[type="submit"]{
+  background: linear-gradient(#FFDA63, #FFB940);/*degradado*/
+  color: brown;
+  opacity: 0.8;
+  cursor: pointer;/*cambia mouse por manito*/
+  margin-bottom: 0;
+}
+
+input[type="submit"]:hover{/*al pasar mouse la opacidad cambia*/
+  opacity: 1;
+}
+
+input[type="submit"]:active{/*cuando se hace click*/
+  transform: scale(0.9);
+}
+
+@media (max-width:768px){/*para que cambie tamaño--> responsive*/
+  form{
+    width: 75%;
+  }
+}
+
+@media (max-width:480px){/*para que cambie tamaño--> responsive*/
+  form{
+    width: 95%;
+  }
+}
+
+
+
+
+
+
+@-webkit-keyframes rubberBand {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
+  }
+
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes rubberBand {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
+  }
+
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.rubberBand {
+  -webkit-animation-name: rubberBand;
+  animation-name: rubberBand;
+}

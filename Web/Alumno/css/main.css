@@ -1,0 +1,81 @@
+body{
+  margin: 0;
+  font-family: sans-serif;
+  background: url(../img/marvin-meyer-571072-unsplash.jpg) no-repeat center top;
+  min-height: 100vh;
+  background-size: cover;
+  font-family: sans-serif;
+}
+
+header{
+  width: 100%;
+  background: linear-gradient(#FFDA63, #FFB940);
+}
+
+#btn-menu{
+  display: none; /*desaparece el checkbox*/
+}
+
+header label{
+  display: none;
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+  border-right: 1px solid white;
+}
+
+header label:hover{
+  cursor: pointer;
+  background: rgba(0,0,0,0.1);
+}
+
+.menu ul{
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  display: flex; /*hace uq los li sean flexibles --> en una fila*/
+  /*justify-content: flex-end; se van hacia la derecha*/
+}
+
+.menu li:hover{
+  background: rgba(0,0,0,0.1);
+}
+
+.menu li a{
+  display: block; /*para agregar el padding*/
+  padding: 15px 20px; /* 15 vertical, 20 horizontal*/
+  color: white;
+  text-decoration: none;
+}
+
+main{
+  padding: 20px;
+  background: rgba(255,255,255,0.7)
+  
+}
+
+@media (max-width:768px){
+  header label {
+    display: block;
+  }
+  
+  .menu{
+    position: absolute;
+    background: linear-gradient(#FFDA63, #FFB940);
+    width: 70%;
+    margin-left: -70%;
+    transition: all 0.6s;
+  }
+  
+  .menu ul{
+    flex-direction: column;
+  }
+  
+  .menu li{
+    border-top: 1px solid white;
+  }
+  
+  #btn-menu:checked ~ .menu{ /*cuando btn-menu tenga el checked, va a buscar/seleccionar a .menu*/
+    margin: 0;
+  }
+}

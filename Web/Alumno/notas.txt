@@ -1,0 +1,4 @@
+.menu li{/*se distribuye por todo el ancho*/
+  text-align: center;
+  flex-grow: 1;
+}
