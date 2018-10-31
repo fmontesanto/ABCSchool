@@ -49,9 +49,23 @@ header label:hover{
 }
 
 main{
-  padding: 20px;
-  background: rgba(255,255,255,0.7)
+  position: relative;
+  top: 200px;
+  padding: 10px;
+  background: rgba(255,255,255,0.7);
   
+}
+
+main ol{
+  position: ;
+  top: 50%;
+  
+}
+
+main div{
+  position: absolute;
+  top: 50%;
+  right: 0%;
 }
 
 @media (max-width:768px){
