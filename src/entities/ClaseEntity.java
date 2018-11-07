@@ -25,16 +25,15 @@ public class ClaseEntity {
 	private Float horario;
 	@Column(name="estado")
 	private String estado;
-	
+
 	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn (name="idProfesor")
+	@JoinColumn (name="idUsuario")
 	protected ProfesorEntity profesor;
-	
-//	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-//	@JoinColumn(name="idReserva")
-//	private ReservaEntity reserva;
-	
-	
+
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="idReserva")
+	private ReservaEntity reserva;
+
 	public ClaseEntity() {}
 
 	public ClaseEntity(String materia, Float horario, String estado) {

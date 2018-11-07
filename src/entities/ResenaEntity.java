@@ -25,7 +25,7 @@ public class ResenaEntity {
 	private String comentario;
 	
 	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn (name="idProfesor")
+	@JoinColumn (name="idUsuario")
 	protected ProfesorEntity profesor;
 
 	

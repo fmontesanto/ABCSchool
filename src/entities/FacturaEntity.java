@@ -32,9 +32,8 @@ public class FacturaEntity {
 	@Column(name="medioPago")
 	private String medioPago;
 	
-	//esto esta bien???
 	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn(name="codigoReserva")
+	@JoinColumn(name="idReserva")
 	private ReservaEntity reserva;
 	
 	

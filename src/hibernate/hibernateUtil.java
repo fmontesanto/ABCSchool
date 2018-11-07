@@ -5,9 +5,12 @@
 	import org.hibernate.SessionFactory;
 	import org.hibernate.cfg.AnnotationConfiguration;
 
+import entities.AlumnoEntity;
 import entities.ClaseEntity;
+import entities.FacturaEntity;
 import entities.ProfesorEntity;
 import entities.ResenaEntity;
+import entities.ReservaEntity;
 import entities.UsuarioEntity;
 
 
@@ -22,7 +25,10 @@ import entities.UsuarioEntity;
 				config.addAnnotatedClass(ClaseEntity.class);
 				config.addAnnotatedClass(UsuarioEntity.class);
 				config.addAnnotatedClass(ProfesorEntity.class);
+				config.addAnnotatedClass(FacturaEntity.class);
+				config.addAnnotatedClass(AlumnoEntity.class);
 				config.addAnnotatedClass(ResenaEntity.class);
+				config.addAnnotatedClass(ReservaEntity.class);
 				sessionFactory = config.buildSessionFactory();
 				session = sessionFactory.openSession();
 			} catch (Throwable ex) {
