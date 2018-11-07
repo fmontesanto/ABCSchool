@@ -48,25 +48,55 @@ header label:hover{
   text-decoration: none;
 }
 
+.end{
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
 main{
-  position: relative;
+  position: absolute;
   top: 200px;
-  padding: 10px;
+  padding: 15% 100%;
   background: rgba(255,255,255,0.7);
   
 }
 
-main ol{
-  position: ;
-  top: 50%;
-  
+.text-content table.standard-table:not(.learn-box):not(.nostripe) tr:nth-child(odd) td {
+    background-color: #f4f7f8;
+    background-color: rgba(212,221,228,.25);
+}
+.text-content table.standard-table:not(.learn-box) td {
+    background-color: #f9fafb;
+    background-color: rgba(212,221,228,.15);
+    border: 2px solid #fff;
+    box-shadow: inset 0 -1px 0 0 rgba(212,221,228,.5);
+}
+.text-content td, .text-content th {
+    border: solid #e0e0dc;
+    border-width: 0 1px 1px 0;
+    padding: 6px 8px;
+    text-align: left;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+.text-content table {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    border: solid #e0e0dc;
+    border-width: 1px 0 0 1px;
+}
+table {
+  background: rgba (255, 255, 255, 1);
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
 }
 
-main div{
-  position: absolute;
-  top: 50%;
-  right: 0%;
-}
 
 @media (max-width:768px){
   header label {
