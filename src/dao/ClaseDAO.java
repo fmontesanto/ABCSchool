@@ -92,19 +92,4 @@ public class ClaseDAO {
 
 	}
 
-	public void bajaClase(Clase cl)
-	{
-		SessionFactory sf = hibernateUtil.getSessionFactory();
-		Session session = sf.openSession();
-		ClaseEntity c=(ClaseEntity)session.createQuery("from ClaseEntity where idClase = ?").setParameter(0, cl.getNumero()).uniqueResult();
-		if(c==null)
-			System.out.println("Clase con ese id no existe");
-		else
-		{
-			session.beginTransaction();
-			session.delete(c);
-			session.getTransaction().commit();
-		}
-		session.close();
-	}
 }
