@@ -96,9 +96,9 @@ public class Reserva {
 		this.clases = clases;
 	}
 	
-	public Float controlaFecha(){
+	/*public Float controlaFecha(){ HACER
 		
-	}
+	}*/
 	
 	public void eliminarse(){
 		

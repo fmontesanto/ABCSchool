@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,13 +22,14 @@ public class ClaseEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="idClase")
 	private Integer idClase;
-	@Column(name="materia")
-	private String materia;
 	@Column(name="horario")
 	private Float horario;
 	@Column(name="estado")
 	private String estado;
 
+	@OneToMany(mappedBy="clase", cascade=CascadeType.ALL)
+	private List<MateriaEntity> materias;
+	
 	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn (name="idUsuario")
 	protected ProfesorEntity profesor;
@@ -36,11 +40,19 @@ public class ClaseEntity {
 
 	public ClaseEntity() {}
 
-	public ClaseEntity(String materia, Float horario, String estado) {
+	public ClaseEntity(Float horario, String estado, ProfesorEntity profesor) {
 		super();
-		this.materia = materia;
 		this.horario = horario;
 		this.estado = estado;
+		this.setProfesor(profesor);
+	}
+
+	public List<MateriaEntity> getMaterias() {
+		return materias;
+	}
+
+	public void setMaterias(List<MateriaEntity> materias) {
+		this.materias = materias;
 	}
 
 	public Integer getIdClase() {
@@ -49,14 +61,6 @@ public class ClaseEntity {
 
 	public void setIdClase(Integer idClase) {
 		this.idClase = idClase;
-	}
-
-	public String getMateria() {
-		return materia;
-	}
-
-	public void setMateria(String materia) {
-		this.materia = materia;
 	}
 
 	public Float getHorario() {
@@ -83,17 +87,14 @@ public class ClaseEntity {
 		this.profesor = profesor;
 	}
 
-	/*public ReservaEntity getReserva() {
+	public ReservaEntity getReserva() {
 		return reserva;
 	}
 
 	public void setReserva(ReservaEntity reserva) {
 		this.reserva = reserva;
-	}*/
+	}
 	
-
-	
-
 	/*@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -153,15 +154,5 @@ public class ClaseEntity {
 		} else if (!unidad.equals(other.unidad))
 			return false;
 		return true;
-	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
 	}*/
-	
-
 }

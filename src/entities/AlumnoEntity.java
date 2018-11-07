@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -21,7 +22,7 @@ public class AlumnoEntity extends UsuarioEntity {
 	public AlumnoEntity() {}
 
 	public AlumnoEntity(String dni, String nombre, String mail, String telefono, String domicilio,
-			String fechaNacimiento, String password, Float saldoAFavor, List<ReservaEntity> reservas) {
+			Date fechaNacimiento, String password, Float saldoAFavor, List<ReservaEntity> reservas) {
 		super(dni, nombre, mail, telefono, domicilio, fechaNacimiento, password);
 		this.saldoAFavor = saldoAFavor;
 		this.reservas = reservas;

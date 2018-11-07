@@ -4,22 +4,30 @@ import views.ClaseView;
 
 public class Clase {
 	
-	private String materia;
+	private Materia materia;
 	private Float horario;
 	private String estado;
 	private Integer idClase;
 	private Profesor profesor;
 	private Reserva reserva;
 	
-	public Clase(Integer id, String materia, Float horario, String estado, Profesor profesor, Reserva reserva) {
-		this.idClase = id;
-		this.materia=materia;
+	public Clase( Integer id,Float horario, String estado, Profesor profesor) {
+		this.idClase=id;
 		this.horario=horario;
 		this.estado=estado;
 		this.profesor=profesor;
-		this.reserva = reserva;
 	}
 	
+	public Clase(Materia materia, Float horario, String estado, Integer idClase, Profesor profesor, Reserva reserva) {
+		super();
+		this.materia = materia;
+		this.horario = horario;
+		this.estado = estado;
+		this.idClase = idClase;
+		this.profesor = profesor;
+		this.reserva = reserva;
+	}
+
 	public float getHorario() {
 		return horario;
 	}
@@ -49,24 +57,25 @@ public class Clase {
 		this.profesor = profesor;
 	}
 	
-	public String getMateria() {
+	public Materia getMateria() {
 		return materia;
 	}
 	
-	public void setMateria(String materia) {
+	public void setMateria(Materia materia) {
 		this.materia = materia;
 	}
 	
-	public boolean sosClaseMateria(String materia) {
+	public boolean sosClaseMateria(Materia materia) {
 		return (this.materia==materia);
 	}
 	
 	public boolean sosClaseNro(int numero) {
 		return (this.idClase==numero);
 	}
-	public ClaseView getView() {
+	
+	/*public ClaseView getView() {
 		ClaseView clase=new ClaseView(materia, horario, estado, idClase, profesor);
 		return clase;
-	}
+	}*/
 
 }

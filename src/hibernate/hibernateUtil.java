@@ -8,6 +8,7 @@
 import entities.AlumnoEntity;
 import entities.ClaseEntity;
 import entities.FacturaEntity;
+import entities.MateriaEntity;
 import entities.ProfesorEntity;
 import entities.ResenaEntity;
 import entities.ReservaEntity;
@@ -29,6 +30,7 @@ import entities.UsuarioEntity;
 				config.addAnnotatedClass(AlumnoEntity.class);
 				config.addAnnotatedClass(ResenaEntity.class);
 				config.addAnnotatedClass(ReservaEntity.class);
+				config.addAnnotatedClass(MateriaEntity.class);
 				sessionFactory = config.buildSessionFactory();
 				session = sessionFactory.openSession();
 			} catch (Throwable ex) {

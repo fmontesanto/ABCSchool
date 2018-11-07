@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,14 +26,14 @@ public class UsuarioEntity {
 	@Column(name="domicilio")
 	private String domicilio;
 	@Column(name="fechaNacimiento")
-	private String fechaNacimiento;
+	private Date fechaNacimiento;
 	@Column(name="contra")
 	private String contra;
 	
 	public UsuarioEntity() {}	
 	
 	public UsuarioEntity(String dni, String nombre, String mail, String telefono, String domicilio,
-			String fechaNacimiento, String contra) {
+			Date fechaNacimiento, String contra) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
@@ -90,11 +92,11 @@ public class UsuarioEntity {
 		this.domicilio = domicilio;
 	}
 
-	public String getFechaNacimiento() {
+	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(String fechaNacimiento) {
+	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
