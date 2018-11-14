@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,9 +23,16 @@ public class AlumnoEntity extends UsuarioEntity {
 	public AlumnoEntity() {}
 
 	public AlumnoEntity(String dni, String nombre, String mail, String telefono, String domicilio,
-			Date fechaNacimiento, String password, Float saldoAFavor, List<ReservaEntity> reservas) {
+			Date fechaNacimiento, String password) {
 		super(dni, nombre, mail, telefono, domicilio, fechaNacimiento, password);
-		this.saldoAFavor = saldoAFavor;
+		this.saldoAFavor = 0f;
+		this.reservas = new ArrayList<ReservaEntity>();
+	}
+	
+	public AlumnoEntity(String dni, String nombre, String mail, String telefono, String domicilio,
+			Date fechaNacimiento, String password, Float saldo, List<ReservaEntity> reservas) {
+		super(dni, nombre, mail, telefono, domicilio, fechaNacimiento, password);
+		this.saldoAFavor = saldo;
 		this.reservas = reservas;
 	}
 

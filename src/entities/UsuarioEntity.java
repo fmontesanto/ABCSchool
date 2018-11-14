@@ -104,7 +104,7 @@ public class UsuarioEntity {
 		return contra;
 	}
 
-	public void setPassword(String contra) {
+	public void setContra(String contra) {
 		this.contra = contra;
 	}
 		

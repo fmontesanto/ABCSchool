@@ -98,4 +98,13 @@ public class FacturaEntity {
 	public void setMedioPago(String medioPago) {
 		this.medioPago = medioPago;
 	}
+
+	public ReservaEntity getReserva() {
+		return reserva;
+	}
+
+	public void setReserva(ReservaEntity reserva) {
+		this.reserva = reserva;
+	}
+	
 }

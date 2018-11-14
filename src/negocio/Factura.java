@@ -5,12 +5,14 @@ import java.util.Date;
 import views.FacturaView;
 
 public class Factura {
+
 	private Date fecha;
 	private Float monto;
 	private String tipo;
 	private String remitente;
 	private String medioPago;
 	private Integer nroFactura;
+	private Reserva reserva;
 	
 	public int getNumero() {
 		return nroFactura;
@@ -51,10 +53,17 @@ public class Factura {
 	public boolean sosFactura(int numero) {
 		return this.nroFactura==numero;
 	}
+	
+	public Reserva getReserva() {
+		return reserva;
+	}
+	
+	public void setReserva(Reserva reserva) {
+		this.reserva = reserva;
+	}
+	
 	public FacturaView getView() {
 		FacturaView factura=new FacturaView(monto, medioPago, medioPago, medioPago, nroFactura, fecha);
 		return factura;
 	}
-	
-
 }

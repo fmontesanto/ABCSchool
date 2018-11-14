@@ -3,10 +3,8 @@ package dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import entities.ClaseEntity;
 import entities.ProfesorEntity;
 import hibernate.hibernateUtil;
-import negocio.Clase;
 import negocio.Profesor;
 
 public class ProfesorDAO {
@@ -48,58 +46,69 @@ public class ProfesorDAO {
 		session.close();
 	}
 
-	/*public void borrarClase(Integer idClase)
+	public void borrarPorfesor(String dni)
 	{
 		SessionFactory sf = hibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		ClaseEntity c=(ClaseEntity)session.createQuery("from ClaseEntity where idClase = ?").setParameter(0, idClase).uniqueResult();
-		//UbicacionEntity u=null;
-		if(c==null) 
+		ProfesorEntity p=(ProfesorEntity)session.createQuery("from ProfesorEntity where dni = ?").setParameter(0, dni).uniqueResult();
+		if(p==null) 
 		{
-			System.out.println("No existe Clase con ese id");
+			System.out.println("No existe Profesor con ese dni");
 		}
 		else
 		{
 			session.beginTransaction();
-			session.delete(c);
+			session.delete(p);
 			session.getTransaction().commit();
 		}
 		session.close();
 	}
 
-	public void modificarClase(Clase cl)
+	public void modificarProfesor(Profesor pr)
 	{
 		SessionFactory sf = hibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		ClaseEntity c=(ClaseEntity)session.createQuery("from ClaseEntity where idClase = ?").setParameter(0, cl.getNumero()).uniqueResult();
-		if(c==null)
-			System.out.println("Clase con ese id no existe");
+		ProfesorEntity p=(ProfesorEntity)session.createQuery("from ProfesorEntity where dni = ?").setParameter(0, pr.getDni()).uniqueResult();
+		if(p==null)
+			System.out.println("Profesor con ese dni no existe");
 		else
 		{
-			if(!cl.getEstado().equals(c.getEstado()))
-				c.setEstado(cl.getEstado());
-
+			if(!pr.getDomicilio().equals(p.getDomicilio()))
+				p.setDomicilio(pr.getDomicilio());
+			if(pr.getFechaNacimiento()!=p.getFechaNacimiento())
+				p.setFechaNacimiento(pr.getFechaNacimiento());
+			if(!pr.getMail().equals(p.getMail()))
+				p.setMail(pr.getMail());
+			if(!pr.getContra().equals(p.getContra()))
+				p.setContra(pr.getContra());
+			if(!pr.getDomicilioClases().equals(p.getDomicilioClases()))
+				p.setDomicilioClases(pr.getDomicilioClases());
+			if(!pr.getTelefono().equals(p.getTelefono()))
+				p.setTelefono(pr.getTelefono());
+			if(pr.getAnticipacionReserva()!=p.getAnticipacionReserva())
+				p.setAnticipacionReserva(pr.getAnticipacionReserva());
+			
 			session.beginTransaction();
-			session.update(c);
+			session.update(p);
 			session.getTransaction().commit();
 		}
 		session.close();
 
 	}
 
-	public void bajaClase(Clase cl)
+	public void bajaProfesor(Profesor pr)
 	{
 		SessionFactory sf = hibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		ClaseEntity c=(ClaseEntity)session.createQuery("from ClaseEntity where idClase = ?").setParameter(0, cl.getNumero()).uniqueResult();
-		if(c==null)
-			System.out.println("Clase con ese id no existe");
+		ProfesorEntity p=(ProfesorEntity)session.createQuery("from ProfesorEntity where dni = ?").setParameter(0, pr.getDni()).uniqueResult();
+		if(p==null)
+			System.out.println("Profesor con ese dni no existe");
 		else
 		{
 			session.beginTransaction();
-			session.delete(c);
+			session.delete(p);
 			session.getTransaction().commit();
 		}
 		session.close();
-	}*/
+	}
 }

@@ -3,52 +3,54 @@ package dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import entities.ClaseEntity;
+import entities.AlumnoEntity;
 import entities.ProfesorEntity;
+import entities.ReservaEntity;
 import hibernate.hibernateUtil;
 import negocio.Clase;
+import negocio.Reserva;
 
-public class ClaseDAO {
+public class ReservaDAO {
+	
+	private static ReservaDAO instancia;
 
-	private static ClaseDAO instancia;
+	private ReservaDAO(){ }
 
-	private ClaseDAO(){ }
-
-	public static ClaseDAO getInstancia(){
+	public static ReservaDAO getInstancia(){
 		if(instancia == null){
-			instancia = new ClaseDAO();
+			instancia = new ReservaDAO();
 		}
 		return instancia;
 	}
 
-	public ClaseEntity findByCode(Integer idClase)
+	public ReservaEntity findById(Integer idReserva)
 	{
 		SessionFactory sf = hibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		ClaseEntity cl = (ClaseEntity) session.createQuery("from ClaseEntity where idClase = ?").setParameter(0, idClase).uniqueResult();
+		ReservaEntity r = (ReservaEntity) session.createQuery("from ReservaEntity where idReserva = ?").setParameter(0, idReserva).uniqueResult();
 		session.close();
-		return cl;
+		return r;
 	}
 
-	public void agregarClase(Clase cl)
+	public void agregarReserva(Reserva r)
 	{
 		SessionFactory sf = hibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		ClaseEntity c=(ClaseEntity)session.createQuery("from ClaseEntity where idClase = ?").setParameter(0, cl.getNumero()).uniqueResult();
+		ReservaEntity re=(ReservaEntity)session.createQuery("from ReservaEntity where idReserva = ?").setParameter(0, r.getIdReserva()).uniqueResult();
 		int flag=0;
-		if(c!=null) 
-			System.out.println("Clase ya existente con ese id");
+		if(re!=null) 
+			System.out.println("Reserva ya existente con ese id");
 		else
 		{
-			ProfesorEntity p = ProfesorDAO.getInstancia().findByDni(cl.getProfesor().getDni());
-			if(p==null)
+			AlumnoEntity a = AlumnoDAO.getInstancia().findByDni(r.getAlumno().getDni());
+			if(a==null)
 				flag=1;	
 			else
-				c=new ClaseEntity(cl.getHorario(), cl.getEstado(), p);
+				re=new ClaseEntity(r.getHorario(), r.getEstado(), p);
 		}
 		session.beginTransaction();
 		if(flag==0)
-			session.save(c);
+			session.save(re);
 		session.getTransaction().commit();
 		session.close();
 	}
