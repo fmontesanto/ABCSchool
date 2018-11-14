@@ -231,7 +231,7 @@ form{
   height: 100px;
   border-radius: 50%;
   position: absolute;
-  top: calc(50% - 260px);
+  top: calc(50% - 280px);
   left: calc(50% - 50px);
   /*transition: all 0.5s;*/
 }
