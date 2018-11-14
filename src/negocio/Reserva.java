@@ -13,10 +13,12 @@ public class Reserva {
 	private Float duracion;
 	private boolean paga;
 	private Date fecha;
+	private Alumno alumno;
+	private Factura factura;
 	private List<Clase> clases;
 	
 	public Reserva(Integer idReserva, Float descuento, Float monto, Integer cantAlum, Float duracion, boolean paga,
-			Date fecha) {
+			Date fecha, Alumno alumno, Factura factura) {
 		super();
 		this.idReserva = idReserva;
 		this.descuento = descuento;
@@ -26,6 +28,8 @@ public class Reserva {
 		this.paga = paga;
 		this.fecha = fecha;
 		this.clases = new ArrayList<Clase>();
+		this.alumno = alumno;
+		this.factura = factura;
 	}
 	
 	public boolean sosReserva(Integer id){
@@ -96,10 +100,26 @@ public class Reserva {
 		this.clases = clases;
 	}
 	
-	/*public Float controlaFecha(){ HACER
-		
-	}*/
+	public Alumno getAlumno() {
+		return alumno;
+	}
+
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
+	}
 	
+	public Factura getFactura() {
+		return factura;
+	}
+
+	public void setFactura(Factura factura) {
+		this.factura = factura;
+	}
+	
+	/*public Float controlaFecha(){ HACER
+	
+	}*/
+
 	public void eliminarse(){
 		
 	}
