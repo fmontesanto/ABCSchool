@@ -27,15 +27,16 @@ public class ClaseEntity {
 	@Column(name="estado")
 	private String estado;
 
-	@OneToMany(mappedBy="clase", cascade=CascadeType.ALL)
-	private List<MateriaEntity> materias;
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn (name="idMateria")
+	protected MateriaEntity materia;
 	
 	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn (name="idUsuario")
 	protected ProfesorEntity profesor;
 
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn(name="idReserva")
+	@ManyToOne
+	@JoinColumn(name="idReserva", insertable=false, updatable=false)
 	private ReservaEntity reserva;
 
 	public ClaseEntity() {}
@@ -47,12 +48,13 @@ public class ClaseEntity {
 		this.setProfesor(profesor);
 	}
 
-	public List<MateriaEntity> getMaterias() {
-		return materias;
+
+	public MateriaEntity getMateria() {
+		return materia;
 	}
 
-	public void setMaterias(List<MateriaEntity> materias) {
-		this.materias = materias;
+	public void setMateria(MateriaEntity materia) {
+		this.materia = materia;
 	}
 
 	public Integer getIdClase() {

@@ -7,12 +7,17 @@ import views.AlumnoView;
 
 public class Alumno extends Usuario{
 	
-	private float saldoAFavor;
+	private Float saldoAFavor;
 	private ArrayList<Reserva> reservas;
 	
 	public Alumno(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String contra) {
 		super( dni,  nombre,  mail,  telefono, domicilio, fechaNacimiento, contra);
-		this.saldoAFavor=0;
+		this.saldoAFavor=0f;
+	}
+	
+	public Alumno(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String contra, Float saldoAFavor) {
+		super( dni,  nombre,  mail,  telefono, domicilio, fechaNacimiento, contra);
+		this.saldoAFavor=saldoAFavor;
 	}
 
 	public float getSaldoAFavor() {

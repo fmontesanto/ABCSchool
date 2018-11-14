@@ -1,13 +1,18 @@
 package dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.AlumnoEntity;
-import entities.ProfesorEntity;
+import entities.ClaseEntity;
 import entities.ReservaEntity;
 import hibernate.hibernateUtil;
+import negocio.Alumno;
 import negocio.Clase;
+import negocio.Profesor;
 import negocio.Reserva;
 
 public class ReservaDAO {
@@ -43,54 +48,62 @@ public class ReservaDAO {
 		else
 		{
 			AlumnoEntity a = AlumnoDAO.getInstancia().findByDni(r.getAlumno().getDni());
-			if(a==null)
+			
+			List<ClaseEntity> clases = new ArrayList<ClaseEntity>();
+			for(Clase c : r.getClases()){
+				c.setEstado("Ocupada");
+				ClaseDAO.getInstancia().modificarClase(c);
+				clases.add(ClaseDAO.getInstancia().findByCode(c.getNumero()));
+			}
+			
+			if(a == null || clases == null)
 				flag=1;	
 			else
-				re=new ClaseEntity(r.getHorario(), r.getEstado(), p);
+				re=new ReservaEntity(r.getDescuento(), r.getMonto(), r.getCantAlum(), false, r.getFecha(), clases, a);
 		}
 		session.beginTransaction();
 		if(flag==0)
 			session.save(re);
+		
 		session.getTransaction().commit();
 		session.close();
 	}
+	
+	public void agregarFactura(){
+		
+	}
 
-	public void borrarClase(Integer idClase)
+	public void cancelarReserva(Integer idReserva)
 	{
 		SessionFactory sf = hibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
-		ClaseEntity c=(ClaseEntity)session.createQuery("from ClaseEntity where idClase = ?").setParameter(0, idClase).uniqueResult();
-		if(c==null) 
+		ReservaEntity r=(ReservaEntity)session.createQuery("from ReservaEntity where idReserva = ?").setParameter(0, idReserva).uniqueResult();
+		if(r==null) 
 		{
-			System.out.println("No existe Clase con ese id");
+			System.out.println("No existe Reserva con ese id");
 		}
 		else
 		{
+			for(ClaseEntity c : r.getClases()){
+				c.setEstado("Libre");
+				Profesor p = new Profesor(c.getProfesor().getDni(), c.getProfesor().getNombre(), c.getProfesor().getMail(), c.getProfesor().getTelefono(), 
+						c.getProfesor().getDomicilio(), c.getProfesor().getFechaNacimiento(), c.getProfesor().getContra(), c.getProfesor().getDomicilioClases(), c.getProfesor().getAnticipacionReserva());
+				Clase cl= new Clase(c.getIdClase(), c.getHorario(),c.getEstado(), p);
+				ClaseDAO.getInstancia().modificarClase(cl);
+			}
+			
+			Float monto = r.controlarFecha();
+			if(monto != -1f){
+				r.getAlumno().agregarSaldoAFavor(monto);
+				Alumno a = new Alumno(r.getAlumno().getDni(), r.getAlumno().getNombre(), r.getAlumno().getMail(), r.getAlumno().getTelefono(), 
+						r.getAlumno().getDomicilio(), r.getAlumno().getFechaNacimiento(), r.getAlumno().getContra());
+				AlumnoDAO.getInstancia().modificarSaldo(a);
+			}
+			
 			session.beginTransaction();
-			session.delete(c);
+			session.delete(r);
 			session.getTransaction().commit();
 		}
 		session.close();
 	}
-
-	public void modificarClase(Clase cl)
-	{
-		SessionFactory sf = hibernateUtil.getSessionFactory();
-		Session session = sf.openSession();
-		ClaseEntity c=(ClaseEntity)session.createQuery("from ClaseEntity where idClase = ?").setParameter(0, cl.getNumero()).uniqueResult();
-		if(c==null)
-			System.out.println("Clase con ese id no existe");
-		else
-		{
-			if(!cl.getEstado().equals(c.getEstado()))
-				c.setEstado(cl.getEstado());
-
-			session.beginTransaction();
-			session.update(c);
-			session.getTransaction().commit();
-		}
-		session.close();
-
-	}
-
 }

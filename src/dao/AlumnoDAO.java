@@ -91,6 +91,24 @@ public class AlumnoDAO {
 		session.close();
 
 	}
+	
+	public void modificarSaldo(Alumno a)
+	{
+		SessionFactory sf = hibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		AlumnoEntity ae=(AlumnoEntity)session.createQuery("from AlumnoEntity where dni = ?").setParameter(0, a.getDni()).uniqueResult();
+		if(ae==null)
+			System.out.println("Alumno con ese dni no existe");
+		else
+		{
+			ae.agregarSaldoAFavor(a.getSaldoAFavor());
+						
+			session.beginTransaction();
+			session.update(ae);
+			session.getTransaction().commit();
+		}
+		session.close();
+	}	
 
 	public void bajaAlumno(Alumno a)
 	{

@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -28,9 +30,8 @@ public class MateriaEntity {
 	@Column(name="nombre")
 	private String nombre;
 	
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn (name="idClase")
-	protected ClaseEntity clase;
+	@OneToMany(mappedBy="materia", cascade=CascadeType.ALL)
+	private List<ClaseEntity> clases;
 	
 	@ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
@@ -41,10 +42,10 @@ public class MateriaEntity {
 
 	public MateriaEntity(){}
 	
-	public MateriaEntity(String nombre, ClaseEntity clase) {
+	public MateriaEntity(String nombre, List<ClaseEntity> clases) {
 		super();
 		this.nombre = nombre;
-		this.clase = clase;
+		this.clases = clases;
 	}
 
 	public Integer getIdMateria() {
@@ -63,12 +64,12 @@ public class MateriaEntity {
 		this.nombre = nombre;
 	}
 
-	public ClaseEntity getClase() {
-		return clase;
+	public List<ClaseEntity> getClases() {
+		return clases;
 	}
 
-	public void setClase(ClaseEntity clase) {
-		this.clase = clase;
+	public void setClases(List<ClaseEntity> clases) {
+		this.clases = clases;
 	}
 
 	public Set<ProfesorEntity> getProfesores() {

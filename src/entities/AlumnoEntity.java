@@ -40,8 +40,12 @@ public class AlumnoEntity extends UsuarioEntity {
 		return saldoAFavor;
 	}
 
-	public void setSaldoAFavor(Float saldoAFavor) {
-		this.saldoAFavor = saldoAFavor;
+	public void agregarSaldoAFavor(Float saldoAFavor) {
+		this.saldoAFavor =+ saldoAFavor;
+	}
+	
+	public void descontarSaldoAFavor(Float saldoAFavor) {
+		this.saldoAFavor =- saldoAFavor;
 	}
 
 	public List<ReservaEntity> getReservas() {

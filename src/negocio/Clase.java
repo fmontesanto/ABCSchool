@@ -1,12 +1,13 @@
 package negocio;
 
+import dao.ClaseDAO;
 import views.ClaseView;
 
 public class Clase {
 	
 	private Materia materia;
 	private Float horario;
-	private String estado;
+	private String estado; //libre, pendiente, ocupada
 	private Integer idClase;
 	private Profesor profesor;
 	private Reserva reserva;

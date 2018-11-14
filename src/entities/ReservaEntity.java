@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -30,33 +31,43 @@ public class ReservaEntity {
 	private Float monto;
 	@Column(name="cantAlum")
 	private Integer cantAlum;
-	@Column(name="duracion")
-	private Float duracion;
 	@Column(name="paga")
 	private boolean paga;
 	@Column(name="fecha")
 	private Date fecha;
 
-	@OneToMany(mappedBy="reserva", cascade=CascadeType.ALL)
+	@OneToMany
+	@JoinColumn(name="idReserva")
 	private List<ClaseEntity> clases;
 
 	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name="nroFactura")
 	private FacturaEntity factura;
 
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn (name="idUsuario")
 	protected AlumnoEntity alumno;
 
 	public ReservaEntity() {}
+	
+	public ReservaEntity(Float descuento, Float monto, Integer cantAlum, boolean paga, Date fecha,
+			List<ClaseEntity> clases, AlumnoEntity alumno) {
+		super();
+		this.descuento = descuento;
+		this.monto = monto;
+		this.cantAlum = cantAlum;
+		this.paga = paga;
+		this.fecha = fecha;
+		this.clases = clases;
+		this.alumno = alumno;
+	}
 
-	public ReservaEntity(Float descuento, Float monto, Integer cantAlum, Float duracion, boolean paga, Date fecha,
+	public ReservaEntity(Float descuento, Float monto, Integer cantAlum, boolean paga, Date fecha,
 			List<ClaseEntity> clases, FacturaEntity factura, AlumnoEntity alumno) {
 		super();
 		this.descuento = descuento;
 		this.monto = monto;
 		this.cantAlum = cantAlum;
-		this.duracion = duracion;
 		this.paga = paga;
 		this.fecha = fecha;
 		this.clases = clases;
@@ -94,14 +105,6 @@ public class ReservaEntity {
 
 	public void setCantAlum(Integer cantAlum) {
 		this.cantAlum = cantAlum;
-	}
-
-	public Float getDuracion() {
-		return duracion;
-	}
-
-	public void setDuracion(Float duracion) {
-		this.duracion = duracion;
 	}
 
 	public boolean isPaga() {
@@ -143,5 +146,14 @@ public class ReservaEntity {
 	public void setAlumno(AlumnoEntity alumno) {
 		this.alumno = alumno;
 	}
+	
+	public Float controlarFecha(){
+		Date fechaFinal= Calendar.getInstance().getTime();
+ 		int dias=(int) ((fechaFinal.getTime()-fecha.getTime())/86400000);
+ 		if(dias >=2)
+ 			return monto;
+ 		else 
+ 			return -1f;
+ 	}
 }
 

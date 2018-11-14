@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import entities.FacturaEntity;
 import entities.ReservaEntity;
 import hibernate.hibernateUtil;
+import negocio.Alumno;
 import negocio.Factura;
 
 public class FacturaDAO {
@@ -43,8 +44,20 @@ public class FacturaDAO {
 			ReservaEntity r = ReservaDAO.getInstancia().findById(f.getReserva().getIdReserva());
 			if(r==null)
 				flag=1;	
-			else
+			else{
+				Alumno a = new Alumno(r.getAlumno().getDni(), r.getAlumno().getNombre(), r.getAlumno().getMail(), r.getAlumno().getTelefono(), 
+						r.getAlumno().getDomicilio(), r.getAlumno().getFechaNacimiento(), r.getAlumno().getContra());
+				Float monto = a.getSaldoAFavor();
+				if(monto > 0 && monto < f.getMonto()){
+					r.getAlumno().descontarSaldoAFavor(monto);
+					AlumnoDAO.getInstancia().modificarSaldo(a);
+				}
+				else if(monto > f.getMonto()){
+					r.getAlumno().descontarSaldoAFavor(f.getMonto());
+					AlumnoDAO.getInstancia().modificarSaldo(a);
+				}
 				fe=new FacturaEntity(f.getFecha(), f.getMonto(), f.getTipo(), f.getRemitente(), f.getMedioPago(), r);
+			}
 		}
 		session.beginTransaction();
 		if(flag==0)

@@ -14,6 +14,18 @@ public class Factura {
 	private Integer nroFactura;
 	private Reserva reserva;
 	
+	
+	public Factura(Date fecha, Float monto, String tipo, String remitente, String medioPago, Integer nroFactura,
+			Reserva reserva) {
+		super();
+		this.fecha = fecha;
+		this.monto = monto;
+		this.tipo = tipo;
+		this.remitente = remitente;
+		this.medioPago = medioPago;
+		this.nroFactura = nroFactura;
+		this.reserva = reserva;
+	}
 	public int getNumero() {
 		return nroFactura;
 	}
