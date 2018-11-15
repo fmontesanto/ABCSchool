@@ -1,6 +1,5 @@
+/dao/
 /entities/
+/hibernate/
 /negocio/
 /views/
-/dao/
-/controller/
-/hibernate/
