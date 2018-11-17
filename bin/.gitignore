@@ -3,3 +3,5 @@
 /hibernate/
 /negocio/
 /views/
+/controller/
+/hibernate.properties

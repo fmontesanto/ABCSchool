@@ -51,10 +51,16 @@ public class ReservaDAO {
 			
 			List<ClaseEntity> clases = new ArrayList<ClaseEntity>();
 			for(Clase c : r.getClases()){
+				ClaseEntity cc=ClaseDAO.getInstancia().findByCode(c.getNumero());
+				if(cc.getEstado().equals("soy el estado")) {
 				c.setEstado("Ocupada");
 				ClaseDAO.getInstancia().modificarClase(c);
 				clases.add(ClaseDAO.getInstancia().findByCode(c.getNumero()));
-			}
+				}
+				else
+					System.out.println("la clase esta ocupada amigito");
+				flag=1;
+				}
 			
 			if(a == null || clases == null)
 				flag=1;	
