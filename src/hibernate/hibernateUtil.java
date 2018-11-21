@@ -1,5 +1,5 @@
 
-	package Hibernate;
+	package hibernate;
 
 	import org.hibernate.Session;
 	import org.hibernate.SessionFactory;

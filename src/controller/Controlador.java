@@ -1,11 +1,9 @@
-package com.Controller;
+package controller;
 
 import java.util.Date;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
-import Hibernate.hibernateUtil;
 import dao.UsuarioDao;
 import excepciones.AlumnoException;
 import excepciones.ConnectionException;
@@ -14,16 +12,17 @@ import excepciones.UsuarioException;
 import negocio.Alumno;
 import negocio.Profesor;
 import negocio.Usuario;
+import hibernate.hibernateUtil;
 
 public class Controlador {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-			
 
 		SessionFactory sf = hibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		session.close();
+		System.exit(0);
 
 	}
 	

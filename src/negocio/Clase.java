@@ -3,19 +3,20 @@ package negocio;
 import views.ClaseView;
 
 public class Clase {
+	
 	private String materia;
-	private float horario;
+	private Float horario;
 	private String estado;
-	private float duracion;
-	private int numero;
+	//private Float duracion;
+	private Integer idClase;
 	private Profesor profesor;
 	
-	public Clase(String materia, float horario, String estado, float Duracion,int numero,Profesor profesor) {
+	public Clase(Integer id, String materia, Float horario, String estado, Float duracion, Profesor profesor) {
+		this.idClase = id;
 		this.materia=materia;
 		this.horario=horario;
 		this.estado=estado;
-		this.horario=numero;
-		this.numero=numero;
+		//this.duracion=duracion;
 		this.profesor=profesor;
 	}
 	
@@ -38,10 +39,10 @@ public class Clase {
 		this.duracion = duracion;
 	}
 	public int getNumero() {
-		return numero;
+		return idClase;
 	}
 	public void setNumero(int numero) {
-		this.numero = numero;
+		this.idClase = numero;
 	}
 	public Profesor getProfesor() {
 		return profesor;
@@ -59,10 +60,10 @@ public class Clase {
 		return (this.materia==materia);
 	}
 	public boolean sosClaseNro(int numero) {
-		return (this.numero==numero);
+		return (this.idClase==numero);
 	}
 	public ClaseView getView() {
-		ClaseView clase=new ClaseView(estado, duracion, estado, duracion, numero, profesor);
+		ClaseView clase=new ClaseView(estado, duracion, estado, duracion, idClase, profesor);
 		return clase;
 	}
 
