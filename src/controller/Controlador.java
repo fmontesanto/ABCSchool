@@ -4,14 +4,11 @@ import java.util.Date;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import dao.UsuarioDao;
 import excepciones.AlumnoException;
 import excepciones.ConnectionException;
 import excepciones.ProfesorException;
-import excepciones.UsuarioException;
 import negocio.Alumno;
 import negocio.Profesor;
-import negocio.Usuario;
 import hibernate.hibernateUtil;
 
 public class Controlador {
