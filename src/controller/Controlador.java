@@ -1,26 +1,26 @@
 package controller;
 
-import java.util.Date;
 
+import java.util.Calendar;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
+
+import dao.ClaseDAO;
+import dao.ProfesorDAO;
 import excepciones.AlumnoException;
 import excepciones.ConnectionException;
 import excepciones.ProfesorException;
 import negocio.Alumno;
 import negocio.Profesor;
 import hibernate.hibernateUtil;
+import negocio.Clase;
+import negocio.Profesor;
 
 public class Controlador {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-		SessionFactory sf = hibernateUtil.getSessionFactory();
-		Session session = sf.openSession();
-		session.close();
-		System.exit(0);
-
 	}
 	
 	public void altaAlumno(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String password) throws ConnectionException,AlumnoException{

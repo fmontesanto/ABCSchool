@@ -1,66 +1,82 @@
 package negocio;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Reserva {
-
-	private int codigo;
-	private float descuento;
-	private float monto;
-	private int cantAlumnos;
-	private float duracion;
-	private boolean paga;
-	private ArrayList<Clase> clases;
 	
-	public Reserva(int codigo, float descuento, float monto, int cantAlumnos, float duracion, boolean paga) {
+	private Integer idReserva;
+	private Float descuento;
+	private Float monto;
+	private Integer cantAlum;
+	private boolean paga;
+	private Date fecha;
+	private Alumno alumno;
+	private Factura factura;
+	private List<Clase> clases;
+	
+	public Reserva(Integer idReserva, Float descuento, Float monto, Integer cantAlum, boolean paga,
+			Date fecha, Alumno alumno) {
 		super();
-		this.codigo = codigo;
+		this.idReserva = idReserva;
 		this.descuento = descuento;
 		this.monto = monto;
-		this.cantAlumnos = cantAlumnos;
-		this.duracion = duracion;
+		this.cantAlum = cantAlum;
 		this.paga = paga;
+		this.fecha = fecha;
 		this.clases = new ArrayList<Clase>();
+		this.alumno = alumno;
+	}
+	
+	public Reserva(Integer idReserva, Float descuento, Float monto, Integer cantAlum, boolean paga,
+			Date fecha, Alumno alumno, Factura factura) {
+		super();
+		this.idReserva = idReserva;
+		this.descuento = descuento;
+		this.monto = monto;
+		this.cantAlum = cantAlum;
+		this.paga = paga;
+		this.fecha = fecha;
+		this.clases = new ArrayList<Clase>();
+		this.alumno = alumno;
+		this.factura = factura;
+	}
+	
+	public boolean sosReserva(Integer id){
+		return idReserva == id;
 	}
 
-	public int getCodigo() {
-		return codigo;
+	public Integer getIdReserva() {
+		return idReserva;
 	}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+	public void setIdReserva(Integer idReserva) {
+		this.idReserva = idReserva;
 	}
 
-	public float getDescuento() {
+	public Float getDescuento() {
 		return descuento;
 	}
 
-	public void setDescuento(float descuento) {
+	public void setDescuento(Float descuento) {
 		this.descuento = descuento;
 	}
 
-	public float getMonto() {
+	public Float getMonto() {
 		return monto;
 	}
 
-	public void setMonto(float monto) {
+	public void setMonto(Float monto) {
 		this.monto = monto;
 	}
 
-	public int getCantAlumnos() {
-		return cantAlumnos;
+	public Integer getCantAlum() {
+		return cantAlum;
 	}
 
-	public void setCantAlumnos(int cantAlumnos) {
-		this.cantAlumnos = cantAlumnos;
-	}
-
-	public float getDuracion() {
-		return duracion;
-	}
-
-	public void setDuracion(float duracion) {
-		this.duracion = duracion;
+	public void setCantAlum(Integer cantAlum) {
+		this.cantAlum = cantAlum;
 	}
 
 	public boolean isPaga() {
@@ -71,16 +87,34 @@ public class Reserva {
 		this.paga = paga;
 	}
 
-	public ArrayList<Clase> getClases() {
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public List<Clase> getClases() {
 		return clases;
 	}
 
-	public void setClases(ArrayList<Clase> clases) {
-		this.clases = clases;
+	public void addClases(Clase clase) {
+		this.clases.add(clase);
 	}
 	
-	public void agregarClase(Clase clase) {
-		clases.add(clase);
+	public Alumno getAlumno() {
+		return alumno;
 	}
 
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
+	}
+	
+	public Factura getFactura() {
+		return factura;
+	}
+	public void setFactura(Factura factura) {
+		this.factura = factura;
+	}
 }
