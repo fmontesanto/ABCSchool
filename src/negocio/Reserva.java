@@ -114,7 +114,6 @@ public class Reserva {
 	public Factura getFactura() {
 		return factura;
 	}
-
 	public void setFactura(Factura factura) {
 		this.factura = factura;
 	}
