@@ -28,6 +28,7 @@ public class Reserva {
 		this.clases = new ArrayList<Clase>();
 		this.alumno = alumno;
 	}
+	
 	public Reserva(Integer idReserva, Float descuento, Float monto, Integer cantAlum, boolean paga,
 			Date fecha, Alumno alumno, Factura factura) {
 		super();

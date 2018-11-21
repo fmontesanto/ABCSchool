@@ -10,7 +10,13 @@ public class Materia {
 	private List<Profesor> profesores;
 	private List<Clase> clases;
 	
-	public Materia(String nombre, Integer idMateria, List<Profesor> profesores, List<Clase> clases) {
+	public Materia(String nombre, Integer idMateria) {
+		super();
+		this.nombre = nombre;
+		this.idMateria = idMateria;
+	}
+	
+	public Materia(String nombre, Integer idMateria, List<Clase> clases) {
 		super();
 		this.nombre = nombre;
 		this.idMateria = idMateria;

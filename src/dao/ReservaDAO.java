@@ -48,35 +48,58 @@ public class ReservaDAO {
 		else
 		{
 			AlumnoEntity a = AlumnoDAO.getInstancia().findByDni(r.getAlumno().getDni());
-			
 			List<ClaseEntity> clases = new ArrayList<ClaseEntity>();
 			for(Clase c : r.getClases()){
 				ClaseEntity cc=ClaseDAO.getInstancia().findByCode(c.getNumero());
-				if(cc.getEstado().equals("soy el estado")) {
-				c.setEstado("Ocupada");
-				ClaseDAO.getInstancia().modificarClase(c);
-				clases.add(ClaseDAO.getInstancia().findByCode(c.getNumero()));
+				if(cc.getEstado().equals("Libre")) {
+					c.setEstado("Pendiente");
+					ClaseDAO.getInstancia().modificarClase(c);
+					clases.add(ClaseDAO.getInstancia().findByCode(c.getNumero()));
 				}
-				else
-					System.out.println("la clase esta ocupada amigito");
-				flag=1;
+				else{
+					System.out.println("la clase esta ocupada amigita");
+					flag=1;
 				}
-			
+			}
+
 			if(a == null || clases == null)
 				flag=1;	
-			else
+			else{
 				re=new ReservaEntity(r.getDescuento(), r.getMonto(), r.getCantAlum(), false, r.getFecha(), clases, a);
+			}
 		}
 		session.beginTransaction();
 		if(flag==0)
 			session.save(re);
-		
 		session.getTransaction().commit();
 		session.close();
 	}
 	
-	public void agregarFactura(){
-		
+	public void completarReserva(Reserva r){
+		SessionFactory sf = hibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		ReservaEntity re=(ReservaEntity)session.createQuery("from ReservaEntity where idReserva = ?").setParameter(0, r.getIdReserva()).uniqueResult();
+		int flag=1;
+		if(re==null) 
+			System.out.println("Reserva no existente con ese id");
+		else {
+			if(re.getFactura()!= null)
+				flag=0;
+			for(Clase c : r.getClases()){
+				ClaseEntity cc=ClaseDAO.getInstancia().findByCode(c.getNumero());
+				if(cc.getEstado().equals("Pendiente")) {
+					cc.setEstado("Ocupada");
+					session.update(cc);
+				}
+			}
+			re.setPaga(true);
+		}
+		session.beginTransaction();
+		if(flag==0){
+			session.update(re);
+		}
+		session.getTransaction().commit();
+		session.close();
 	}
 
 	public void cancelarReserva(Integer idReserva)

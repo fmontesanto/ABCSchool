@@ -1,6 +1,5 @@
 package entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,7 +23,7 @@ public class ResenaEntity {
 	@Column(name="comentario")
 	private String comentario;
 	
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn (name="idUsuario")
 	protected ProfesorEntity profesor;
 

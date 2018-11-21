@@ -1,6 +1,5 @@
 package entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,11 +23,11 @@ public class ClaseEntity {
 	@Column(name="estado")
 	private String estado;
 
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn (name="idMateria")
 	protected MateriaEntity materia;
 	
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn (name="idUsuario")
 	protected ProfesorEntity profesor;
 

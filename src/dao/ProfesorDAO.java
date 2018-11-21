@@ -3,8 +3,10 @@ package dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import entities.MateriaEntity;
 import entities.ProfesorEntity;
 import hibernate.hibernateUtil;
+import negocio.Materia;
 import negocio.Profesor;
 
 public class ProfesorDAO {
@@ -111,4 +113,49 @@ public class ProfesorDAO {
 		}
 		session.close();
 	}
+	public void agregarMateriaDisponible(Profesor p)
+	{
+		SessionFactory sf = hibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		ProfesorEntity pr=(ProfesorEntity)session.createQuery("from ProfesorEntity where dni = ?").setParameter(0, p.getDni()).uniqueResult();
+		if(pr==null) 
+		{
+			System.out.println("No existe Profesor con ese dni");
+		}
+		else
+		{
+			for(Materia ma : p.getMaterias()){
+				MateriaEntity m=(MateriaEntity)MateriaDAO.getInstancia().findByCode(ma.getIdMateria());
+				if(m!=null)
+					pr.setMaterias(m);
+			}
+			session.beginTransaction();
+			session.delete(pr);
+			session.getTransaction().commit();
+		}
+		session.close();
+	}
+	public void agregarClases(Profesor p)
+	{
+		SessionFactory sf = hibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		ProfesorEntity pr=(ProfesorEntity)session.createQuery("from ProfesorEntity where dni = ?").setParameter(0, p.getDni()).uniqueResult();
+		if(pr==null) 
+		{
+			System.out.println("No existe Profesor con ese dni");
+		}
+		else
+		{
+			for(Materia ma : p.getMaterias()){
+				MateriaEntity m=(MateriaEntity)MateriaDAO.getInstancia().findByCode(ma.getIdMateria());
+				if(m!=null)
+					pr.setMaterias(m);
+			}
+			session.beginTransaction();
+			session.delete(pr);
+			session.getTransaction().commit();
+		}
+		session.close();
+	}
+
 }

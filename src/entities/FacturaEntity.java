@@ -2,7 +2,6 @@ package entities;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,7 +31,7 @@ public class FacturaEntity {
 	@Column(name="medioPago")
 	private String medioPago;
 	
-	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idReserva")
 	private ReservaEntity reserva;
 	

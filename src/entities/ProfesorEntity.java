@@ -56,8 +56,8 @@ public class ProfesorEntity extends UsuarioEntity {
 		return materias;
 	}
 
-	public void setMaterias(Set<MateriaEntity> materias) {
-		this.materias = materias;
+	public void setMaterias(MateriaEntity materia) {
+		materias.add(materia);
 	}
 
 	public String getDomicilioClases() {

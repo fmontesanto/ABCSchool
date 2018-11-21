@@ -38,33 +38,28 @@ public class MateriaDAO {
 		return m;
 	}
 
-	public void agregarMateria(Materia m) //CHEQUEAR
+	public void agregarMateria(Materia m)
 	{
 		SessionFactory sf = hibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		MateriaEntity me=(MateriaEntity)session.createQuery("from MateriaEntity where idMateria = ?").setParameter(0, m.getIdMateria()).uniqueResult();
-		int flag=0;
 		if(me!=null) 
 			System.out.println("Materia ya existente con ese id");
 		else
 		{
 			List<ClaseEntity> clases = new ArrayList<ClaseEntity>();
 			Set<ProfesorEntity> profesores = new HashSet<ProfesorEntity>();
-			for(Clase c : m.getClases()){
+			/*for(Clase c : m.getClases()){
 				clases.add(ClaseDAO.getInstancia().findByCode(c.getNumero()));
 			}
 			for(Profesor p : m.getProfesores()){
 				profesores.add(ProfesorDAO.getInstancia().findByDni(p.getDni()));
 			}
-			
-			if(clases == null || profesores == null)
-				flag=1;	
-			else
-				me=new MateriaEntity(m.getNombre(), clases, profesores);
+			 */
+			me=new MateriaEntity(m.getNombre(), clases, profesores);
 		}
 		session.beginTransaction();
-		if(flag==0)
-			session.save(me);
+		session.save(me);
 		session.getTransaction().commit();
 		session.close();
 	}

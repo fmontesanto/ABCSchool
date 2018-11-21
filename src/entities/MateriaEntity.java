@@ -31,7 +31,7 @@ public class MateriaEntity {
 	@OneToMany(mappedBy="materia", cascade=CascadeType.ALL)
 	private List<ClaseEntity> clases;
 	
-	@ManyToMany(cascade = { CascadeType.ALL })
+	@ManyToMany
     @JoinTable(
         name = "MateriaProfesor", 
         joinColumns = { @JoinColumn(name = "idMateria") }, 

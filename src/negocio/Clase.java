@@ -12,7 +12,7 @@ public class Clase {
 	private Profesor profesor;
 	private Reserva reserva;
 	
-	public Clase( Integer id,Float horario, String estado, Profesor profesor) {
+	public Clase(Integer id,Float horario, String estado, Profesor profesor) {
 		this.idClase=id;
 		this.horario=horario;
 		this.estado=estado;

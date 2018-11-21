@@ -40,7 +40,7 @@ public class ReservaEntity {
 	@JoinColumn(name="idReserva")
 	private List<ClaseEntity> clases;
 
-	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="nroFactura")
 	private FacturaEntity factura;
 
