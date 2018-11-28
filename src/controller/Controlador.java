@@ -1,42 +1,14 @@
 package controller;
 
-import hibernate.hibernateUtil;
-
 import java.util.Date;
-
-
 import dao.AlumnoDAO;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-
-import dao.AlumnoDAO;
-import delegates.BusinessDelegate;
-import excepciones.AlumnoException;
-import excepciones.ConnectionException;
-import interfaces.IRemota;
-import negocio.Alumno;
-
-import dao.ClaseDAO;
-import dao.FacturaDAO;
-import dao.MateriaDAO;
 import dao.ProfesorDAO;
-import dao.ReservaDAO;
-import entities.ClaseEntity;
 import excepciones.AlumnoException;
 import excepciones.ConnectionException;
-import excepciones.ProfesorException;
 import negocio.Alumno;
+import excepciones.ProfesorException;
 import negocio.Profesor;
-import negocio.Reserva;
-import hibernate.hibernateUtil;
-import negocio.Clase;
-import negocio.Factura;
-import negocio.Materia;
-import negocio.Profesor;
-import negocio.Usuario;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Controlador {
 	
@@ -76,19 +48,19 @@ public class Controlador {
 	
 	public void altaProfesor(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String password, String domicilioClases,float anticipacion) throws ConnectionException,ProfesorException{
 		Profesor profesor=new Profesor(domicilioClases, domicilioClases, domicilioClases, domicilioClases, domicilioClases, fechaNacimiento, domicilioClases, domicilioClases, anticipacion);
-		//profesor.save();
+		profesor.save();
 	}
 	public void modificarProfesor(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String password, String domicilioClases,float anticipacion)throws ConnectionException,ProfesorException {
 		Profesor profesor=buscarProfesor(dni);
+		profesor.update();
 	}
 	public void bajaProfesor(String dni) {
 		Profesor profesor=buscarProfesor(dni);
-		//profesor.delete();
+		profesor.delete();
 		
 	}
 	public Profesor buscarProfesor(String dni) {
 		Profesor profesor=ProfesorDAO.getInstancia().findByDni(dni).toProfesor();
 		return profesor;
 	}
-	
 }

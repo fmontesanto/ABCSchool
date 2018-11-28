@@ -65,8 +65,6 @@ public class Profesor extends Usuario{
 		this.materias = materias;
 	}
 
-
-
     public void save() {
 		ProfesorDAO.getInstancia().agregarProfesor(this);
     }
