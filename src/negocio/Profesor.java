@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 
+import dto.ProfesorDTO;
 import views.ProfesorView;
 
 public class Profesor extends Usuario{
@@ -60,5 +61,7 @@ public class Profesor extends Usuario{
 		this.materias = materias;
 	}
 	
-
+	public ProfesorDTO toDTO(){
+		return new ProfesorDTO(dni, nombre, mail, telefono, domicilio, fechaNacimiento, contra, domicilioClases, anticipacionReserva);
+	}
 }

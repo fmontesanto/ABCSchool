@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import views.ReservaView;
+
 public class Reserva {
 	
 	private Integer idReserva;
@@ -114,7 +116,12 @@ public class Reserva {
 	public Factura getFactura() {
 		return factura;
 	}
+	
 	public void setFactura(Factura factura) {
 		this.factura = factura;
+	}
+	
+	public ReservaView toView(){
+		return new ReservaView(idReserva, descuento, monto, cantAlum, paga, fecha, alumno.getDni(), factura.getNumero());
 	}
 }

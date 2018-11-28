@@ -2,23 +2,19 @@ package controller;
 
 import hibernate.hibernateUtil;
 
-<<<<<<< HEAD
 import java.util.Date;
-=======
->>>>>>> 9e9ca4423117254711f9e9d673676d8f015e8ba9
+
 
 import java.util.Calendar;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-<<<<<<< HEAD
 import dao.AlumnoDAO;
 import delegates.BusinessDelegate;
 import excepciones.AlumnoException;
 import excepciones.ConnectionException;
 import interfaces.IRemota;
 import negocio.Alumno;
-=======
 
 import dao.ClaseDAO;
 import dao.ProfesorDAO;
@@ -29,7 +25,6 @@ import negocio.Alumno;
 import negocio.Profesor;
 import hibernate.hibernateUtil;
 import negocio.Clase;
->>>>>>> 9e9ca4423117254711f9e9d673676d8f015e8ba9
 import negocio.Profesor;
 import negocio.Usuario;
 
@@ -63,12 +58,9 @@ public class Controlador {
 		Alumno alumno=buscarAlumno(dni);
 		AlumnoDAO.getInstancia().bajaAlumno(alumno);
 	}
-	private Alumno buscarAlumno(String dni) {
-		try {
-			Alumno alumno=AlumnoDao.getInstance().buscarAlumno(dni);
-		} catch (ConnectionException | AlumnoException e) {
-			e.printStackTrace();
-		}
+	
+	public Alumno buscarAlumno(String dni) {
+		Alumno alumno=AlumnoDAO.getInstancia().findByDni(dni).toAlumno();
 		return alumno;
 	}
 	
@@ -84,12 +76,8 @@ public class Controlador {
 		//profesor.delete();
 		
 	}
-	private Profesor buscarProfesor(String dni) {
-		try {
-			Profesor alumno=ProfesorDao.getInstance().buscarAlumno(dni);
-		} catch (ConnectionException | ProfesorException e) {
-			e.printStackTrace();
-		}
+	public Profesor buscarProfesor(String dni) {
+		Profesor profesor=ProfesorDAO.getInstancia().findByDni(dni).toProfesor();
 		return profesor;
 	}
 	
@@ -131,9 +119,6 @@ public class Controlador {
 		Profesor profesor=buscarProfesor(dni);
 		//profesor.delete();
 		
-=======
-		return profesor;
->>>>>>> 9e9ca4423117254711f9e9d673676d8f015e8ba9
 	}
 	
 	private Profesor buscarProfesor(String dni) {

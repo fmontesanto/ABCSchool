@@ -3,6 +3,7 @@ package negocio;
 import java.util.ArrayList;
 import java.util.Date;
 
+import dto.AlumnoDTO;
 import views.AlumnoView;
 
 public class Alumno extends Usuario{
@@ -38,6 +39,10 @@ public class Alumno extends Usuario{
 	
 	public boolean sosAlumno (String alumno) {
 		return this.nombre==alumno;
+	}
+	
+	public AlumnoDTO toDTO(){
+		return new AlumnoDTO(dni, nombre, mail, telefono, domicilio, fechaNacimiento, contra, saldoAFavor);
 	}
 
 }
