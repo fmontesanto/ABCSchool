@@ -2,17 +2,34 @@ package controller;
 
 import hibernate.hibernateUtil;
 
+<<<<<<< HEAD
 import java.util.Date;
+=======
+>>>>>>> 9e9ca4423117254711f9e9d673676d8f015e8ba9
 
+import java.util.Calendar;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+<<<<<<< HEAD
 import dao.AlumnoDAO;
 import delegates.BusinessDelegate;
 import excepciones.AlumnoException;
 import excepciones.ConnectionException;
 import interfaces.IRemota;
 import negocio.Alumno;
+=======
+
+import dao.ClaseDAO;
+import dao.ProfesorDAO;
+import excepciones.AlumnoException;
+import excepciones.ConnectionException;
+import excepciones.ProfesorException;
+import negocio.Alumno;
+import negocio.Profesor;
+import hibernate.hibernateUtil;
+import negocio.Clase;
+>>>>>>> 9e9ca4423117254711f9e9d673676d8f015e8ba9
 import negocio.Profesor;
 import negocio.Usuario;
 
@@ -26,17 +43,12 @@ public class Controlador {
 		return instancia;
 	}
 	
-	public static void main(String[] args) {
-		SessionFactory sf = hibernateUtil.getSessionFactory();
-		Session session = sf.openSession();
-		session.close();
-		}
+	public static void main(String[] args) {}
 	
 	public void altaAlumno(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String password) throws ConnectionException,AlumnoException{
 		Alumno a =new Alumno(dni,nombre,mail,telefono,domicilio,fechaNacimiento,password);
 		AlumnoDAO.getInstancia().agregarAlumno(a);
 	}
-	
 	public void modificarAlumno(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String password) throws ConnectionException, AlumnoException {
 		Alumno alumno=buscarAlumno(dni);
 		alumno.setNombre(nombre);
@@ -51,7 +63,6 @@ public class Controlador {
 		Alumno alumno=buscarAlumno(dni);
 		AlumnoDAO.getInstancia().bajaAlumno(alumno);
 	}
-	
 	private Alumno buscarAlumno(String dni) {
 		try {
 			Alumno alumno=AlumnoDao.getInstance().buscarAlumno(dni);
@@ -120,6 +131,9 @@ public class Controlador {
 		Profesor profesor=buscarProfesor(dni);
 		//profesor.delete();
 		
+=======
+		return profesor;
+>>>>>>> 9e9ca4423117254711f9e9d673676d8f015e8ba9
 	}
 	
 	private Profesor buscarProfesor(String dni) {
