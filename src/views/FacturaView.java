@@ -37,5 +37,4 @@ public class FacturaView {
 	public int getNumero() {
 		return numero;
 	}
-
 }

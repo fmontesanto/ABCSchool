@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 
+
+import dao.ProfesorDAO;
+
 import dto.ProfesorDTO;
+
 import views.ProfesorView;
 
 public class Profesor extends Usuario{
@@ -60,8 +64,23 @@ public class Profesor extends Usuario{
 	public void setMaterias(HashSet<Materia> materias) {
 		this.materias = materias;
 	}
+
+
+
+    public void save() {
+		ProfesorDAO.getInstancia().agregarProfesor(this);
+    }
+
+	public void update() {
+		ProfesorDAO.getInstancia().modificarProfesor(this);
+	}
+
+	public void delete() {
+		ProfesorDAO.getInstancia().bajaProfesor(this);
+	}
 	
 	public ProfesorDTO toDTO(){
 		return new ProfesorDTO(dni, nombre, mail, telefono, domicilio, fechaNacimiento, contra, domicilioClases, anticipacionReserva);
+
 	}
 }

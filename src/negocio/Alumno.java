@@ -3,7 +3,11 @@ package negocio;
 import java.util.ArrayList;
 import java.util.Date;
 
+
+import dao.AlumnoDAO;
+
 import dto.AlumnoDTO;
+
 import views.AlumnoView;
 
 public class Alumno extends Usuario{
@@ -45,5 +49,12 @@ public class Alumno extends Usuario{
 		return new AlumnoDTO(dni, nombre, mail, telefono, domicilio, fechaNacimiento, contra, saldoAFavor);
 	}
 
+	public void update() {
+		AlumnoDAO.getInstancia().modificarAlumno(this);
+	}
+
+	public void save() {
+		AlumnoDAO.getInstancia().agregarAlumno(this);
+	}
 }
 
