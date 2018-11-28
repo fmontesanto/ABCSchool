@@ -37,6 +37,15 @@ public class MateriaDAO {
 		session.close();
 		return m;
 	}
+	
+	public MateriaEntity findByName(String nombre)
+	{
+		SessionFactory sf = hibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		MateriaEntity m = (MateriaEntity) session.createQuery("from MateriaEntity where nombre = ?").setParameter(0, nombre).uniqueResult();
+		session.close();
+		return m;
+	}
 
 	public void agregarMateria(Materia m)
 	{
