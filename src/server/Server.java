@@ -21,7 +21,7 @@ public class Server {
 		try {
 			IRemota or = new RemoteObject();
 			LocateRegistry.createRegistry(1099);
-			Naming.rebind("rmi://localhost/Godio", or);
+			Naming.rebind("rmi://localhost/Abc", or);
 			System.out.println("Servidor Iniciado");
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null, "Error de iniciaización del objeto remoto");
@@ -29,5 +29,4 @@ public class Server {
 			JOptionPane.showMessageDialog(null, "Error de publicación del objeto");
 		}
 	}
-
 }
