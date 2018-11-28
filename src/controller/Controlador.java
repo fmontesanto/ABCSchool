@@ -7,17 +7,26 @@ import org.hibernate.SessionFactory;
 
 
 import dao.ClaseDAO;
+import dao.FacturaDAO;
+import dao.MateriaDAO;
 import dao.ProfesorDAO;
+import dao.ReservaDAO;
+import entities.ClaseEntity;
 import excepciones.AlumnoException;
 import excepciones.ConnectionException;
 import excepciones.ProfesorException;
 import negocio.Alumno;
 import negocio.Profesor;
+import negocio.Reserva;
 import hibernate.hibernateUtil;
 import negocio.Clase;
+import negocio.Factura;
+import negocio.Materia;
 import negocio.Profesor;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controlador {
 
@@ -75,8 +84,43 @@ public class Controlador {
 		}
 		return profesor;
 	}
-	public void altaClase (String materia, Date fecha, float horaInicio, float horaFin, boolean estado, int numero, String dniProfesor){
-		Clase clase=new Clase(materia,fecha,horaInicio,horaFin,estado,numero,dniProfesor);
+	public void altaClase (String materia, Date fecha, float horaInicio, float horaFin, String estado, int numero, String dniProfesor){
+		Materia mat=buscarMateriaXnombre(materia);
+		Profesor prof=buscarProfesor(dniProfesor;)
+		Clase clase=new Clase(mat,fecha,horaInicio,horaFin,estado,numero,prof);
 		clase.save();
 	}
+	private Materia buscarMateriaXnombre(String materia) {
+		Materia materia=MateriaDAO.getInstancia().findByName(materia);
+		return materia;
+	}
+	
+	private Clase buscarClase (int numero) {
+		Clase clase=ClaseDAO.getInstancia().findByCode(numero);
+		return clase;
+	}
+	public List<Clase> buscarClaseXmateria(String nombreMateria){
+		Materia materia=buscarMateriaXnombre(nombreMateria);
+		List<Clase> clases=ClaseDAO.getInstancia().findBySubject(materia.getIdMateria());
+		return clases;	
+	}
+	private Factura buscarFactura(int numero) {
+		Factura factura=FacturaDAO.getInstancia().findByCode(numero);
+		return factura;
+	}
+	private Reserva buscarReserva(int numero) {
+		Reserva reserva=ReservaDAO.getInstancia().findById(numero);
+		return reserva;
+	}
+	public List<Clase>verClasesDisponibles(String materia) {
+		List<Clase> clases=buscarClaseXmateria(materia);
+		List<Clase> clasesDisponibles=new ArrayList<Clase>();
+		for(int i=0;i<clases.size();i++) {
+			if (clases.get(i).getEstado()=="disponible") {
+				clasesDisponibles.add(clases.get(i));
+			}
+		}
+		return clasesDisponibles;
+	}
+	
 }

@@ -1,6 +1,7 @@
 package negocio;
 
 import dao.ClaseDAO;
+import dao.MateriaDAO;
 import views.ClaseView;
 
 import java.sql.Date;
@@ -9,10 +10,11 @@ public class Clase {
 	
 	private Materia materia;
 	private Float horario;
+	private Float horaInicio;
+	private Float horaFin;
 	private String estado; //libre, pendiente, ocupada
 	private Integer idClase;
 	private Profesor profesor;
-	private Reserva reserva;
 	
 	public Clase(Integer id,Float horario, String estado, Profesor profesor) {
 		this.idClase=id;
@@ -22,21 +24,22 @@ public class Clase {
 	}
 	
 	public Clase(Materia materia, Float horario, String estado, Integer idClase, Profesor profesor, Reserva reserva) {
+		this.materia=materia;
 		this.materia = materia;
 		this.horario = horario;
 		this.estado = estado;
 		this.idClase = idClase;
 		this.profesor = profesor;
-		this.reserva = reserva;
-	}
+}
 
-	public Clase(String materia, Date fecha, float horaInicio, float horaFin, boolean estado, int numero, String dniProfesor) {
-		this.materia = materia;
+	public Clase(Materia mat, Date fecha, float horaInicio, float horaFin, String estado, int numero, Profesor dniProfesor) {
+		this.materia = mat;
+		this.horaInicio=horaInicio;
+		this.horaFin=horaFin;
 		this.horario = horario;
 		this.estado = estado;
 		this.idClase = idClase;
 		this.profesor = profesor;
-		this.reserva = reserva;
 	}
 
 	public float getHorario() {
@@ -64,6 +67,22 @@ public class Clase {
 		return profesor;
 	}
 	
+	public Float getHoraInicio() {
+		return horaInicio;
+	}
+
+	public void setHoraInicio(Float horaInicio) {
+		this.horaInicio = horaInicio;
+	}
+
+	public Float getHoraFin() {
+		return horaFin;
+	}
+
+	public void setHoraFin(Float horaFin) {
+		this.horaFin = horaFin;
+	}
+
 	public void agregarProfesor(Profesor profesor) {
 		this.profesor = profesor;
 	}
@@ -85,8 +104,7 @@ public class Clase {
 	}
 
 	public void save() {
-		
-		
+		ClaseDAO.getInstancia().agregarClase(this);
 	}
 	
 	/*public ClaseView getView() {
