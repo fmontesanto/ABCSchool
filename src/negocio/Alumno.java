@@ -3,6 +3,7 @@ package negocio;
 import java.util.ArrayList;
 import java.util.Date;
 
+import dao.AlumnoDAO;
 import views.AlumnoView;
 
 public class Alumno extends Usuario{
@@ -40,5 +41,12 @@ public class Alumno extends Usuario{
 		return this.nombre==alumno;
 	}
 
+	public void update() {
+		AlumnoDAO.getInstancia().modificarAlumno(this);
+	}
+
+	public void save() {
+		AlumnoDAO.getInstancia().agregarAlumno(this);
+	}
 }
 

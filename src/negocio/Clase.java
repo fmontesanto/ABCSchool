@@ -3,6 +3,8 @@ package negocio;
 import dao.ClaseDAO;
 import views.ClaseView;
 
+import java.sql.Date;
+
 public class Clase {
 	
 	private Materia materia;
@@ -20,7 +22,15 @@ public class Clase {
 	}
 	
 	public Clase(Materia materia, Float horario, String estado, Integer idClase, Profesor profesor, Reserva reserva) {
-		super();
+		this.materia = materia;
+		this.horario = horario;
+		this.estado = estado;
+		this.idClase = idClase;
+		this.profesor = profesor;
+		this.reserva = reserva;
+	}
+
+	public Clase(String materia, Date fecha, float horaInicio, float horaFin, boolean estado, int numero, String dniProfesor) {
 		this.materia = materia;
 		this.horario = horario;
 		this.estado = estado;
@@ -72,6 +82,11 @@ public class Clase {
 	
 	public boolean sosClaseNro(int numero) {
 		return (this.idClase==numero);
+	}
+
+	public void save() {
+		
+		
 	}
 	
 	/*public ClaseView getView() {
