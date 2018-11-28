@@ -1,12 +1,5 @@
 package entities;
 
-import java.awt.Image;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,15 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-
-//import negocio.Articulo.Estado;
 
 @Entity
 @Table(name="Clase")
@@ -32,198 +18,81 @@ public class ClaseEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="idClase")
 	private Integer idClase;
-	@Column(name="materia")
-	private String materia;
 	@Column(name="horario")
 	private Float horario;
 	@Column(name="estado")
 	private String estado;
-	
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn(name="idCodigoDeBarra")
-	private CodigoDeBarraEntity codigoDeBarra;
-	
-	@OneToMany(mappedBy="articulo",cascade = CascadeType.ALL)
-	private List<LoteEntity> lotes;
-	
-	@OneToMany(mappedBy="articulo",cascade=CascadeType.ALL)
-	private List<ItemUbicacionEntity > itemsUbicacion;
-	
-	 /*@ManyToMany(cascade = { CascadeType.ALL })
-	    @JoinTable(
-	        name = "ItemUbicacion", 
-	        joinColumns = { @JoinColumn(name = "idArticulo") }, 
-	        inverseJoinColumns = { @JoinColumn(name = "idUbicacion") } )
-	    Set<Ubicacion> ubicaciones = new HashSet<>();*/
-	
-	
-	
 
-	public ArticuloEntity() {}
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn (name="idMateria")
+	protected MateriaEntity materia;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn (name="idUsuario")
+	protected ProfesorEntity profesor;
 
-	public ArticuloEntity(String codigo, String nombre, String marca, String tipo, String subtipo,
-			String descripcion, String proveedor, int estado,Float costo, float precio, int cantidadActual,
-			int cantidadMinimaDeseada, boolean medioIVA,CodigoDeBarraEntity codigoBarra) {
-		this.codigo = codigo;
-		this.nombre = nombre;
-		this.marca = marca;
-		this.tipo = tipo;
-		this.subtipo = subtipo;
-		this.descripcion = descripcion;
-		this.proveedor = proveedor;
-		//this.imagen = imagen;
+	@ManyToOne
+	@JoinColumn(name="idReserva", insertable=false, updatable=false)
+	private ReservaEntity reserva;
+
+	public ClaseEntity() {}
+
+	public ClaseEntity(Float horario, String estado, ProfesorEntity profesor) {
+		super();
+		this.horario = horario;
 		this.estado = estado;
-		setCosto(costo);
-		this.precio = precio;
-		this.cantidadActual = cantidadActual;
-		this.cantidadMinimaDeseada = cantidadMinimaDeseada;
-		this.medioIVA = medioIVA;
-		this.setCodigoDeBarra(codigoBarra);
+		this.setProfesor(profesor);
 	}
 
-	
-	public CodigoDeBarraEntity getCodigoDeBarra() {
-		return codigoDeBarra;
+
+	public MateriaEntity getMateria() {
+		return materia;
 	}
 
-	public void setCodigoDeBarra(CodigoDeBarraEntity codigoDeBarra) {
-		this.codigoDeBarra = codigoDeBarra;
+	public void setMateria(MateriaEntity materia) {
+		this.materia = materia;
 	}
 
-	public int getIdArticulo() {
-		return idArticulo;
+	public Integer getIdClase() {
+		return idClase;
 	}
 
-	public void setIdArticulo(int idArticulo) {
-		this.idArticulo = idArticulo;
+	public void setIdClase(Integer idClase) {
+		this.idClase = idClase;
 	}
 
-	public Float getCosto() {
-		return costo;
+	public Float getHorario() {
+		return horario;
 	}
 
-	public void setCosto(Float costo) {
-		this.costo = costo;
+	public void setHorario(Float horario) {
+		this.horario = horario;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	
-
-	public String getCodigo()
-	{
-		return codigo;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getMarca() {
-		return marca;
-	}
-
-	public void setMarca(String marca) {
-		this.marca = marca;
-	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
-	public String getSubtipo() {
-		return subtipo;
-	}
-
-	public void setSubtipo(String subtipo) {
-		this.subtipo = subtipo;
-	}
-
-	public String getProveedor() {
-		return proveedor;
-	}
-
-	public void setProveedor(String proveedor) {
-		this.proveedor = proveedor;
-	}
-
-/*	public Image getImagen() {
-		return imagen;
-	}
-
-	public void setImagen(Image imagen) {
-		this.imagen = imagen;
-	}*/
-
-	public int getEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(int estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 
-	public float getPrecio() {
-		return precio;
+	public ProfesorEntity getProfesor() {
+		return profesor;
 	}
 
-	public void setPrecio(float precio) {
-		this.precio = precio;
+	public void setProfesor(ProfesorEntity profesor) {
+		this.profesor = profesor;
 	}
 
-	public int getCantidadActual() {
-		return cantidadActual;
+	public ReservaEntity getReserva() {
+		return reserva;
 	}
 
-	public void setCantidadActual(int cantidadActual) {
-		this.cantidadActual = cantidadActual;
-	}
-
-	public int getCantidadMinimaDeseada() {
-		return cantidadMinimaDeseada;
-	}
-
-	public void setCantidadMinimaDeseada(int cantidadMinimaDeseada) {
-		this.cantidadMinimaDeseada = cantidadMinimaDeseada;
-	}
-
-	public boolean isMedioIVA() {
-		return medioIVA;
-	}
-
-	public void setMedioIVA(boolean medioIVA) {
-		this.medioIVA = medioIVA;
+	public void setReserva(ReservaEntity reserva) {
+		this.reserva = reserva;
 	}
 	
-	public void agregarLote(LoteEntity l) {
-		lotes.add(l);
-	}
-	
-	public void agregarItems(ItemUbicacionEntity i) {
-		itemsUbicacion.add(i);
-	}
-	
-	public List<LoteEntity> getLotes() {
-		return lotes;
-	}
-
-	public void setLotes(List<LoteEntity> lotes) {
-		this.lotes = lotes;
-	}
-
 	/*@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -283,15 +152,5 @@ public class ClaseEntity {
 		} else if (!unidad.equals(other.unidad))
 			return false;
 		return true;
-	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
 	}*/
-	
-
 }
