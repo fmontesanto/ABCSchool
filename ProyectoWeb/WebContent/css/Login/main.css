@@ -6,11 +6,11 @@
 }
 
 body{
- background: url(../img/susan-yin-647448-unsplash.jpg) no-repeat center top;
-  display: flex;
-  min-height: 100vh;
-  background-size: cover;
-  font-family: sans-serif;
+    background: url(../../images/susan-yin-647448-unsplash.jpg) no-repeat center top;
+    display: flex;
+    min-height: 100vh;
+    background-size: cover;
+    font-family: sans-serif;
 }
 
 	#page-wrapper {
