@@ -3,6 +3,8 @@ package negocio;
 import java.util.ArrayList;
 import java.util.List;
 
+import views.MateriaView;
+
 public class Materia {
 
 	private String nombre;
@@ -54,5 +56,9 @@ public class Materia {
 
 	public void setClase(List<Clase> clases) {
 		this.clases = clases;
+	}
+	
+	public MateriaView toView(){
+		return new MateriaView(nombre, idMateria);
 	}
 }

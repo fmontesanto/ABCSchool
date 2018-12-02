@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import negocio.Alumno;
+
 @Entity
 @Table(name="Alumno")
 public class AlumnoEntity extends UsuarioEntity {
@@ -55,4 +57,8 @@ public class AlumnoEntity extends UsuarioEntity {
 	public void setReservas(List<ReservaEntity> reservas) {
 		this.reservas = reservas;
 	}	
+	
+	public Alumno toAlumno(){
+		return new Alumno(getDni(), getNombre(), getMail(), getTelefono(), getDomicilio(), getFechaNacimiento(), getContra(), saldoAFavor);
+	}
 }

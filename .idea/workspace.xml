@@ -6,7 +6,7 @@
       <change beforePath="$PROJECT_DIR$/bin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/negocio/Clase.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/negocio/Clase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Hibernate/hibernateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hibernate/hibernateUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/Controller/Controlador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Controlador.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hibernate.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/hibernate.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/negocio/Clase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/negocio/Clase.java" afterDir="false" />
