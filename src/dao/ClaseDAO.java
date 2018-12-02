@@ -134,6 +134,5 @@ public class ClaseDAO {
 			session.getTransaction().commit();
 		}
 		session.close();
-
 	}
 }

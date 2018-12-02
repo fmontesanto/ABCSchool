@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import dao.FacturaDAO;
+import dao.ReservaDAO;
 import views.ReservaView;
 
 public class Reserva {
@@ -16,7 +18,7 @@ public class Reserva {
 	private Date fecha;
 	private Alumno alumno;
 	private Factura factura;
-	private List<Clase> clases;
+	private ArrayList<Clase> clases;
 	
 	public Reserva(Integer idReserva, Float descuento, Float monto, Integer cantAlum, boolean paga,
 			Date fecha, Alumno alumno) {
@@ -29,20 +31,7 @@ public class Reserva {
 		this.fecha = fecha;
 		this.clases = new ArrayList<Clase>();
 		this.alumno = alumno;
-	}
-	
-	public Reserva(Integer idReserva, Float descuento, Float monto, Integer cantAlum, boolean paga,
-			Date fecha, Alumno alumno, Factura factura) {
-		super();
-		this.idReserva = idReserva;
-		this.descuento = descuento;
-		this.monto = monto;
-		this.cantAlum = cantAlum;
-		this.paga = paga;
-		this.fecha = fecha;
-		this.clases = new ArrayList<Clase>();
-		this.alumno = alumno;
-		this.factura = factura;
+		this.factura=null;
 	}
 	
 	public boolean sosReserva(Integer id){
@@ -97,7 +86,7 @@ public class Reserva {
 		this.fecha = fecha;
 	}
 
-	public List<Clase> getClases() {
+	public ArrayList<Clase> getClases() {
 		return clases;
 	}
 
@@ -123,5 +112,19 @@ public class Reserva {
 	
 	public ReservaView toView(){
 		return new ReservaView(idReserva, descuento, monto, cantAlum, paga, fecha, alumno.getDni(), factura.getNumero());
+	}
+	
+	public void agregarFactura(Factura factura) {
+		this.factura=factura;
+	}
+	
+	public void save() {
+		ReservaDAO.getInstancia().agregarReserva(this);
+	}
+	public void update() {
+		ReservaDAO.getInstancia().completarReserva(this);
+	}
+	public void delete() {
+		ReservaDAO.getInstancia().cancelarReserva(this.getIdReserva());
 	}
 }

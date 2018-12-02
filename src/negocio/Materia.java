@@ -3,6 +3,7 @@ package negocio;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.MateriaDAO;
 import views.MateriaView;
 
 public class Materia {
@@ -60,5 +61,11 @@ public class Materia {
 	
 	public MateriaView toView(){
 		return new MateriaView(nombre, idMateria);
+	}
+	public void save() {
+		MateriaDAO.getInstancia().agregarMateria(this);
+	}
+	public void update() {
+		MateriaDAO.getInstancia().update(this);
 	}
 }

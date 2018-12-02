@@ -15,30 +15,13 @@ public class Clase {
 	private String estado; //libre, pendiente, ocupada
 	private Integer idClase;
 	private Profesor profesor;
-	
-	public Clase(Integer id,Float horario, String estado, Profesor profesor) {
-		this.idClase=id;
-		this.horario=horario;
-		this.estado=estado;
-		this.profesor=profesor;
-	}
-	
-	public Clase(Materia materia, Float horario, String estado, Integer idClase, Profesor profesor, Reserva reserva) {
-		this.materia=materia;
-		this.materia = materia;
-		this.horario = horario;
-		this.estado = estado;
-		this.idClase = idClase;
-		this.profesor = profesor;
-}
 
-	public Clase(Materia mat, Date fecha, float horaInicio, float horaFin, String estado, int numero, Profesor dniProfesor) {
+	public Clase(Materia mat, Date fecha, float horaInicio, float horaFin, String estado, int numero, Profesor profesor) {
 		this.materia = mat;
 		this.horaInicio=horaInicio;
 		this.horaFin=horaFin;
-		this.horario = horario;
 		this.estado = estado;
-		this.idClase = idClase;
+		this.idClase = idClase; //chequear esto
 		this.profesor = profesor;
 	}
 

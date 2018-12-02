@@ -56,5 +56,8 @@ public class Alumno extends Usuario{
 	public void save() {
 		AlumnoDAO.getInstancia().agregarAlumno(this);
 	}
+	public void delete() {
+		AlumnoDAO.getInstancia().bajaAlumno(this);
+	}
 }
 

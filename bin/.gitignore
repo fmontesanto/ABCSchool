@@ -2,3 +2,5 @@
 /controller/
 /excepciones/
 /views/
+/dao/
+/entities/

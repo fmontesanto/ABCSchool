@@ -1,13 +1,21 @@
 package controller;
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.ArrayList;
+
+import antlr.collections.List;
 import dao.AlumnoDAO;
+import dao.MateriaDAO;
 import dao.ProfesorDAO;
+import dao.ReservaDAO;
 import excepciones.AlumnoException;
 import excepciones.ConnectionException;
 import negocio.Alumno;
+import negocio.Clase;
+import negocio.Materia;
 import excepciones.ProfesorException;
 import negocio.Profesor;
+import negocio.Reserva;
 
 
 public class Controlador {
@@ -23,8 +31,8 @@ public class Controlador {
 	public static void main(String[] args) {}
 	
 	public void altaAlumno(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String password) throws ConnectionException,AlumnoException{
-		Alumno a =new Alumno(dni,nombre,mail,telefono,domicilio,fechaNacimiento,password);
-		AlumnoDAO.getInstancia().agregarAlumno(a);
+		Alumno alumno =new Alumno(dni,nombre,mail,telefono,domicilio,fechaNacimiento,password);
+		alumno.save();
 	}
 	public void modificarAlumno(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String password) throws ConnectionException, AlumnoException {
 		Alumno alumno=buscarAlumno(dni);
@@ -33,12 +41,12 @@ public class Controlador {
 		alumno.setTelefono(telefono);
 		alumno.setFechaNacimiento(fechaNacimiento);
 		alumno.setContra(password);
-		AlumnoDAO.getInstancia().modificarAlumno(alumno);
+		alumno.update();
 	}
 	
 	public void bajaAlumno(String dni){
 		Alumno alumno=buscarAlumno(dni);
-		AlumnoDAO.getInstancia().bajaAlumno(alumno);
+		alumno.delete();
 	}
 	
 	public Alumno buscarAlumno(String dni) {
@@ -62,5 +70,42 @@ public class Controlador {
 	public Profesor buscarProfesor(String dni) {
 		Profesor profesor=ProfesorDAO.getInstancia().findByDni(dni).toProfesor();
 		return profesor;
+	}
+	
+	public void altaClase(String materia,Date fecha, float horaInicio, float horaFin, String estado,String dniProfesor) {
+		Profesor profesor=buscarProfesor(dniProfesor);
+		Materia mat=MateriaDAO.getInstancia().findByName(materia).toMateria();
+		Clase clase=new Clase(mat,fecha,horaInicio,horaFin,estado,0/* revisar ID*/,profesor);
+		clase.save();
+	}
+	public Materia buscarMateria(String nombre) {
+		Materia materia=MateriaDAO.getInstancia().findByName(nombre).toMateria();
+		return materia;
+	}
+	public void altaMateria(String nombreMat) {
+		Materia materia=buscarMateria(nombreMat);
+		if (materia==null) {
+			materia=new Materia(nombreMat,idMat);
+			materia.save();
+		}
+	}
+	public Reserva buscarReserva(int idReserva) {
+		Reserva reserva=ReservaDAO.getInstancia().findById(idReserva).toReserva();
+		return reserva;
+	}
+	public void altaReserva(Integer idReserva, Float descuento, Float monto, Integer cantAlum, boolean paga,
+			Date fecha, String dniAlumno) {
+		//TODO
+	}
+	public void bajaReserva(int idReserva) {
+		Reserva reserva=buscarReserva(idReserva);
+		ArrayList<Clase> clases=reserva.getClases();
+		reserva.delete();
+	}
+	public void facturar() {
+		//TODO
+	}
+	public void verClasesDisponibles() {
+		//TODO
 	}
 }

@@ -2,6 +2,7 @@ package negocio;
 
 import java.util.Date;
 
+import dao.FacturaDAO;
 import views.FacturaView;
 
 public class Factura {
@@ -77,5 +78,9 @@ public class Factura {
 	public FacturaView getView() {
 		FacturaView factura=new FacturaView(monto, medioPago, medioPago, medioPago, nroFactura, fecha);
 		return factura;
+	}
+	
+	public void save() {
+		FacturaDAO.getInstancia().agregarFactura(this);
 	}
 }

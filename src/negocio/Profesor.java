@@ -76,7 +76,13 @@ public class Profesor extends Usuario{
 	public void delete() {
 		ProfesorDAO.getInstancia().bajaProfesor(this);
 	}
-	
+	public void calcularPuntuacion() {
+		float sumaPuntuacion=0;
+		for (int i=0;i<resenas.size();i++) {
+			puntuacion=+resenas.get(i).getPuntuacion();
+		}
+		this.puntuacion=(sumaPuntuacion/resenas.size());
+	}
 	public ProfesorDTO toDTO(){
 		return new ProfesorDTO(dni, nombre, mail, telefono, domicilio, fechaNacimiento, contra, domicilioClases, anticipacionReserva);
 
