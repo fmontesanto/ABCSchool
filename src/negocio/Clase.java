@@ -25,6 +25,10 @@ public class Clase {
 		this.profesor = profesor;
 	}
 
+	public Clase(Integer idClase2, Float horario2, String estado2, Profesor p) {
+		this.idClase=idClase2;
+	}
+
 	public float getHorario() {
 		return horario;
 	}
@@ -88,6 +92,7 @@ public class Clase {
 
 	public void save() {
 		ClaseDAO.getInstancia().agregarClase(this);
+		ClaseDAO.getInstancia().agregarMateria(this);
 	}
 	
 	/*public ClaseView getView() {

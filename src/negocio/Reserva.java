@@ -114,7 +114,7 @@ public class Reserva {
 		return new ReservaView(idReserva, descuento, monto, cantAlum, paga, fecha, alumno.getDni(), factura.getNumero());
 	}
 	
-	public void agregarFactura(Factura factura) {
+	public void generarFactura (String tipo,String remitente) {
 		this.factura=factura;
 	}
 	

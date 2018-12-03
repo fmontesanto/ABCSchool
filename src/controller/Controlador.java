@@ -75,7 +75,7 @@ public class Controlador {
 	public void altaClase(String materia,Date fecha, float horaInicio, float horaFin, String estado,String dniProfesor) {
 		Profesor profesor=buscarProfesor(dniProfesor);
 		Materia mat=MateriaDAO.getInstancia().findByName(materia).toMateria();
-		Clase clase=new Clase(mat,fecha,horaInicio,horaFin,estado,0/* revisar ID*/,profesor);
+		Clase clase=new Clase(mat,fecha,horaInicio,horaFin,estado,0,profesor);
 		clase.save();
 	}
 	public Materia buscarMateria(String nombre) {
@@ -85,7 +85,7 @@ public class Controlador {
 	public void altaMateria(String nombreMat) {
 		Materia materia=buscarMateria(nombreMat);
 		if (materia==null) {
-			materia=new Materia(nombreMat,idMat);
+			materia=new Materia(nombreMat,0);
 			materia.save();
 		}
 	}
@@ -94,16 +94,22 @@ public class Controlador {
 		return reserva;
 	}
 	public void altaReserva(Integer idReserva, Float descuento, Float monto, Integer cantAlum, boolean paga,
-			Date fecha, String dniAlumno) {
-		//TODO
+			Date fecha, String dniAlumno,ArrayList<String> clases) {
+		Alumno alumno = buscarAlumno(dniAlumno);
+		Reserva reserva=new Reserva(0,descuento,monto,cantAlum,paga,fecha,alumno);
+		reserva.save();
 	}
 	public void bajaReserva(int idReserva) {
 		Reserva reserva=buscarReserva(idReserva);
-		ArrayList<Clase> clases=reserva.getClases();
 		reserva.delete();
 	}
-	public void facturar() {
-		//TODO
+	public void generarFactura(int idReserva, String tipo, String remitente, String medioPago, 
+			Reserva reserva) {
+		Date fechaActual=//fecha actual
+		Reserva reserva=buscarReserva(idReserva);
+		for ()
+		Factura factura=new Factura()
+		
 	}
 	public void verClasesDisponibles() {
 		//TODO
