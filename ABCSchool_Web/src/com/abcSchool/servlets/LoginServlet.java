@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.Controlador;
 
 //import del BusinessDelegate;
 
@@ -33,20 +32,14 @@ public class LoginServlet extends HttpServlet {
 		String rol = request.getParameter("rol");
 
 		try {
-			boolean log = BusinessDelegate.getInstancia().login(usr, clave, rol);
-
-			if (log) {
-				switch (rol) {
-				case "alumno":
-					AlumnoDTO alumno = BusinessDelegate.getInstancia().obtenerCliente(Integer.parseInt(user));
-					break;
-				}
-			} else {
-
+			if(usr.equals("alum")) {
+				
+			} else if(usr.equals("prof")) {
+				
+			} else if(usr.equals("admin")){
+				
 			}
-		} catch (
-
-		CommunicationException e) {
+		} catch (CommunicationException e) {
 			e.printStackTrace();
 		}
 	}

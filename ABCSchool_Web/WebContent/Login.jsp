@@ -29,8 +29,8 @@
 		<div>
 			Loguearse como: <select id="log" name="rol">
 				<option>-seleccion-</option>
-				<option value="alumno">Alumno</option>
-				<option value="profesor">Profesor</option>
+				<option value="alum">Alumno</option>
+				<option value="prof">Profesor</option>
 				<option value="admin">Administrador</option>
 			</select>
 		</div>
