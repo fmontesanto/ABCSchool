@@ -1,0 +1,388 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+body{
+    background: url(../../images/susan-yin-647448-unsplash.jpg) no-repeat center top;
+    display: flex;
+    min-height: 100vh;
+    background-size: cover;
+    font-family: sans-serif;
+}
+
+	#page-wrapper {
+		padding-top: 3em;
+	}
+
+	body.landing #page-wrapper {
+		padding-top: 0;
+	}
+
+	@-moz-keyframes reveal-header {
+		0% {
+			top: -5em;
+		}
+
+		100% {
+			top: 0;
+		}
+	}
+
+	@-webkit-keyframes reveal-header {
+		0% {
+			top: -5em;
+		}
+
+		100% {
+			top: 0;
+		}
+	}
+
+	@-ms-keyframes reveal-header {
+		0% {
+			top: -5em;
+		}
+
+		100% {
+			top: 0;
+		}
+	}
+
+	@keyframes reveal-header {
+		0% {
+			top: -5em;
+		}
+
+		100% {
+			top: 0;
+		}
+	}
+
+	#header {
+		background: #444;
+		color: #bbb;
+		cursor: default;
+		height: 3.25em;
+		left: 0;
+		line-height: 3.25em;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 10000;
+	}
+
+
+		#header nav {
+			height: inherit;
+			line-height: inherit;
+			position: absolute;
+			right: 0.75em;
+			top: 0;
+			vertical-align: middle;
+		}
+
+			#header nav > ul {
+				list-style: none;
+				margin: 0;
+				padding-left: 0;
+			}
+
+				#header nav > ul > li {
+					display: inline-block;
+					padding-left: 0;
+				}
+
+					#header nav > ul > li > ul {
+						display: none;
+					}
+
+					#header nav > ul > li a {
+						display: inline-block;
+						height: 2em;
+						line-height: 1.95em;
+						padding: 0 1em;
+						border-radius: 6px;
+					}
+
+					#header nav > ul > li a:not(.button) {
+						color: #fff;
+						display: inline-block;
+						text-decoration: none;
+						border: 0;
+					}
+
+						#header nav > ul > li a:not(.button).icon:before {
+							color: #999;
+							margin-right: 0.5em;
+						}
+
+					#header nav > ul > li:first-child {
+						margin-left: 0;
+					}
+
+					#header nav > ul > li.active a:not(.button) {
+						background-color: rgba(153, 153, 153, 0.25);
+					}
+
+					#header nav > ul > li .button {
+						margin: 0 0 0 0.5em;
+						position: relative;
+					}
+
+		#header input[type="submit"],
+		#header input[type="reset"],
+		#header input[type="button"],
+		#header .button {
+			background-color: transparent;
+			box-shadow: inset 0 0 0 2px #999;
+			color: #fff;
+		}
+
+			#header input[type="submit"]:hover,
+			#header input[type="reset"]:hover,
+			#header input[type="button"]:hover,
+			#header .button:hover {
+				background-color: rgba(153, 153, 153, 0.25);
+			}
+
+			#header input[type="submit"]:active,
+			#header input[type="reset"]:active,
+			#header input[type="button"]:active,
+			#header .button:active {
+				background-color: rgba(153, 153, 153, 0.5);
+			}
+
+		#header .container {
+			position: relative;
+		}
+
+			#header .container h1 {
+				left: 0;
+			}
+
+			#header .container nav {
+				right: 0;
+			}
+
+		#header.reveal {
+			-moz-animation: reveal-header 0.5s;
+			-webkit-animation: reveal-header 0.5s;
+			-ms-animation: reveal-header 0.5s;
+			animation: reveal-header 0.5s;
+		}
+
+		#header.alt {
+			-moz-animation: none;
+			-webkit-animation: none;
+			-ms-animation: none;
+			animation: none;
+			background: none;
+			color: rgba(255, 255, 255, 0.75);
+			position: absolute;
+		}
+
+			#header.alt nav > ul > li a:not(.button).icon:before {
+				color: rgba(255, 255, 255, 0.75);
+			}
+
+			#header.alt nav > ul > li.active a:not(.button) {
+				background-color: rgba(255, 255, 255, 0.2);
+			}
+
+			#header.alt input[type="submit"],
+			#header.alt input[type="reset"],
+			#header.alt input[type="button"],
+			#header.alt .button {
+				box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+			}
+
+				#header.alt input[type="submit"]:hover,
+				#header.alt input[type="reset"]:hover,
+				#header.alt input[type="button"]:hover,
+				#header.alt .button:hover {
+					background-color: rgba(255, 255, 255, 0.1);
+				}
+
+				#header.alt input[type="submit"]:active,
+				#header.alt input[type="reset"]:active,
+				#header.alt input[type="button"]:active,
+				#header.alt .button:active {
+					background-color: rgba(255, 255, 255, 0.2);
+				}
+
+
+
+form{
+  margin: auto;
+  width: 50%;
+  max-width: 500px;
+  background: rgba(254, 255, 255, 0.5);
+  padding: 30px; /*relleno, espaciado interno*/
+  border: 1.5px solid rgba(255,255,255,255);
+  border-radius: 20px;
+}
+
+
+.avatar{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 280px);
+  left: calc(50% - 50px);
+  /*transition: all 0.5s;*/
+}
+
+.avatar:hover{
+  animation: rubberBand 1s 1;
+  /*margin-top: -12px;*/ /*va con transition*/
+}
+
+@keyframes cambiar{/*hace que un elemento se mueva*/
+  0%{margin-top: 0;}
+  25%{margin-top: -15px;}
+  50%{margin-top: 2px;}
+  75%{margin-top: -15px}
+  100%{margin-top: 0;}
+}
+
+ul{
+  text-align: center;
+}
+
+h2{
+  text-align: center;
+  margin-bottom: 20px;
+  color: rgba(0,0,0,0.5);
+}
+
+input{
+  display: block;
+  padding: 10px;
+  width: 100%;
+  margin: 30px 0; /*30 haci arriba, cero a los costado*/
+  font-size: 20px;
+  border-radius: 20px;
+  border: 0;
+}
+
+input[type="submit"]{
+  background: linear-gradient(#FFDA63, #FFB940);/*degradado*/
+  color: brown;
+  opacity: 0.8;
+  cursor: pointer;/*cambia mouse por manito*/
+  margin-bottom: 0;
+}
+
+input[type="submit"]:hover{/*al pasar mouse la opacidad cambia*/
+  opacity: 1;
+}
+
+input[type="submit"]:active{/*cuando se hace click*/
+  transform: scale(0.9);
+}
+
+@media (max-width:768px){/*para que cambie tamaño--> responsive*/
+  form{
+    width: 75%;
+  }
+}
+
+@media (max-width:480px){/*para que cambie tamaño--> responsive*/
+  form{
+    width: 95%;
+  }
+}
+
+
+
+
+
+
+@-webkit-keyframes rubberBand {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
+  }
+
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes rubberBand {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
+  }
+
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.rubberBand {
+  -webkit-animation-name: rubberBand;
+  animation-name: rubberBand;
+}
+
+.linksFormulario {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
