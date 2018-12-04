@@ -2,6 +2,9 @@ package negocio;
 
 import dao.ClaseDAO;
 import dao.MateriaDAO;
+import dto.ClaseDTO;
+import dto.MateriaDTO;
+import dto.ProfesorDTO;
 import views.ClaseView;
 
 import java.sql.Date;
@@ -94,10 +97,9 @@ public class Clase {
 		ClaseDAO.getInstancia().agregarClase(this);
 		ClaseDAO.getInstancia().agregarMateria(this);
 	}
-	
-	/*public ClaseView getView() {
-		ClaseView clase=new ClaseView(materia, horario, estado, idClase, profesor);
-		return clase;
-	}*/
 
+	public ClaseDTO DTO() {
+		ClaseDTO dto=new ClaseDTO(materia.DTO(), horario, estado, idClase, profesor.toDTO());
+		return dto;
+	}
 }

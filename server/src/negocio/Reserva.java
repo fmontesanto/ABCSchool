@@ -7,6 +7,8 @@ import java.util.List;
 import controller.Factura;
 import dao.FacturaDAO;
 import dao.ReservaDAO;
+import dto.ClaseDTO;
+import dto.ReservaDTO;
 import views.ReservaView;
 
 public class Reserva {
@@ -141,5 +143,18 @@ public class Reserva {
 	}
 	public void delete() {
 		ReservaDAO.getInstancia().cancelarReserva(this.getIdReserva());
+	}
+	private ArrayList<ClaseDTO>clases2dto(){
+		ArrayList<ClaseDTO> clasesDTO=new ArrayList<ClaseDTO>(); 
+		for(Clase clase:clases) {
+			ClaseDTO claseDto=clase.DTO();
+			clasesDTO.add(claseDto);
+		}
+		return clasesDTO;
+	}
+	public ReservaDTO DTO() {
+		ArrayList<ClaseDTO>clasesdto=clases2dto();
+		ReservaDTO dto=new ReservaDTO(idReserva,descuento,monto,cantAlum,paga,fecha,alumno,factura.DTO(),clasesdto);
+		return dto;
 	}
 }

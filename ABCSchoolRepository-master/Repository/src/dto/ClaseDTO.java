@@ -2,13 +2,13 @@ package dto;
 
 
 public class ClaseDTO {
-	private String materia;
+	private MateriaDTO materia;
 	private Float horario;
 	private String estado;
 	private Integer idClase;
-	private Integer profesor;
+	private ProfesorDTO profesor;
 	
-	public ClaseDTO(String materia, Float horario, String estado, Integer idClase, Integer profesor) {
+	public ClaseDTO(MateriaDTO materia, Float horario, String estado, Integer idClase, ProfesorDTO profesor) {
 		this.materia=materia;
 		this.horario=horario;
 		this.estado=estado;
@@ -28,12 +28,32 @@ public class ClaseDTO {
 		return idClase;
 	}
 	
-	public Integer getProfesor() {
+	public ProfesorDTO getProfesor() {
 		return profesor;
 	}
 	
-	public String getMateria() {
+	public MateriaDTO getMateria() {
 		return materia;
+	}
+
+	public void setMateria(MateriaDTO materia) {
+		this.materia = materia;
+	}
+
+	public void setHorario(Float horario) {
+		this.horario = horario;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public void setIdClase(Integer idClase) {
+		this.idClase = idClase;
+	}
+
+	public void setProfesor(ProfesorDTO profesor) {
+		this.profesor = profesor;
 	}
 
 }

@@ -1,5 +1,6 @@
 package dto;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ReservaDTO {
@@ -10,20 +11,21 @@ public class ReservaDTO {
 	private Integer cantAlum;
 	private boolean paga;
 	private Date fecha;
-	private String alumno;
-	private int factura;
+	private AlumnoDTO alumno;
+	private FacturaDTO factura;
 	
-	public ReservaDTO(Integer idReserva, Float descuento, Float monto, Integer cantAlum, boolean paga, Date fecha,
-			String alumno, int factura) {
+
+	public ReservaDTO(Integer idReserva2, Float descuento2, Float monto2, Integer cantAlum2, boolean paga2, Date fecha2,
+			AlumnoDTO alumno2, FacturaDTO factura2, ArrayList<ClaseDTO> clases) {
 		super();
-		this.idReserva = idReserva;
-		this.descuento = descuento;
-		this.monto = monto;
-		this.cantAlum = cantAlum;
-		this.paga = paga;
-		this.fecha = fecha;
-		this.alumno = alumno;
-		this.factura = factura;
+		this.idReserva = idReserva2;
+		this.descuento = descuento2;
+		this.monto = monto2;
+		this.cantAlum = cantAlum2;
+		this.paga = paga2;
+		this.fecha = fecha2;
+		this.alumno = alumno2;
+		this.factura = factura2;
 	}
 
 	public Integer getIdReserva() {
@@ -74,19 +76,19 @@ public class ReservaDTO {
 		this.fecha = fecha;
 	}
 
-	public String getAlumno() {
+	public AlumnoDTO getAlumno() {
 		return alumno;
 	}
 
-	public void setAlumno(String alumno) {
+	public void setAlumno(AlumnoDTO alumno) {
 		this.alumno = alumno;
 	}
 
-	public int getFactura() {
+	public FacturaDTO getFactura() {
 		return factura;
 	}
 
-	public void setFactura(int factura) {
+	public void setFactura(FacturaDTO factura) {
 		this.factura = factura;
 	}
 }

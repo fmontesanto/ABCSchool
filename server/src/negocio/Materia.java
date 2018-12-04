@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.MateriaDAO;
+import dto.MateriaDTO;
 import views.MateriaView;
 
 public class Materia {
@@ -67,5 +68,10 @@ public class Materia {
 	}
 	public void update() {
 		MateriaDAO.getInstancia().update(this);
+	}
+
+	public MateriaDTO DTO() {
+		MateriaDTO dto=new MateriaDTO(nombre,idMateria);
+		return dto;
 	}
 }
