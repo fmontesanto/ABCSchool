@@ -2,9 +2,11 @@ package controller;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import antlr.collections.List;
 import dao.AlumnoDAO;
+import dao.ClaseDAO;
 import dao.MateriaDAO;
 import dao.ProfesorDAO;
 import dao.ReservaDAO;
@@ -97,21 +99,46 @@ public class Controlador {
 			Date fecha, String dniAlumno,ArrayList<String> clases) {
 		Alumno alumno = buscarAlumno(dniAlumno);
 		Reserva reserva=new Reserva(0,descuento,monto,cantAlum,paga,fecha,alumno);
+		for (String idClase:clases) {
+			Clase clase=ClaseDAO.getInstancia().findByCode(Integer.valueOf(idClase)).toClase(); //falta el toClase
+			reserva.addClase(clase);
+			//hay que setear el estado de la clase a pendientePago o algo asi y hacer un update (falta update)
+		}
 		reserva.save();
 	}
 	public void bajaReserva(int idReserva) {
 		Reserva reserva=buscarReserva(idReserva);
 		reserva.delete();
 	}
-	public void generarFactura(int idReserva, String tipo, String remitente, String medioPago, 
-			Reserva reserva) {
-		Date fechaActual=//fecha actual
+	public void generarFactura(int idReserva, String tipo, String remitente, String medioPago) {
+		Date fechaActual=new java.sql.Date(Calendar.getInstance().getTime().getTime());
 		Reserva reserva=buscarReserva(idReserva);
-		for ()
-		Factura factura=new Factura()
+		//Reserva tiene que crear la factura, es la que posee la reserva, cambiar. 
+		Factura factura=new Factura(fechaActual monto, tipo,remitente, medioPago, Integer nroFactura,Reserva reserva);
 		
 	}
-	public void verClasesDisponibles() {
+	public boolean logIn() {
 		//TODO
 	}
+	public void verClasesDisponibles() { //devuelve un arrayList de DTO
+		//TODO
+		//Hay que buscar en las tablas todas las clases con estado disponible. funcion en entity..
+		// mucho mas facil que tener que agarrar cada materia y hacer un findBymateria...
+	}
+	public void verReservas () { //Devuelve arrayList de reservas DTO de un determinado usuario
+		//TODO
+	}
+	public void anadirResena() { //idprof,puntaje,comentario --> busco prof, prof.anadir resena--> actualizar puntuacion prof.
+		//TODO	
+	}
+	public void mostrarResenas() { // devolver arrayList de resenasdto de un determinado prof
+		//TODO
+	}
+	public void mostrarProfesor () {  //Devolver profesorDTO 
+		//TODO	
+	}
+	public void mostrarUsuario () { //Devolver UsuarioDTO 
+		//TODO 	
+	}
+	
 }

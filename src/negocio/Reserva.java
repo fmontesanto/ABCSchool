@@ -90,7 +90,7 @@ public class Reserva {
 		return clases;
 	}
 
-	public void addClases(Clase clase) {
+	public void addClase(Clase clase) {
 		this.clases.add(clase);
 	}
 	
@@ -116,6 +116,15 @@ public class Reserva {
 	
 	public void generarFactura (String tipo,String remitente) {
 		this.factura=factura;
+	}
+	
+	public void calcularMontoTotal() {
+		float total=0;
+		for (Clase clase:clases) {
+			total=+clase.getMonto();//TODO 
+		}
+		total=total*(1-descuento);
+		this.monto=total;
 	}
 	
 	public void save() {
