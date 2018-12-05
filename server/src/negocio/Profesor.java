@@ -82,6 +82,5 @@ public class Profesor extends Usuario{
 	}
 	public ProfesorDTO toDTO(){
 		return new ProfesorDTO(dni, nombre, mail, telefono, domicilio, fechaNacimiento, contra, domicilioClases, anticipacionReserva);
-
 	}
 }

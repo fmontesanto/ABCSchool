@@ -137,11 +137,12 @@ public class Controlador {
 			return false;
 		}
 	}
-	public void verClasesDisponibles() { //devuelve un arrayList de DTO
+	
+	//public ArrayList<ClaseDTO> verClasesDisponibles() { //devuelve un arrayList de DTO
 		//TODO
 		//Hay que buscar en las tablas todas las clases con estado disponible. funcion en entity..
 		// mucho mas facil que tener que agarrar cada materia y hacer un findBymateria...
-	}
+	//}
 	
 	public ArrayList<Reserva> obtenerReservasAlumno (String dniAlumno) { //Devuelve arrayList de reservas DTO de un determinado usuario
 		ArrayList<ReservaEntity> res = ReservaDAO.getInstancia().findByStudent(dniAlumno);
@@ -169,11 +170,13 @@ public class Controlador {
 		profesor.calcularPuntuacion();
 		profesor.update();
 	}
+
 	
 	public ArrayList<Resena> obtenerResenasProfesor(String dniProfesor) {
 		ArrayList<ResenaEntity> res = ResenaDAO.getInstancia().findByTeacher(dniProfesor);
 		return toResenas(res);
 	}
+
 	/*
 	public ProfesorDTO obtenerProfesorDTO (String dniProf) {  
 		return buscarProfesor(dniProf).toDTO();
