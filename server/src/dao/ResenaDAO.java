@@ -1,10 +1,15 @@
 package dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import entities.ProfesorEntity;
 import entities.ResenaEntity;
+import entities.ReservaEntity;
 import hibernate.hibernateUtil;
 import negocio.Resena;
 
@@ -28,6 +33,23 @@ public class ResenaDAO {
 		ResenaEntity r = (ResenaEntity) session.createQuery("from ResenaEntity where idResena = ?").setParameter(0, idResena).uniqueResult();
 		session.close();
 		return r;
+	}
+
+	public ArrayList<ResenaEntity> findByTeacher(String dni)
+	{
+		int id = -1;
+		id = ProfesorDAO.getInstancia().findByDni(dni).getIdUsuario();
+		if(id != -1){
+			SessionFactory sf = hibernateUtil.getSessionFactory();
+			Session session = sf.openSession();
+			ArrayList<ResenaEntity> result = null;
+			Query   q = session.createQuery("from ResenaEntity where idUsuario = ?").setParameter(0, id);
+			result = (ArrayList<ResenaEntity>) q.list();
+			session.close();
+			return result;
+		}
+		else
+			return null;
 	}
 
 	public void agregarResena(Resena r)

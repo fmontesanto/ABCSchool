@@ -12,9 +12,7 @@ import entities.ClaseEntity;
 import entities.MateriaEntity;
 import entities.ProfesorEntity;
 import hibernate.hibernateUtil;
-import negocio.Clase;
 import negocio.Materia;
-import negocio.Profesor;
 
 public class MateriaDAO {
 

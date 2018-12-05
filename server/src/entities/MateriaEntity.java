@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,6 +16,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import negocio.Clase;
+import negocio.Materia;
 
 
 @Entity
@@ -78,4 +82,12 @@ public class MateriaEntity {
 	public void setProfesores(Set<ProfesorEntity> profesores) {
 		this.profesores = profesores;
 	}	
+	
+	public Materia toMateria(){
+		List<Clase> clases = new ArrayList<Clase>();
+		for(ClaseEntity c : this.clases){
+			clases.add(c.toClase());
+		}
+		return new Materia(nombre, idMateria, clases);
+	}
 }

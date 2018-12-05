@@ -7,8 +7,6 @@ import java.util.Date;
 import dao.AlumnoDAO;
 
 import dto.AlumnoDTO;
-import dto.ReservaDTO;
-import views.AlumnoView;
 
 public class Alumno extends Usuario{
 	
@@ -39,17 +37,18 @@ public class Alumno extends Usuario{
 	public boolean sosAlumno (String alumno) {
 		return this.nombre==alumno;
 	}
-	private ArrayList<ReservaDTO> reservas2DTO(){
+	
+/*	private ArrayList<ReservaDTO> reservas2DTO(){
 		ArrayList<ReservaDTO> reservasDTO=new ArrayList<ReservaDTO>(); 
 		for(Reserva reserva:reservas) {
 			ReservaDTO reservaDto=reserva.DTO();
 			reservasDTO.add(reservaDto);
 		}
 		return reservasDTO;
-	}
+	}*/
+	
 	public AlumnoDTO toDTO(){
-		ArrayList<ReservaDTO> reservasDTO=reservas2DTO();
-		return new AlumnoDTO(dni, nombre, mail, telefono, domicilio, fechaNacimiento, contra, saldoAFavor,reservasDTO);
+		return new AlumnoDTO(dni, nombre, mail, telefono, domicilio, fechaNacimiento, contra, saldoAFavor);
 	}
 
 	public void update() {

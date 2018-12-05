@@ -1,5 +1,8 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import dao.ResenaDAO;
+import negocio.Resena;
 
 @Entity
 @Table(name="Resena")
@@ -67,5 +73,9 @@ public class ResenaEntity {
 
 	public void setProfesor(ProfesorEntity profesor) {
 		this.profesor = profesor;
+	}
+	
+	public Resena toResena(){
+		return new Resena(puntuacion, comentario, profesor.toProfesor());
 	}
 }
