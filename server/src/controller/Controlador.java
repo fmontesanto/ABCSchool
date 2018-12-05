@@ -13,6 +13,7 @@ import dao.ReservaDAO;
 import dto.AlumnoDTO;
 import dto.ClaseDTO;
 import dto.ProfesorDTO;
+import dto.ResenaDTO;
 import dto.ReservaDTO;
 import excepciones.AlumnoException;
 import excepciones.ConnectionException;
@@ -138,7 +139,7 @@ public class Controlador {
 			return false;
 		}
 	}
-	public void verClasesDisponibles() { //devuelve un arrayList de DTO
+	public ArrayList<ClaseDTO> verClasesDisponibles() { //devuelve un arrayList de DTO
 		//TODO
 		//Hay que buscar en las tablas todas las clases con estado disponible. funcion en entity..
 		// mucho mas facil que tener que agarrar cada materia y hacer un findBymateria...
@@ -159,7 +160,7 @@ public class Controlador {
 		profesor.calcularPuntuacion();
 		profesor.update();
 	}
-	public void obtenerResenasProfesor(String dniProfesor) { // devolver arrayList de resenasdto de un determinado prof
+	public ArrayList<ResenaDTO> obtenerResenasProfesor(String dniProfesor) { // devolver arrayList de resenasdto de un determinado prof
 		//TODO mismo que con reservas, estoy cargando las resenas a la clase profesor cuando lo busco? si no hay que buscar resenas por dniProfesor
 	}
 	public ProfesorDTO obtenerProfesorDTO (String dniProf) {  
