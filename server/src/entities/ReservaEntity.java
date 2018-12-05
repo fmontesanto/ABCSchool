@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -16,6 +17,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import negocio.Resena;
+import negocio.Reserva;
 
 @Entity
 @Table(name="Reserva")
@@ -155,5 +159,11 @@ public class ReservaEntity {
  		else 
  			return -1f;
  	}
+	
+	public Reserva toReserva(){
+		return new Reserva(idReserva, descuento, monto, cantAlum, paga, fecha, alumno.toAlumno());
+	}
+	
+
 }
 

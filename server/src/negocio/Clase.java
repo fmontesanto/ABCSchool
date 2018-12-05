@@ -1,31 +1,29 @@
 package negocio;
 
-import dao.ClaseDAO;
-import dao.MateriaDAO;
-import dto.ClaseDTO;
-import dto.MateriaDTO;
-import dto.ProfesorDTO;
-import views.ClaseView;
+import java.util.Date;
 
-import java.sql.Date;
+import dao.ClaseDAO;
+import dto.ClaseDTO;
+
+
 
 public class Clase {
 	
 	private Materia materia;
 	private Float horario;
-	private Float horaInicio;
-	private Float horaFin;
 	private String estado; //libre, pendiente, ocupada
 	private Integer idClase;
 	private Profesor profesor;
+	private Date fecha;
 
-	public Clase(Materia mat, Date fecha, float horaInicio, float horaFin, String estado, int numero, Profesor profesor) {
+	public Clase(Materia mat, Date fecha, Float horario, String estado, int numero, Profesor profesor) {
 		this.materia = mat;
-		this.horaInicio=horaInicio;
-		this.horaFin=horaFin;
 		this.estado = estado;
 		this.idClase = idClase; //chequear esto
 		this.profesor = profesor;
+		this.horario = horario;
+		this.fecha = fecha;
+		
 	}
 
 	public Clase(Integer idClase2, Float horario2, String estado2, Profesor p) {
@@ -53,24 +51,32 @@ public class Clase {
 		this.idClase = numero;
 	}
 	
+	public Integer getIdClase() {
+		return idClase;
+	}
+
+	public void setIdClase(Integer idClase) {
+		this.idClase = idClase;
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public void setHorario(Float horario) {
+		this.horario = horario;
+	}
+
+	public void setProfesor(Profesor profesor) {
+		this.profesor = profesor;
+	}
+
 	public Profesor getProfesor() {
 		return profesor;
-	}
-	
-	public Float getHoraInicio() {
-		return horaInicio;
-	}
-
-	public void setHoraInicio(Float horaInicio) {
-		this.horaInicio = horaInicio;
-	}
-
-	public Float getHoraFin() {
-		return horaFin;
-	}
-
-	public void setHoraFin(Float horaFin) {
-		this.horaFin = horaFin;
 	}
 
 	public void agregarProfesor(Profesor profesor) {
@@ -99,7 +105,7 @@ public class Clase {
 	}
 
 	public ClaseDTO DTO() {
-		ClaseDTO dto=new ClaseDTO(materia.DTO(), horario, estado, idClase, profesor.toDTO());
+		ClaseDTO dto=new ClaseDTO(materia.getNombre(), horario, estado, idClase, profesor.getDni());
 		return dto;
 	}
 }

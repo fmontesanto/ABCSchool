@@ -1,5 +1,9 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import negocio.Clase;
+import negocio.Resena;
 
 @Entity
 @Table(name="Clase")
@@ -22,6 +29,8 @@ public class ClaseEntity {
 	private Float horario;
 	@Column(name="estado")
 	private String estado;
+	@Column(name="fecha")
+	private Date fecha;
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn (name="idMateria")
@@ -37,11 +46,12 @@ public class ClaseEntity {
 
 	public ClaseEntity() {}
 
-	public ClaseEntity(Float horario, String estado, ProfesorEntity profesor) {
+	public ClaseEntity(Float horario, String estado, ProfesorEntity profesor, Date fecha) {
 		super();
 		this.horario = horario;
 		this.estado = estado;
 		this.setProfesor(profesor);
+		this.fecha = fecha;
 	}
 
 
@@ -91,6 +101,18 @@ public class ClaseEntity {
 
 	public void setReserva(ReservaEntity reserva) {
 		this.reserva = reserva;
+	}
+	
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public Clase toClase(){
+		return new Clase(materia.toMateria(), fecha, horario, estado, idClase, profesor.toProfesor());
 	}
 	
 	/*@Override

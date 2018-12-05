@@ -1,5 +1,10 @@
 package dao;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -44,16 +49,24 @@ public class ClaseDAO {
 		session.close();
 		return result;
 	}
-	
-	public List<ClaseEntity> findByTeacher(Integer idProfesor)
-	{
-		SessionFactory sf = hibernateUtil.getSessionFactory();
-		Session session = sf.openSession();
-		List<ClaseEntity> result = null;
-		Query   q = session.createQuery("from ClaseEntity where idUsuario = ?").setParameter(0, idProfesor);
-		result = (List<ClaseEntity>) q.list();
-		session.close();
-		return result;
+
+	public ArrayList<ClaseEntity> findByTeacher(String dni){
+		int id = -1;
+		id = ProfesorDAO.getInstancia().findByDni(dni).getIdUsuario();
+		if(id != -1){
+			SessionFactory sf = hibernateUtil.getSessionFactory();
+			Session session = sf.openSession();
+			ArrayList<ClaseEntity> result = null;
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			Date today = Calendar.getInstance().getTime();        
+			String d = df.format(today);
+			Query   q = session.createQuery("from ClaseEntity where idUsuario = ? and fecha >= ? ").setParameter(0, id).setParameter(1, d);
+			result = (ArrayList<ClaseEntity>) q.list();
+			session.close();
+			return result;
+		}
+		else 
+			return null;
 	}
 
 
@@ -71,7 +84,7 @@ public class ClaseDAO {
 			if(p==null)
 				flag=1;	
 			else
-				c=new ClaseEntity(cl.getHorario(), cl.getEstado(), p);
+				c=new ClaseEntity(cl.getHorario(), cl.getEstado(), p, cl.getFecha());
 		}
 		session.beginTransaction();
 		if(flag==0)

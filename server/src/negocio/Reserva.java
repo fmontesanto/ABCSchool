@@ -3,8 +3,6 @@ package negocio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import controller.Factura;
 import dao.FacturaDAO;
 import dao.ReservaDAO;
 import dto.ClaseDTO;
@@ -129,7 +127,7 @@ public class Reserva {
 	public void calcularMontoTotal() {
 		float total=0;
 		for (Clase clase:clases) {
-			total=+clase.getMonto();//TODO 
+			total=+clase.getMonto(); 
 		}
 		total=total*(1-descuento);
 		this.monto=total;
@@ -144,17 +142,22 @@ public class Reserva {
 	public void delete() {
 		ReservaDAO.getInstancia().cancelarReserva(this.getIdReserva());
 	}
-	private ArrayList<ClaseDTO>clases2dto(){
+	
+	/*private ArrayList<ClaseDTO>clases2dto(){
 		ArrayList<ClaseDTO> clasesDTO=new ArrayList<ClaseDTO>(); 
 		for(Clase clase:clases) {
 			ClaseDTO claseDto=clase.DTO();
 			clasesDTO.add(claseDto);
 		}
 		return clasesDTO;
-	}
+	}*/
+	
 	public ReservaDTO DTO() {
-		ArrayList<ClaseDTO>clasesdto=clases2dto();
-		ReservaDTO dto=new ReservaDTO(idReserva,descuento,monto,cantAlum,paga,fecha,alumno,factura.DTO(),clasesdto);
+		List<Integer> clases = new ArrayList<Integer>();
+		for(Clase c : this.clases){
+			clases.add(c.getIdClase());
+		}
+		ReservaDTO dto=new ReservaDTO(idReserva,descuento,monto,cantAlum,paga,fecha,alumno.getDni(),factura.getNumero(),clases);
 		return dto;
 	}
 }
