@@ -163,42 +163,19 @@ public class Controlador {
 	public ArrayList<ResenaDTO> obtenerResenasProfesor(String dniProfesor) { // devolver arrayList de resenasdto de un determinado prof
 		//TODO mismo que con reservas, estoy cargando las resenas a la clase profesor cuando lo busco? si no hay que buscar resenas por dniProfesor
 	}
+
 	public ProfesorDTO obtenerProfesorDTO (String dniProf) {  
 		return buscarProfesor(dniProf).toDTO();
 	}
 	public AlumnoDTO obtenerAlumnoDTO (String dniAlumno) { 
 		return buscarAlumno(dniAlumno).toDTO();	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
-	
-	
-	
-	
-	
-	
-}
+
+
+	public ArrayList<Clase> toClases(ArrayList<ClaseEntity> clases){
+		ArrayList<Clase> cla = new ArrayList<Clase>();
+		for(ClaseEntity c : clases){
+			cla.add(c.toClase());
+		}
+		return cla;
+	}
+
