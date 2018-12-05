@@ -36,11 +36,6 @@ public class Alumno extends Usuario{
 	public void descontarSaldo (float cantidad) {
 		saldoAFavor=-cantidad;
 	}
-	
-	public AlumnoView getView() {
-		return new AlumnoView(this.getDni(),this.getNombre(),this.getMail(),this.getTelefono(),this.getDni(),this.getFechaNacimiento(),this.getContra(), saldoAFavor);
-	}
-	
 	public boolean sosAlumno (String alumno) {
 		return this.nombre==alumno;
 	}
@@ -60,7 +55,6 @@ public class Alumno extends Usuario{
 	public void update() {
 		AlumnoDAO.getInstancia().modificarAlumno(this);
 	}
-
 	public void save() {
 		AlumnoDAO.getInstancia().agregarAlumno(this);
 	}

@@ -1,5 +1,6 @@
 package negocio;
 
+import dao.ResenaDAO;
 import views.ResenaView;
 
 public class Resena {
@@ -54,5 +55,7 @@ public class Resena {
 	public void setProfesor(Profesor profesor) {
 		this.profesor = profesor;
 	}
-	
+	public void save () {
+		ResenaDAO.getInstancia().agregarResena(this);
+	}
 }

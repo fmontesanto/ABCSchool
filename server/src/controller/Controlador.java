@@ -10,6 +10,10 @@ import dao.ClaseDAO;
 import dao.MateriaDAO;
 import dao.ProfesorDAO;
 import dao.ReservaDAO;
+import dto.AlumnoDTO;
+import dto.ClaseDTO;
+import dto.ProfesorDTO;
+import dto.ReservaDTO;
 import excepciones.AlumnoException;
 import excepciones.ConnectionException;
 import negocio.Alumno;
@@ -17,6 +21,7 @@ import negocio.Clase;
 import negocio.Materia;
 import excepciones.ProfesorException;
 import negocio.Profesor;
+import negocio.Resena;
 import negocio.Reserva;
 
 
@@ -138,21 +143,30 @@ public class Controlador {
 		//Hay que buscar en las tablas todas las clases con estado disponible. funcion en entity..
 		// mucho mas facil que tener que agarrar cada materia y hacer un findBymateria...
 	}
-	public void verReservas () { //Devuelve arrayList de reservas DTO de un determinado usuario
-		//TODO
+	public ArrayList<ReservaDTO> obtenerReservasAlumno (String dniAlumno) { //Devuelve arrayList de reservas DTO de un determinado usuario
+		Alumno alumno=buscarAlumno(dniAlumno);
+		// las reservas de alumno no se cargan cuando se busca en el dao?
+		return alumno.toDTO().getReservas();
 	}
-	public void anadirResena(String dniProf,float puntuacion, String comentario) { //idprof,puntaje,comentario --> busco prof, prof.anadir resena--> actualizar puntuacion prof.
+	public  ArrayList<ClaseDTO> obtenerClasesProfesor(String dniProf){
+		//find by teacher deuvelve una list de clases entities hay que pasarlos a clases de negocio y pedirles el dto.
+	}
+	public void anadirResena(String dniProf,float puntuacion, String comentario) { 
 		Profesor profesor=ProfesorDAO.getInstancia().findByDni(dniProf).toProfesor();
+		Resena resena=new Resena(puntuacion,comentario,profesor);
+		resena.save();
 		profesor.agregarResena(puntuacion,comentario);
+		profesor.calcularPuntuacion();
+		profesor.update();
 	}
-	public void mostrarResenas() { // devolver arrayList de resenasdto de un determinado prof
-		//TODO
+	public void obtenerResenasProfesor(String dniProfesor) { // devolver arrayList de resenasdto de un determinado prof
+		//TODO mismo que con reservas, estoy cargando las resenas a la clase profesor cuando lo busco? si no hay que buscar resenas por dniProfesor
 	}
-	public void mostrarProfesor () {  //Devolver profesorDTO 
-		//TODO	
+	public ProfesorDTO obtenerProfesorDTO (String dniProf) {  
+		return buscarProfesor(dniProf).toDTO();
 	}
-	public void mostrarUsuario () { //Devolver UsuarioDTO 
-		//TODO 	
+	public AlumnoDTO obtenerAlumnoDTO (String dniAlumno) { 
+		return buscarAlumno(dniAlumno).toDTO();	
 	}
 	
 }
