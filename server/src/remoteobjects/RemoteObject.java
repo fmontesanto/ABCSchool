@@ -15,7 +15,9 @@ import excepciones.AlumnoException;
 import excepciones.ConnectionException;
 import excepciones.ProfesorException;
 import interfaces.IRemota;
+import negocio.Alumno;
 import negocio.Materia;
+import negocio.Profesor;
 import negocio.Reserva;
 
 public class RemoteObject extends UnicastRemoteObject implements IRemota {
@@ -26,8 +28,8 @@ public class RemoteObject extends UnicastRemoteObject implements IRemota {
 		super();
 	}
 
-	public void logIn (String dni, String password, int codigo) throws RemoteException {
-		Controlador.getInstancia().logIn(dni, password, codigo);
+	public boolean logIn (String dni, String password, int codigo) throws RemoteException {
+		return Controlador.getInstancia().logIn(dni, password, codigo);
 	}
 	public void altaAlumno(String dni, String nombre, String mail, String telefono, String domicilio,
 			Date fechaNacimiento, String password) throws RemoteException{
@@ -55,8 +57,8 @@ public class RemoteObject extends UnicastRemoteObject implements IRemota {
 		Controlador.getInstancia().bajaAlumno(dni);
 	}
 
-	public AlumnoDTO buscarAlumno(String dni) throws RemoteException {
-		return Controlador.getInstancia().buscarAlumno(dni).toDTO();
+	public Alumno buscarAlumno(String dni) throws RemoteException {
+		return Controlador.getInstancia().buscarAlumno(dni);
 	}
 
 	public void altaProfesor(String dni, String nombre, String mail, String telefono, String domicilio,
@@ -86,7 +88,7 @@ public class RemoteObject extends UnicastRemoteObject implements IRemota {
 		Controlador.getInstancia().bajaProfesor(dni);
 	}
 
-	public ProfesorDTO buscarProfesor(String dni) throws RemoteException {
+	public Profesor buscarProfesor(String dni) throws RemoteException {
 		return Controlador.getInstancia().buscarProfesor(dni).toDTO();
 	}
 	public void altaClase(String materia,Date fecha, float horaInicio, float horaFin, String estado,String dniProfesor) throws RemoteException, ConnectionException{

@@ -168,6 +168,37 @@ public class Controlador {
 	}
 	public AlumnoDTO obtenerAlumnoDTO (String dniAlumno) { 
 		return buscarAlumno(dniAlumno).toDTO();	
-	}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+	
+	
+	
+	
+	
 	
 }
