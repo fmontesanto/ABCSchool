@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximun-scale-1, minimun-scale=1">
     <title>ABC School</title>
     <!-- enlazo css con el doc html-->
-    <link rel="stylesheet" href="../Alumno/css/main.css">
+    <link rel="stylesheet" href="css/Alumno/main.css">
     
     <script src=""></script>
     
@@ -45,7 +45,7 @@
         
       </div>
       
-    </main>-->
+    </main>
     <article>
       <h1>
         

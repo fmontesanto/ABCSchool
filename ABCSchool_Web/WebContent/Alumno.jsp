@@ -10,7 +10,7 @@
 	content="width=device-width, user-scalable=no, initial-scale=1, maximun-scale-1, minimun-scale=1">
 <title>ABC school</title>
 <!-- enlazo css con el doc html-->
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="css/Alumno/main.css">
 </head>
 <body>
 

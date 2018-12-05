@@ -31,16 +31,13 @@ public class LoginServlet extends HttpServlet {
 		String clave = request.getParameter("clave");
 		String rol = request.getParameter("rol");
 
-		try {
-			if(usr.equals("alum")) {
-				
-			} else if(usr.equals("prof")) {
-				
-			} else if(usr.equals("admin")){
-				
-			}
-		} catch (CommunicationException e) {
-			e.printStackTrace();
+		if(rol.equals("alum")) {
+			
+			
+		} else if(rol.equals("prof")) {
+			
+		} else if(rol.equals("admin")){
+			
 		}
 	}
 
