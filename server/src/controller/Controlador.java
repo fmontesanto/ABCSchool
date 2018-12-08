@@ -11,11 +11,6 @@ import dao.MateriaDAO;
 import dao.ProfesorDAO;
 import dao.ResenaDAO;
 import dao.ReservaDAO;
-import dto.AlumnoDTO;
-import dto.ClaseDTO;
-import dto.ProfesorDTO;
-import dto.ResenaDTO;
-import dto.ReservaDTO;
 import entities.ClaseEntity;
 import entities.ResenaEntity;
 import entities.ReservaEntity;
@@ -143,11 +138,17 @@ public class Controlador {
 			return false;
 		}
 	}
-	public ArrayList<ClaseDTO> verClasesDisponibles() { //devuelve un arrayList de DTO
-		//TODO
-		//Hay que buscar en las tablas todas las clases con estado disponible. funcion en entity..
-		// mucho mas facil que tener que agarrar cada materia y hacer un findBymateria...
+
+	public ArrayList<Clase> verClasesDisponibles() { 
+		ArrayList<ClaseEntity> clases=ClaseDAO.getInstancia().findAvailable();
+		ArrayList<Clase> clases2=null;
+		for(ClaseEntity c: clases){
+			clases2.add(c.toClase());
+		}
+		return clases2;
 	}
+	
+	
 	public ArrayList<Reserva> obtenerReservasAlumno (String dniAlumno) { 		
 		ArrayList<ReservaEntity> res = ReservaDAO.getInstancia().findByStudent(dniAlumno);
 		return toReservas(res);
@@ -177,22 +178,14 @@ public class Controlador {
 		return toResenas(res);
 	}		
 
-	public ProfesorDTO obtenerProfesorDTO (String dniProf) {  
-		return buscarProfesor(dniProf).toDTO();
-	}
-	public AlumnoDTO obtenerAlumnoDTO (String dniAlumno) { 
-		return buscarAlumno(dniAlumno).toDTO();	
-	}
+	public ArrayList<Clase> toClases(ArrayList<ClaseEntity> clases){
+		ArrayList<Clase> cla = new ArrayList<Clase>();
+		for(ClaseEntity c : clases){
+			cla.add(c.toClase());
+		}
+		return cla;
+	}		
 
-
-		public ArrayList<Clase> toClases(ArrayList<ClaseEntity> clases){
-			ArrayList<Clase> cla = new ArrayList<Clase>();
-			for(ClaseEntity c : clases){
-				cla.add(c.toClase());
-			}
-			return cla;
-		}		
-	
 	public ArrayList<Resena> toResenas(ArrayList<ResenaEntity> resenas){
 		ArrayList<Resena> res = new ArrayList<Resena>();
 		for(ResenaEntity r : resenas){
@@ -200,7 +193,7 @@ public class Controlador {
 		}
 		return res;
 	}
-	
-	
+
+
 }
 

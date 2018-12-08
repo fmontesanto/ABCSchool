@@ -43,13 +43,12 @@ public class ClaseEntity {
 
 	public ClaseEntity() {}
 
-	public ClaseEntity(Float horario, String estado, ProfesorEntity profesor) {
+	public ClaseEntity(Float horario, String estado, ProfesorEntity profesor, Date fecha) {
 		super();
 		this.horario = horario;
 		this.estado = estado;
 		this.setProfesor(profesor);
 		this.fecha = fecha;
-
 	}
 
 
