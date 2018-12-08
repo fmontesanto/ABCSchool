@@ -42,7 +42,7 @@ public class Alumno extends Usuario{
 	private ArrayList<ReservaDTO> reservas2DTO(){
 		ArrayList<ReservaDTO> reservasDTO=new ArrayList<ReservaDTO>(); 
 		for(Reserva reserva:reservas) {
-			ReservaDTO reservaDto=reserva.DTO();
+			ReservaDTO reservaDto=reserva.toDTO();
 			reservasDTO.add(reservaDto);
 		}
 		return reservasDTO;
