@@ -1,5 +1,10 @@
 package dao;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -45,17 +50,6 @@ public class ClaseDAO {
 		return result;
 	}
 	
-	public List<ClaseEntity> findByTeacher(Integer idProfesor)
-	{
-		SessionFactory sf = hibernateUtil.getSessionFactory();
-		Session session = sf.openSession();
-		List<ClaseEntity> result = null;
-		Query   q = session.createQuery("from ClaseEntity where idUsuario = ?").setParameter(0, idProfesor);
-		result = (List<ClaseEntity>) q.list();
-		session.close();
-		return result;
-	}
-
 
 	public void agregarClase(Clase cl)
 	{
@@ -144,7 +138,7 @@ public class ClaseDAO {
 			Session session = sf.openSession();
 			ArrayList<ClaseEntity> result = null;
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			Date today = Calendar.getInstance().getTime();        
+			java.util.Date today = Calendar.getInstance().getTime();        
 			String d = df.format(today);
 			Query   q = session.createQuery("from ClaseEntity where idUsuario = ? and fecha >= ? ").setParameter(0, id).setParameter(1, d);
 			result = (ArrayList<ClaseEntity>) q.list();

@@ -9,6 +9,7 @@ import dao.AlumnoDAO;
 import dao.ClaseDAO;
 import dao.MateriaDAO;
 import dao.ProfesorDAO;
+import dao.ResenaDAO;
 import dao.ReservaDAO;
 import dto.AlumnoDTO;
 import dto.ClaseDTO;
@@ -83,10 +84,10 @@ public class Controlador {
 		return profesor;
 	}
 	
-	public void altaClase(String materia,Date fecha, float horaInicio, float horaFin, String estado,String dniProfesor) {
+	public void altaClase(String materia,Date fecha,float horario, String estado,String dniProfesor) {
 		Profesor profesor=buscarProfesor(dniProfesor);
 		Materia mat=MateriaDAO.getInstancia().findByName(materia).toMateria();
-		Clase clase=new Clase(mat,fecha,horaInicio,horaFin,estado,0,profesor);
+		Clase clase=new Clase(mat,fecha,horario,estado,0,profesor);
 		clase.save();
 	}
 	public Materia buscarMateria(String nombre) {
@@ -147,9 +148,9 @@ public class Controlador {
 		//Hay que buscar en las tablas todas las clases con estado disponible. funcion en entity..
 		// mucho mas facil que tener que agarrar cada materia y hacer un findBymateria...
 	}
-	public ArrayList<Reserva> obtenerReservasAlumno (String dniAlumno) { //Devuelve arrayList de reservas DTO de un determinado usuario
-		// las reservas de alumno no se cargan cuando se busca en el dao?			ArrayList<ReservaEntity> res = ReservaDAO.getInstancia().findByStudent(dniAlumno);
-		return alumno.toDTO().getReservas();			return toReservas(res);
+	public ArrayList<Reserva> obtenerReservasAlumno (String dniAlumno) { 		
+		ArrayList<ReservaEntity> res = ReservaDAO.getInstancia().findByStudent(dniAlumno);
+		return toReservas(res);
 	}
 	
 	public ArrayList<Reserva> toReservas(ArrayList<ReservaEntity> reservas){
@@ -181,6 +182,7 @@ public class Controlador {
 	}
 	public AlumnoDTO obtenerAlumnoDTO (String dniAlumno) { 
 		return buscarAlumno(dniAlumno).toDTO();	
+	}
 
 
 		public ArrayList<Clase> toClases(ArrayList<ClaseEntity> clases){
