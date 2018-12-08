@@ -58,7 +58,7 @@ public class Test {
 		
 		
 		//Obtener clases disponibles
-		ArrayList<Clase> clases = Controlador.getInstancia().verClasesDisponibles();
+		ArrayList<Clase> clases = Controlador.getInstancia().obtenerClasesProfesor("40");
 		for(Clase cl : clases){
 			System.out.println(cl.getIdClase());
 		}

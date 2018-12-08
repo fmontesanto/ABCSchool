@@ -29,11 +29,11 @@ public class ClaseEntity {
 	@Column(name="fecha")
 	private Date fecha;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn (name="idMateria")
 	protected MateriaEntity materia;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn (name="idUsuario")
 	protected ProfesorEntity profesor;
 

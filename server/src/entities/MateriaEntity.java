@@ -83,10 +83,10 @@ public class MateriaEntity {
 		this.profesores = profesores;
 	}	
 	public Materia toMateria(){
-		List<Clase> clases = new ArrayList<Clase>();
+		/*List<Clase> clases = new ArrayList<Clase>();
 		for(ClaseEntity c : this.clases){
 			clases.add(c.toClase());
-		}
-		return new Materia(nombre, idMateria, clases);
+		}*/
+		return new Materia(nombre, idMateria);
 	}
 }

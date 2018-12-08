@@ -141,7 +141,7 @@ public class Controlador {
 
 	public ArrayList<Clase> verClasesDisponibles() { 
 		ArrayList<ClaseEntity> clases=ClaseDAO.getInstancia().findAvailable();
-		ArrayList<Clase> clases2=null;
+		ArrayList<Clase> clases2= new ArrayList<Clase>();
 		for(ClaseEntity c: clases){
 			clases2.add(c.toClase());
 		}

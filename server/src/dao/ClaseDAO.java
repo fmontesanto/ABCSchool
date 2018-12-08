@@ -1,6 +1,5 @@
 package dao;
 
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -137,10 +136,10 @@ public class ClaseDAO {
 			SessionFactory sf = hibernateUtil.getSessionFactory();
 			Session session = sf.openSession();
 			ArrayList<ClaseEntity> result = null;
-			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			java.util.Date today = Calendar.getInstance().getTime();        
-			String d = df.format(today);
-			Query   q = session.createQuery("from ClaseEntity where idUsuario = ? and fecha >= ? ").setParameter(0, id).setParameter(1, d);
+			Query   q = session.createQuery("from ClaseEntity where idUsuario = ? and fecha >= :time ").setParameter(0, id);
+			q.setTimestamp("time", today);
 			result = (ArrayList<ClaseEntity>) q.list();
 			session.close();
 			return result;
@@ -154,9 +153,8 @@ public class ClaseDAO {
 			ArrayList<ClaseEntity> result = null;
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			java.util.Date today = Calendar.getInstance().getTime();
-			String d = df.format(today);
-			System.out.println(d);
-			Query   q = session.createQuery("from ClaseEntity where fecha >= ? and estado= ? ").setParameter(0, d).setParameter(1, "Libre");
+			Query   q = session.createQuery("from ClaseEntity where estado= ? and fecha >= :time").setParameter(0, "Libre");
+			q.setTimestamp("time", today);
 			result = (ArrayList<ClaseEntity>) q.list();
 			session.close();
 			return result;
