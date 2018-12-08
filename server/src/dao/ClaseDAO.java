@@ -148,4 +148,17 @@ public class ClaseDAO {
 		else 
 			return null;
 	}
+	public ArrayList<ClaseEntity> findAvailable(){
+			SessionFactory sf = hibernateUtil.getSessionFactory();
+			Session session = sf.openSession();
+			ArrayList<ClaseEntity> result = null;
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			java.util.Date today = Calendar.getInstance().getTime();
+			String d = df.format(today);
+			System.out.println(d);
+			Query   q = session.createQuery("from ClaseEntity where fecha >= ? and estado= ? ").setParameter(0, d).setParameter(1, "Libre");
+			result = (ArrayList<ClaseEntity>) q.list();
+			session.close();
+			return result;
+}
 }

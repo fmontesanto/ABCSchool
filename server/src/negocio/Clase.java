@@ -21,7 +21,7 @@ public class Clase {
 	public Clase(Materia mat, Date fecha, Float horario, String estado, int numero, Profesor profesor) {
 		this.materia = mat;
 		this.estado = estado;
-		this.idClase = idClase; //chequear esto
+		this.idClase = numero; //chequear esto
 		this.profesor = profesor;
 		this.horario = horario;
 		this.fecha = fecha;

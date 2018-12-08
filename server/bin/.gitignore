@@ -1,4 +1,6 @@
 /controller/
+/remoteobjects/
+/negocio/
 /dao/
 /entities/
 /excepciones/

@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -41,19 +42,26 @@ public class Test {
 		/*List<ClaseEntity> c = ClaseDAO.getInstancia().findBySubject(1);
 		for(ClaseEntity cl : c)
 			System.out.println(cl.getIdClase());*/
-		AlumnoEntity a=AlumnoDAO.getInstancia().findByDni("23832303");
-		Alumno al=new Alumno (a.getDni(),a.getNombre(),a.getMail(),a.getTelefono(),a.getDomicilio(),a.getFechaNacimiento(),a.getContra(),a.getSaldoAFavor());
-		ReservaEntity r = ReservaDAO.getInstancia().findById(10);
-		Reserva re = new Reserva(r.getIdReserva(), r.getDescuento(), r.getMonto(), r.getCantAlum(), r.isPaga(), r.getFecha(), al);
-		ClaseEntity c = ClaseDAO.getInstancia().findByCode(1);
-		ProfesorEntity p = ProfesorDAO.getInstancia().findByDni("23803");
-		Profesor pr = new Profesor(p.getDni(), p.getNombre(), p.getMail(), p.getTelefono(), p.getDomicilio(), p.getFechaNacimiento(), p.getContra(), p.getDomicilioClases(), p.getAnticipacionReserva());
-		Materia m = new Materia("Matematica", 1);
-		Clase clase = new Clase(m, c.getHorario(), c.getEstado(), c.getIdClase(), pr, re);
-		re.addClases(clase);
-		FacturaEntity f=FacturaDAO.getInstancia().findByCode(1);
-		Factura fe= new Factura(f.getFecha(),f.getMonto(),f.getTipo(),f.getRemitente(),f.getMedioPago(),f.getNroFactura(), re);
-		ReservaDAO.getInstancia().completarReserva(re);
+		//AlumnoEntity a=AlumnoDAO.getInstancia().findByDni("23832303");
+		//Alumno al=new Alumno (a.getDni(),a.getNombre(),a.getMail(),a.getTelefono(),a.getDomicilio(),a.getFechaNacimiento(),a.getContra(),a.getSaldoAFavor());
+		//ReservaEntity r = ReservaDAO.getInstancia().findById(10);
+		//Reserva re = new Reserva(r.getIdReserva(), r.getDescuento(), r.getMonto(), r.getCantAlum(), r.isPaga(), r.getFecha(), al);
+		//ClaseEntity c = ClaseDAO.getInstancia().findByCode(1);
+		//ProfesorEntity p = ProfesorDAO.getInstancia().findByDni("23803");
+		//Profesor pr = new Profesor(p.getDni(), p.getNombre(), p.getMail(), p.getTelefono(), p.getDomicilio(), p.getFechaNacimiento(), p.getContra(), p.getDomicilioClases(), p.getAnticipacionReserva());
+		//Materia m = new Materia("Matematica", 1);
+		//Clase clase = new Clase(m, c.getHorario(), c.getEstado(), c.getIdClase(), pr, re);
+		//re.addClases(clase);
+		//FacturaEntity f=FacturaDAO.getInstancia().findByCode(1);
+		//Factura fe= new Factura(f.getFecha(),f.getMonto(),f.getTipo(),f.getRemitente(),f.getMedioPago(),f.getNroFactura(), re);
+		//ReservaDAO.getInstancia().completarReserva(re);
+		
+		
+		//Obtener clases disponibles
+		ArrayList<Clase> clases = Controlador.getInstancia().verClasesDisponibles();
+		for(Clase cl : clases){
+			System.out.println(cl.getIdClase());
+		}
 		System.exit(0);
 		
 

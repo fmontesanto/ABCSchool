@@ -66,9 +66,9 @@ public class Materia {
 	public void save() {
 		MateriaDAO.getInstancia().agregarMateria(this);
 	}
-	public void update() {
+/*	public void update() {
 		MateriaDAO.getInstancia().update(this);
-	}
+	}*/
 
 	public MateriaDTO toDTO() {
 		MateriaDTO dto=new MateriaDTO(nombre,idMateria);
