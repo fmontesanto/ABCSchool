@@ -1,6 +1,7 @@
 package negocio;
 
 import dao.ResenaDAO;
+import dto.ResenaDTO;
 import views.ResenaView;
 
 public class Resena {
@@ -57,5 +58,9 @@ public class Resena {
 	}
 	public void save () {
 		ResenaDAO.getInstancia().agregarResena(this);
+	}
+	public ResenaDTO toDTO() {
+		 ResenaDTO dto=new ResenaDTO(puntuacion,comentario);
+		 return dto;
 	}
 }
