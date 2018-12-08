@@ -18,35 +18,35 @@
     <form action="AltaAlumnoServlet" method="post">
 		<div>
 			<label for="dni">DNI:</label>
-			<input type="text" id="dni" placeholder="ej: 40739532" />
+			<input name= "dni" type="text" id="dni" placeholder="ej: 40739532" />
 		</div>
 		<div>
 			<label for="nombre">Nombre:</label>
-			<input type="text" id="nombre" placeholder="ej: Juan Ignacio Alvarez" />
+			<input name= "nombre" type="text" id="nombre" placeholder="ej: Juan Ignacio Alvarez" />
 		</div>
 		<div>
 			<label for="domicilio">Domicilio:</label>
-			<input type="text" id="domicilio" placeholder="ej: Arenales 233" />
+			<input name= "domicilio" type="text" id="domicilio" placeholder="ej: Arenales 233" />
 		</div>
 		<div>
 			<label for="mail">e-mail:</label>
-			<input type="email" id="mail" placeholder="ej: juan.alvarez@dominio.com" />
+			<input name= "mail" type="email" id="mail" placeholder="ej: juan.alvarez@dominio.com" />
 		</div>
 		<div>
 			<label for="telefono">Teléfono:</label>
-			<input type="text" id="telefono" placeholder="ej: 48524444" />
+			<input name= "telefono" type="text" id="telefono" placeholder="ej: 48524444" />
 		</div>
 		<div>
 			<label for="fechaNac">Fecha de nacimiento:</label>
-			<input type="text" id="fechaNac" placeholder="dd/mm/aaaa" />
+			<input name= "fechaNac" type="text" id="fechaNac" placeholder="dd/mm/aaaa" />
 		</div>
 		<div>
 			<label for="pass">Contraseña:</label>
-			<input type="password" id="pass" />
+			<input name= "pass" type="password" id="pass" />
 		</div>
 		<div>
 			<label for="passConf">Confirmar contraseña:</label>
-			<input type="password" id="passConf" />
+			<input name= "passConf" type="password" id="passConf" />
 		</div>
 		
 		<div>
