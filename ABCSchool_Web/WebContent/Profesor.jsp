@@ -21,11 +21,10 @@
       <nav class="menu">
         <ul>
           <li><a href="">Inicio</a></li>
-          <li><a href="/Profesor/calendar.html">Cargar clases</a></li>
+          <li><a href="CalendarioProfesor.jsp">Cargar clases</a></li>
           <li><a href="">Mi perfil</a></li>
-          <li><a href="">Opciones</a></li>
           <ul class="end">
-            <li><a href="">
+            <li><a href="Inicio.jsp">
               <span>Cerrar sesion</span>
               </a>
             </li>
