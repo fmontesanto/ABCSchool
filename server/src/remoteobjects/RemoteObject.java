@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import controller.Controlador;
 import dto.AlumnoDTO;
 import dto.ClaseDTO;
-import dto.MateriaDTO;
 import dto.ProfesorDTO;
 import dto.ResenaDTO;
 import dto.ReservaDTO;
@@ -17,10 +16,8 @@ import excepciones.ConnectionException;
 import excepciones.ProfesorException;
 import interfaces.IRemota;
 import negocio.Alumno;
-import negocio.Clase;
 import negocio.Materia;
 import negocio.Profesor;
-import negocio.Resena;
 import negocio.Reserva;
 
 public class RemoteObject extends UnicastRemoteObject implements IRemota {
@@ -60,8 +57,8 @@ public class RemoteObject extends UnicastRemoteObject implements IRemota {
 		Controlador.getInstancia().bajaAlumno(dni);
 	}
 
-	public AlumnoDTO buscarAlumno(String dni) throws RemoteException {
-		return Controlador.getInstancia().buscarAlumno(dni).toDTO();
+	public Alumno buscarAlumno(String dni) throws RemoteException {
+		return Controlador.getInstancia().buscarAlumno(dni);
 	}
 
 	public void altaProfesor(String dni, String nombre, String mail, String telefono, String domicilio,
@@ -91,20 +88,20 @@ public class RemoteObject extends UnicastRemoteObject implements IRemota {
 		Controlador.getInstancia().bajaProfesor(dni);
 	}
 
-	public ProfesorDTO buscarProfesor(String dni) throws RemoteException {
+	public Profesor buscarProfesor(String dni) throws RemoteException {
 		return Controlador.getInstancia().buscarProfesor(dni).toDTO();
 	}
-	public void altaClase(String materia,Date fecha, float horario, String estado,String dniProfesor) throws RemoteException{
-		Controlador.getInstancia().altaClase(materia, fecha, horario, estado, dniProfesor);
+	public void altaClase(String materia,Date fecha, float horaInicio, float horaFin, String estado,String dniProfesor) throws RemoteException, ConnectionException{
+		Controlador.getInstancia().altaClase(materia, fecha, horaInicio, horaFin, estado, dniProfesor);
 	}
-	public MateriaDTO buscarMateria(String nombre) throws RemoteException {
-		return Controlador.getInstancia().buscarMateria(nombre).toDTO();
+	public Materia buscarMateria(String nombre) throws RemoteException {
+		return Controlador.getInstancia().buscarMateria(nombre);
 	}
 	public void altaMateria(String nombreMat)throws RemoteException {
 		Controlador.getInstancia().altaMateria(nombreMat);
 	}
-	public ReservaDTO buscarReserva(int idReserva)throws RemoteException{
-		return Controlador.getInstancia().buscarReserva(idReserva).toDTO();
+	public Reserva buscarReserva(int idReserva)throws RemoteException{
+		return Controlador.getInstancia().buscarReserva(idReserva);
 	}
 	public void altaReserva(Integer idReserva, Float descuento, Float monto, Integer cantAlum, boolean paga,
 			Date fecha, String dniAlumno,ArrayList<String> clases) throws RemoteException{
@@ -117,35 +114,21 @@ public class RemoteObject extends UnicastRemoteObject implements IRemota {
 		Controlador.getInstancia().generarFactura(idReserva, tipo, remitente, medioPago);
 	}
 	public ArrayList<ClaseDTO> verClasesDisponibles() throws RemoteException{
-		ArrayList<Clase>clases= Controlador.getInstancia().verClasesDisponibles();
-		ArrayList<ClaseDTO> clasesDTO=new ArrayList<ClaseDTO>();
-		for (Clase clase:clases) {
-			clasesDTO.add(clase.DTO());
-		}
-		return clasesDTO;
+		return Controlador.getInstancia().verClasesDisponibles();
 	}
 	public ArrayList<ReservaDTO>  obtenerReservasAlumno(String dniAlumno) throws RemoteException{
-		ArrayList<Reserva>reservas= Controlador.getInstancia().obtenerReservasAlumno(dniAlumno);
-		ArrayList<ReservaDTO> reservasDTO=new ArrayList<ReservaDTO>();
-		for (Reserva reserva:reservas) {
-			reservasDTO.add(reserva.toDTO());
-		}
-		return reservasDTO;
+		return Controlador.getInstancia().obtenerReservasAlumno(dniAlumno);
 	}
 	public ArrayList<ClaseDTO> obtenerClaseProfesor(String dniProf) throws RemoteException{
-		ArrayList<Clase>clases= Controlador.getInstancia().obtenerClasesProfesor(dniProf);
-		ArrayList<ClaseDTO> clasesDTO=new ArrayList<ClaseDTO>();
-		for (Clase clase:clases) {
-			clasesDTO.add(clase.DTO());
-		}
-		return clasesDTO;
+		return Controlador.getInstancia().obtenerClasesProfesor(dniProf);
 	}
 	public ArrayList<ResenaDTO> obtenerResenasProfesor(String dniProfesor) throws RemoteException {
-		ArrayList<Resena>resenas= Controlador.getInstancia().obtenerResenasProfesor(dniProfesor);
-		ArrayList<ResenaDTO> resenasDTO=new ArrayList<ResenaDTO>();
-		for (Resena resena:resenas) {
-			resenasDTO.add(resena.toDTO());
-		}
-		return resenasDTO;
+		return Controlador.getInstancia().obtenerResenasProfesor(dniProfesor);
+	}
+	public ProfesorDTO obtenerProfesorDTO (String dniProf) throws RemoteException{
+		return Controlador.getInstancia().obtenerProfesorDTO(dniProf);
+	}
+	public AlumnoDTO obtenerAlumnoDTO(String dniAlumno) throws RemoteException {
+		return Controlador.getInstancia().obtenerAlumnoDTO(dniAlumno);
 	}
 }
