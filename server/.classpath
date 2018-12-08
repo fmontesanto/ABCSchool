@@ -71,6 +71,6 @@
 	<classpathentry kind="lib" path="xpp3_min-1.1.4c.jar"/>
 	<classpathentry kind="lib" path="xstream-0.0.12.jar"/>
 	<classpathentry kind="lib" path="xstream-1.4.3.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ABCSchoolRepository"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Repository"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
