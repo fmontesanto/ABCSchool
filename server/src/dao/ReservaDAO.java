@@ -3,6 +3,7 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -134,5 +135,21 @@ public class ReservaDAO {
 			session.getTransaction().commit();
 		}
 		session.close();
+	}
+	public ArrayList<ReservaEntity> findByStudent(String dni)
+	{
+		int id = -1;
+		id = AlumnoDAO.getInstancia().findByDni(dni).getIdUsuario();
+		if(id != -1){
+			SessionFactory sf = hibernateUtil.getSessionFactory();
+			Session session = sf.openSession();
+			ArrayList<ReservaEntity> result = null;
+			Query   q = session.createQuery("from ReservaEntity where idUsuario = ?").setParameter(0, id);
+			result = (ArrayList<ReservaEntity>) q.list();
+			session.close();
+			return result;
+		}
+		else
+			return null;
 	}
 }

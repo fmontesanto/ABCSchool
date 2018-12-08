@@ -15,6 +15,9 @@ import dto.ClaseDTO;
 import dto.ProfesorDTO;
 import dto.ResenaDTO;
 import dto.ReservaDTO;
+import entities.ClaseEntity;
+import entities.ResenaEntity;
+import entities.ReservaEntity;
 import excepciones.AlumnoException;
 import excepciones.ConnectionException;
 import negocio.Alumno;
@@ -144,14 +147,22 @@ public class Controlador {
 		//Hay que buscar en las tablas todas las clases con estado disponible. funcion en entity..
 		// mucho mas facil que tener que agarrar cada materia y hacer un findBymateria...
 	}
-	public ArrayList<ReservaDTO> obtenerReservasAlumno (String dniAlumno) { //Devuelve arrayList de reservas DTO de un determinado usuario
-		Alumno alumno=buscarAlumno(dniAlumno);
-		// las reservas de alumno no se cargan cuando se busca en el dao?
-		return alumno.toDTO().getReservas();
+	public ArrayList<Reserva> obtenerReservasAlumno (String dniAlumno) { //Devuelve arrayList de reservas DTO de un determinado usuario
+		// las reservas de alumno no se cargan cuando se busca en el dao?			ArrayList<ReservaEntity> res = ReservaDAO.getInstancia().findByStudent(dniAlumno);
+		return alumno.toDTO().getReservas();			return toReservas(res);
 	}
-	public  ArrayList<ClaseDTO> obtenerClasesProfesor(String dniProf){
-		//find by teacher deuvelve una list de clases entities hay que pasarlos a clases de negocio y pedirles el dto.
+	
+	public ArrayList<Reserva> toReservas(ArrayList<ReservaEntity> reservas){
+		ArrayList<Reserva> res = new ArrayList<Reserva>();
+		for(ReservaEntity r : reservas){
+			res.add(r.toReserva());
+		}
+		return res;
 	}
+	public ArrayList<Clase> obtenerClasesProfesor(String dniProf){
+		ArrayList<ClaseEntity> clas = ClaseDAO.getInstancia().findByTeacher(dniProf);
+		return toClases(clas);
+	}		
 	public void anadirResena(String dniProf,float puntuacion, String comentario) { 
 		Profesor profesor=ProfesorDAO.getInstancia().findByDni(dniProf).toProfesor();
 		Resena resena=new Resena(puntuacion,comentario,profesor);
@@ -160,9 +171,10 @@ public class Controlador {
 		profesor.calcularPuntuacion();
 		profesor.update();
 	}
-	public ArrayList<ResenaDTO> obtenerResenasProfesor(String dniProfesor) { // devolver arrayList de resenasdto de un determinado prof
-		//TODO mismo que con reservas, estoy cargando las resenas a la clase profesor cuando lo busco? si no hay que buscar resenas por dniProfesor
-	}
+	public ArrayList<Resena> obtenerResenasProfesor(String dniProfesor) {
+		ArrayList<ResenaEntity> res = ResenaDAO.getInstancia().findByTeacher(dniProfesor);
+		return toResenas(res);
+	}		
 
 	public ProfesorDTO obtenerProfesorDTO (String dniProf) {  
 		return buscarProfesor(dniProf).toDTO();
@@ -171,11 +183,22 @@ public class Controlador {
 		return buscarAlumno(dniAlumno).toDTO();	
 
 
-	public ArrayList<Clase> toClases(ArrayList<ClaseEntity> clases){
-		ArrayList<Clase> cla = new ArrayList<Clase>();
-		for(ClaseEntity c : clases){
-			cla.add(c.toClase());
+		public ArrayList<Clase> toClases(ArrayList<ClaseEntity> clases){
+			ArrayList<Clase> cla = new ArrayList<Clase>();
+			for(ClaseEntity c : clases){
+				cla.add(c.toClase());
+			}
+			return cla;
+		}		
+	
+	public ArrayList<Resena> toResenas(ArrayList<ResenaEntity> resenas){
+		ArrayList<Resena> res = new ArrayList<Resena>();
+		for(ResenaEntity r : resenas){
+			res.add(r.toResena());
 		}
-		return cla;
+		return res;
 	}
+	
+	
+}
 

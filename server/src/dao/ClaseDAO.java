@@ -71,7 +71,7 @@ public class ClaseDAO {
 			if(p==null)
 				flag=1;	
 			else
-				c=new ClaseEntity(cl.getHorario(), cl.getEstado(), p);
+				c=new ClaseEntity(cl.getHorario(), cl.getEstado(), p, cl.getFecha());
 		}
 		session.beginTransaction();
 		if(flag==0)
@@ -79,6 +79,7 @@ public class ClaseDAO {
 		session.getTransaction().commit();
 		session.close();
 	}
+
 
 	public void borrarClase(Integer idClase)
 	{
@@ -134,5 +135,23 @@ public class ClaseDAO {
 			session.getTransaction().commit();
 		}
 		session.close();
+	}
+	public ArrayList<ClaseEntity> findByTeacher(String dni){
+		int id = -1;
+		id = ProfesorDAO.getInstancia().findByDni(dni).getIdUsuario();
+		if(id != -1){
+			SessionFactory sf = hibernateUtil.getSessionFactory();
+			Session session = sf.openSession();
+			ArrayList<ClaseEntity> result = null;
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			Date today = Calendar.getInstance().getTime();        
+			String d = df.format(today);
+			Query   q = session.createQuery("from ClaseEntity where idUsuario = ? and fecha >= ? ").setParameter(0, id).setParameter(1, d);
+			result = (ArrayList<ClaseEntity>) q.list();
+			session.close();
+			return result;
+		}
+		else 
+			return null;
 	}
 }

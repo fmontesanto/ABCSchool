@@ -48,9 +48,9 @@ public class Alumno extends Usuario{
 		return reservasDTO;
 	}
 	public AlumnoDTO toDTO(){
-		ArrayList<ReservaDTO> reservasDTO=reservas2DTO();
-		return new AlumnoDTO(dni, nombre, mail, telefono, domicilio, fechaNacimiento, contra, saldoAFavor,reservasDTO);
+		return new AlumnoDTO(dni, nombre, mail, telefono, domicilio, fechaNacimiento, contra, saldoAFavor);
 	}
+
 
 	public void update() {
 		AlumnoDAO.getInstancia().modificarAlumno(this);
@@ -61,5 +61,6 @@ public class Alumno extends Usuario{
 	public void delete() {
 		AlumnoDAO.getInstancia().bajaAlumno(this);
 	}
+	
 }
 

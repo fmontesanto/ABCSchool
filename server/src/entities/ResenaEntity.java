@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import negocio.Resena;
+
 @Entity
 @Table(name="Resena")
 public class ResenaEntity {
@@ -68,4 +70,7 @@ public class ResenaEntity {
 	public void setProfesor(ProfesorEntity profesor) {
 		this.profesor = profesor;
 	}
+	public Resena toResena(){
+		return new Resena(puntuacion, comentario, profesor.toProfesor());
+	} 
 }

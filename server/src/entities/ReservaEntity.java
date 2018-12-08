@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import negocio.Reserva;
+
 @Entity
 @Table(name="Reserva")
 public class ReservaEntity {
@@ -155,5 +157,8 @@ public class ReservaEntity {
  		else 
  			return -1f;
  	}
+	public Reserva toReserva(){
+		return new Reserva(idReserva, descuento, monto, cantAlum, paga, fecha, alumno.toAlumno());
+	}
 }
 

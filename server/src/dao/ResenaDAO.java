@@ -1,5 +1,8 @@
 package dao;
 
+import java.util.ArrayList;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -52,4 +55,21 @@ public class ResenaDAO {
 		session.getTransaction().commit();
 		session.close();
 	}
+	public ArrayList<ResenaEntity> findByTeacher(String dni)
+	{
+		int id = -1;
+		id = ProfesorDAO.getInstancia().findByDni(dni).getIdUsuario();
+		if(id != -1){
+			SessionFactory sf = hibernateUtil.getSessionFactory();
+			Session session = sf.openSession();
+			ArrayList<ResenaEntity> result = null;
+			Query   q = session.createQuery("from ResenaEntity where idUsuario = ?").setParameter(0, id);
+			result = (ArrayList<ResenaEntity>) q.list();
+			session.close();
+			return result;
+		}
+		else
+			return null;
+	}
+
 }

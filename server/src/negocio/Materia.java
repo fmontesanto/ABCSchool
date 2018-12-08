@@ -70,7 +70,7 @@ public class Materia {
 		MateriaDAO.getInstancia().update(this);
 	}
 
-	public MateriaDTO DTO() {
+	public MateriaDTO toDTO() {
 		MateriaDTO dto=new MateriaDTO(nombre,idMateria);
 		return dto;
 	}
