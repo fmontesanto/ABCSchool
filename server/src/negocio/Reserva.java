@@ -125,12 +125,9 @@ public class Reserva {
 	}
 	
 	public void calcularMontoTotal() {
-		float total=0;
-		for (Clase clase:clases) {
-			total=+clase.getMonto(); 
-		}
-		total=total*(1-descuento);
-		this.monto=total;
+		float precioClase=400;
+		int cantClases=clases.size();
+		this.monto=(cantClases*precioClase)*(1-descuento);
 	}
 	
 	public void save() {
@@ -150,7 +147,7 @@ public class Reserva {
 		}
 		return clasesDTO;
 	}
-	public ReservaDTO DTO() {
+	public ReservaDTO toDTO() {
 		List<Integer> clases = new ArrayList<Integer>();
 		for(Clase c : this.clases){
 			clases.add(c.getIdClase());
