@@ -25,11 +25,11 @@ import negocio.Reserva;
 public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//Date d=Calendar.getInstance().getTime();
-		//Profesor p=new Profesor("23803","pepe","pepe@uade","234234242","domicilio",d,"123","domicilio clase",3f);
-		//Clase c =new Clase(2,34f,"Libre",p);
-		//c.agregarProfesor(p);
-		//ProfesorDAO.getInstancia().agregarProfesor(p);
+		Date d=Calendar.getInstance().getTime();
+		Profesor p=new Profesor("23803","pepe","pepe@uade","234234242","domicilio",d,"123","domicilio clase",3f);
+		Clase c =new Clase(2,34f,"Libre",p);
+		c.agregarProfesor(p);
+		ProfesorDAO.getInstancia().agregarProfesor(p);
 		//ClaseDAO.getInstancia().modificarClase(c);
 		//ClaseDAO.getInstancia().agregarClase(c);
 		//Alumno a=new Alumno("23832303","pepe","pepe@uade","234234242","domicilio",d,"123");
@@ -58,12 +58,12 @@ public class Test {
 		
 		
 		//Obtener clases disponibles
-		ArrayList<Clase> clases = Controlador.getInstancia().obtenerClasesProfesor("40");
+		/*ArrayList<Clase> clases = Controlador.getInstancia().obtenerClasesProfesor("40");
 		for(Clase cl : clases){
 			System.out.println(cl.getIdClase());
 		}
 		System.exit(0);
-		
+		*/
 
 	}
 }

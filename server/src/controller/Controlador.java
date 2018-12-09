@@ -1,6 +1,6 @@
 package controller;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -124,13 +124,13 @@ public class Controlador {
 		switch (codigo) {
 		case 1:
 			Alumno alumno=buscarAlumno(dni);
-			if (alumno!=null && password==alumno.getContra()) 
+			if (alumno!=null && password.equals(alumno.getContra())) 
 				return true;
 			else
 				return false;
 		case 2: 
 			Profesor profesor=buscarProfesor(dni);
-			if (profesor!=null && password==profesor.getContra()) 
+			if (profesor!=null && password.equals(profesor.getContra())) 
 				return true;
 			else
 				return false;

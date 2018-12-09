@@ -7,7 +7,7 @@ import dto.MateriaDTO;
 import dto.ProfesorDTO;
 import views.ClaseView;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Clase {
 	
