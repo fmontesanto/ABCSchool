@@ -30,15 +30,20 @@ public class LoginServlet extends HttpServlet {
 		String usr = request.getParameter("usr");
 		String clave = request.getParameter("clave");
 		String rol = request.getParameter("rol");
-
-		if(rol.equals("alum")) {
-			
-			
-		} else if(rol.equals("prof")) {
-			
-		} else if(rol.equals("admin")){
-			
-		}
+		Integer codigo=0;
+		if (rol.toUpperCase().contentEquals("ALUMNO")) 
+			codigo=1;
+			else if (rol.toUpperCase().contentEquals("PROFESOR"))
+				codigo=2;
+			else
+				codigo=3; //ADMIN FALTA IMPLEMENTAR;
+		String jspPage;
+		boolean logIn=BusinesDelegate.getInstancia().logIn(usr,clave,codigo); //REVISAR la llamada al bd
+		request.setAttribute("logIn",logIn);
+		request.setAttribute("rol",rol);
+		String jsp="/Login.jsp";
+		RequestDispatcher rd = request.getRequestDispatcher(jsp);
+        rd.forward(request, response);
 	}
 
 }

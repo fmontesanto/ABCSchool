@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.servlet.*;
 
 public class AltaProfesorServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,18 +27,17 @@ public class AltaProfesorServlet extends HttpServlet {
 		Date utilDate_FechaNac= df.parse(fechaNac);
 		java.sql.Date sqlDate_fechaNac=new java.sql.Date(utilDate_FechaNac.getTime());
 		Float anticipacionFloat=Float.valueOf(anticipacion);
+		String jsp;
 		if(pswd==pswdConf) {
 			//chequear como llamar bien al bd.
 			BusinessDelegate.getInstancia.altaProfesor(dniProfesor, nombreProfesor,mail,telefono,domicilio,  sqlDate_fechaNac,  pswd,  domicilioClases,  anticipacionFloat);
+			jsp="/DatosCorrectos.jsp";
 		}
 		else {
-			//Devolver datos incorrectos
+			jsp="//pendiente";
 		}
-		
-		//Ver response boolean y alta
-		
-		
-	
+		RequestDispatcher rd = request.getRequestDispatcher(jsp);
+        rd.forward(request, response);
 	}
 
 }
