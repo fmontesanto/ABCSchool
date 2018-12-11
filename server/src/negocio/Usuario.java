@@ -73,5 +73,11 @@ public abstract class Usuario {
 		return dni;
 		
 	}
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 
 }

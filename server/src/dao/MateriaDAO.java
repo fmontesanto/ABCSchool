@@ -52,8 +52,8 @@ public class MateriaDAO {
 		SessionFactory sf = hibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		ArrayList<MateriaEntity> result = null;
-		Query   q = session.createQuery("from MateriaEntity m join ProfersorEntity p where p.idUsuario=:?").setParameter(0, idUsuario);
-		result = (ArrayList<MateriaEntity>) q.list();
+		String hql = "from MateriaEntity m, ProfesorEntity p where p.idUsuario=:id";
+        result = (ArrayList<MateriaEntity>)session.createQuery(hql).setInteger("id", idUsuario).list();
 		session.close();
 		return result;
 	}
