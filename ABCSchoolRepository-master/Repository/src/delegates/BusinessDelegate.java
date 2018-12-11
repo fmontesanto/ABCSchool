@@ -37,9 +37,9 @@ public class BusinessDelegate {
 		try {
 			remota = (IRemota)Naming.lookup("rmi://localhost/Abc");
 		} catch (MalformedURLException e) {
-			throw new ComunicacionException("La dirección del servidor es incorrecta");
+			throw new ComunicacionException("La direcciï¿½n del servidor es incorrecta");
 		} catch (RemoteException e) {
-			throw new ComunicacionException("La conección con el servidor es incorrecta");
+			throw new ComunicacionException("La conecciï¿½n con el servidor es incorrecta");
 		} catch (NotBoundException e) {
 			throw new ComunicacionException("Error en el acceso al servidor");	
 		}
@@ -222,6 +222,14 @@ public class BusinessDelegate {
 		}catch (RemoteException e) {
 			throw new ComunicacionException("Error en la conexion");
 		}
+	}
+	
+	public FacturaDTO buscarFactura(int idReserva) {
+	try {
+		return remota.buscarFactura(idReserva);
+	}catch (RemoteException e) {
+		throw new ComunicacionException("Error en la conexion");
+	}
 	}
 	
 }

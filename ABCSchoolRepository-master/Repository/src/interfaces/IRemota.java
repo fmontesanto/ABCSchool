@@ -68,6 +68,8 @@ public interface IRemota extends Remote{
 	
 	public AlumnoDTO obtenerAlumnoDTO(String dniAlumno) throws RemoteException;
 	
+	public FacturaDTO buscarFactura(int idReserva) throws RemoteException;
+	
 }
 	
 
