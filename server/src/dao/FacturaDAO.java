@@ -31,6 +31,15 @@ public class FacturaDAO {
 		return f;
 	}
 	
+	public FacturaEntity findByReserva(Integer idReserva)
+	{
+		SessionFactory sf = hibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		FacturaEntity f = (FacturaEntity) session.createQuery("from FacturaEntity where idReserva = ?").setParameter(0, idReserva).uniqueResult();
+		session.close();
+		return f;
+	}
+	
 	public void agregarFactura(Factura f)
 	{
 		SessionFactory sf = hibernateUtil.getSessionFactory();
