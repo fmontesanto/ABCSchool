@@ -19,6 +19,12 @@ public class Profesor extends Usuario{
 		this.anticipacionReserva=anticipacion;
 		this.domicilioClases=domicilioClases;
 	}
+	
+	public Profesor (int idUsuario,String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String contra, String domicilioClases,float anticipacion) {
+		super(idUsuario,dni,nombre,mail,telefono, domicilio, fechaNacimiento,contra);
+		this.anticipacionReserva=anticipacion;
+		this.domicilioClases=domicilioClases;
+	}
 
 	public String getDomicilioClases() {
 		return domicilioClases;
@@ -81,6 +87,6 @@ public class Profesor extends Usuario{
 		this.puntuacion=(sumaPuntuacion/resenas.size());
 	}
 	public ProfesorDTO toDTO(){
-		return new ProfesorDTO(dni, nombre, mail, telefono, domicilio, fechaNacimiento, contra, domicilioClases, anticipacionReserva);
+		return new ProfesorDTO(idUsuario,dni, nombre, mail, telefono, domicilio, fechaNacimiento, contra, domicilioClases, anticipacionReserva);
 	}
 }

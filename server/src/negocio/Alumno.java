@@ -24,7 +24,12 @@ public class Alumno extends Usuario{
 		super( dni,  nombre,  mail,  telefono, domicilio, fechaNacimiento, contra);
 		this.saldoAFavor=saldoAFavor;
 	}
-
+	
+	public Alumno(int idUsuario,String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String contra) {
+		super(idUsuario, dni,  nombre,  mail,  telefono, domicilio, fechaNacimiento, contra);
+		this.saldoAFavor=0f;
+	}
+	
 	public float getSaldoAFavor() {
 		return saldoAFavor;
 	}
@@ -48,7 +53,7 @@ public class Alumno extends Usuario{
 		return reservasDTO;
 	}
 	public AlumnoDTO toDTO(){
-		return new AlumnoDTO(dni, nombre, mail, telefono, domicilio, fechaNacimiento, contra, saldoAFavor);
+		return new AlumnoDTO(idUsuario,dni, nombre, mail, telefono, domicilio, fechaNacimiento, contra, saldoAFavor);
 	}
 
 

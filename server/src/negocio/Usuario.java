@@ -12,6 +12,16 @@ public abstract class Usuario {
 	protected String contra;
 	protected Integer idUsuario;
 	
+	public Usuario(int idUsuario,String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String contra) {
+		this.idUsuario=idUsuario;
+		this.dni=dni;
+		this.nombre=nombre;
+		this.mail=mail;
+		this.telefono=telefono;
+		this.domicilio=domicilio;
+		this.fechaNacimiento=fechaNacimiento;
+		this.contra=contra;
+	}
 	public Usuario(String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String contra) {
 		this.dni=dni;
 		this.nombre=nombre;
