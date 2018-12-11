@@ -8,6 +8,8 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -33,7 +35,12 @@ public class ProfesorEntity extends UsuarioEntity {
 	@OneToMany(mappedBy="profesor", cascade=CascadeType.ALL)
 	private List<ClaseEntity> clases;
 	
-	@ManyToMany(mappedBy = "profesores")
+	
+	@ManyToMany
+    @JoinTable(
+        name = "ProfesorMateria", 
+        joinColumns = { @JoinColumn(name = "idUsuario") }, 
+        inverseJoinColumns = { @JoinColumn(name = "idMateria") } )
 	private Set<MateriaEntity> materias = new HashSet<MateriaEntity>();
 
 	public ProfesorEntity() {}	

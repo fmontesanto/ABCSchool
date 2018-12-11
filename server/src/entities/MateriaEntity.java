@@ -35,11 +35,7 @@ public class MateriaEntity {
 	@OneToMany(mappedBy="materia", cascade=CascadeType.ALL)
 	private List<ClaseEntity> clases;
 	
-	@ManyToMany
-    @JoinTable(
-        name = "MateriaProfesor", 
-        joinColumns = { @JoinColumn(name = "idMateria") }, 
-        inverseJoinColumns = { @JoinColumn(name = "idUsuario") } )
+	@ManyToMany(mappedBy = "materias",cascade=CascadeType.ALL)
     Set<ProfesorEntity> profesores = new HashSet<ProfesorEntity>();
 
 	public MateriaEntity(){}
