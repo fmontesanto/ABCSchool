@@ -7,6 +7,7 @@ import java.util.Calendar;
 import antlr.collections.List;
 import dao.AlumnoDAO;
 import dao.ClaseDAO;
+import dao.FacturaDAO;
 import dao.MateriaDAO;
 import dao.ProfesorDAO;
 import dao.ResenaDAO;
@@ -18,6 +19,7 @@ import excepciones.AlumnoException;
 import excepciones.ConnectionException;
 import negocio.Alumno;
 import negocio.Clase;
+import negocio.Factura;
 import negocio.Materia;
 import excepciones.ProfesorException;
 import negocio.Profesor;
@@ -192,6 +194,12 @@ public class Controlador {
 			res.add(r.toResena());
 		}
 		return res;
+	}
+	
+	public Factura buscarFactura(int idReserva) {
+		Reserva reserva=buscarReserva(idReserva);
+		Factura factura=FacturaDAO.findFacturaByReserva(idReserva);
+		return factura;
 	}
 
 

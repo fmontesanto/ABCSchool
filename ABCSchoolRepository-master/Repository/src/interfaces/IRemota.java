@@ -16,6 +16,7 @@ import negocio.Alumno;
 import negocio.Materia;
 import negocio.Profesor;
 import negocio.Reserva;
+import remoteobjects.FacturaDTO;
 
 public interface IRemota extends Remote{
 	public boolean logIn (String dni, String password, int codigo) throws RemoteException;
@@ -67,6 +68,8 @@ public interface IRemota extends Remote{
 	public ProfesorDTO obtenerProfesorDTO (String dniProf) throws RemoteException;
 	
 	public AlumnoDTO obtenerAlumnoDTO(String dniAlumno) throws RemoteException;
+	
+	public FacturaDTO buscarFactura(int idReserva) throws RemoteException;
 	
 }
 	

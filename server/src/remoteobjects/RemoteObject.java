@@ -18,6 +18,7 @@ import excepciones.ProfesorException;
 import interfaces.IRemota;
 import negocio.Alumno;
 import negocio.Clase;
+import negocio.Factura;
 import negocio.Materia;
 import negocio.Profesor;
 import negocio.Resena;
@@ -147,5 +148,9 @@ public class RemoteObject extends UnicastRemoteObject implements IRemota {
 			resenasDTO.add(resena.toDTO());
 		}
 		return resenasDTO;
+	}
+	public FacturaDTO buscarFactura(int idReserva) throws RemoteException {
+		FacturaDTO facturaDto=Controlador.getInstancia().buscarFactura(idReserva).toDTO();
+		return facturaDto;
 	}
 }
