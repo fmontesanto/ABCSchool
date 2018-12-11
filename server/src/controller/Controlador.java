@@ -12,6 +12,7 @@ import dao.ProfesorDAO;
 import dao.ResenaDAO;
 import dao.ReservaDAO;
 import entities.ClaseEntity;
+import entities.MateriaEntity;
 import entities.ResenaEntity;
 import entities.ReservaEntity;
 import excepciones.AlumnoException;
@@ -193,7 +194,18 @@ public class Controlador {
 		}
 		return res;
 	}
+	public ArrayList<Materia> toMaterias (ArrayList<MateriaEntity> m){
+		ArrayList<Materia> m2=null;
+		for (MateriaEntity me:m) {
+			m2.add(me.toMateria());
+		}
+	return m2;
+	}
 
+	public ArrayList<Materia> obtenerMateriasProfesor(int idUsuario){
+	ArrayList<MateriaEntity> m=MateriaDAO.getInstancia().findByTeacher(idUsuario);
+return toMaterias(m);
+}
 
 }
 

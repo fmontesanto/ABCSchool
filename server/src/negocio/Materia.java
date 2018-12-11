@@ -5,6 +5,7 @@ import java.util.List;
 
 import dao.MateriaDAO;
 import dto.MateriaDTO;
+import entities.MateriaEntity;
 import views.MateriaView;
 
 public class Materia {
@@ -74,4 +75,7 @@ public class Materia {
 		MateriaDTO dto=new MateriaDTO(nombre,idMateria);
 		return dto;
 	}
+
+
 }
+

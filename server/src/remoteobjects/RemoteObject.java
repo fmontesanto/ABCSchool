@@ -147,4 +147,12 @@ public class RemoteObject extends UnicastRemoteObject implements IRemota {
 		}
 		return resenasDTO;
 	}
+	public ArrayList<MateriaDTO> obtenerMateriasProfesor(int idUsuario) throws RemoteException {
+		ArrayList<Materia>materias= Controlador.getInstancia().obtenerMateriasProfesor(idUsuario);
+		ArrayList<MateriaDTO> materiasDTO=new ArrayList<MateriaDTO>();
+		for (Materia materia:materias) {
+			materiasDTO.add(materia.toDTO());
+		}
+		return materiasDTO;
+	}
 }

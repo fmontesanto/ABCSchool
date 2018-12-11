@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -46,6 +47,17 @@ public class MateriaDAO {
 		session.close();
 		return m;
 	}
+	public ArrayList<MateriaEntity> findByTeacher(int idUsuario)
+	{
+		SessionFactory sf = hibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		ArrayList<MateriaEntity> result = null;
+		Query   q = session.createQuery("from MateriaEntity m join ProfersorEntity p where p.idUsuario=:?").setParameter(0, idUsuario);
+		result = (ArrayList<MateriaEntity>) q.list();
+		session.close();
+		return result;
+	}
+	
 
 	public void agregarMateria(Materia m)
 	{
