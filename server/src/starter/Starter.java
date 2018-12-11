@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.sun.jmx.snmp.daemon.CommunicationException;
+
 import dao.MateriaDAO;
 import dao.ProfesorDAO;
+import delegates.BusinessDelegate;
 import negocio.Clase;
 import negocio.Materia;
 import negocio.Profesor;
@@ -40,5 +43,14 @@ public class Starter
 		materias.add(m5);
 		p.setMaterias(materias);
 		ProfesorDAO.getInstancia().agregarMateriaDisponible(p);
+		try {
+            BusinessDelegate.getInstancia().obtenerMateriasProfesor(1);
+        } catch (CommunicationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (javax.naming.CommunicationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
