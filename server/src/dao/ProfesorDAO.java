@@ -130,7 +130,7 @@ public class ProfesorDAO {
 					pr.setMaterias(m);
 			}
 			session.beginTransaction();
-			session.delete(pr);
+			session.save(pr);
 			session.getTransaction().commit();
 		}
 		session.close();
@@ -152,7 +152,7 @@ public class ProfesorDAO {
 					pr.setMaterias(m);
 			}
 			session.beginTransaction();
-			session.delete(pr);
+			session.save(pr);
 			session.getTransaction().commit();
 		}
 		session.close();

@@ -32,7 +32,7 @@ public class Starter
 		Clase c =new Clase(2,34f,"Libre",p);
 		c.agregarProfesor(p);
 		ProfesorDAO.getInstancia().agregarProfesor(p);
-		ArrayList <Materia> materias=null;
+		ArrayList <Materia> materias=new ArrayList<Materia>();
 		materias.add(m);
 		materias.add(m2);
 		materias.add(m3);
