@@ -30,6 +30,15 @@ public class ProfesorDAO {
 		session.close();
 		return p;
 	}
+	
+	public ProfesorEntity findByName(String nombre)
+	{
+		SessionFactory sf = hibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		ProfesorEntity p = (ProfesorEntity) session.createQuery("from ProfesorEntity where nombre = ?").setParameter(0, nombre).uniqueResult();
+		session.close();
+		return p;
+	}
 
 	public void agregarProfesor(Profesor p)
 	{
