@@ -79,7 +79,7 @@ public class Factura {
 	public void save() {
 		FacturaDAO.getInstancia().agregarFactura(this);
 	}
-	public FacturaDTO DTO() {
+	public FacturaDTO toDTO() {
 		FacturaDTO dto=new FacturaDTO(monto, tipo, remitente, medioPago,nroFactura, fecha);
 		return dto;
 	}

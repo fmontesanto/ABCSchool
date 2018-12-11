@@ -229,7 +229,7 @@ public class BusinessDelegate {
 		return remota.buscarFactura(idReserva);
 	}catch (RemoteException e) {
 		throw new ComunicacionException("Error en la conexion");
-	}
+		}
 	}
 	
 }
