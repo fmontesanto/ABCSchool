@@ -65,7 +65,7 @@ public class Test {
 			System.out.println(cl.getIdClase());
 		}*/
 		
-		ArrayList<MateriaEntity> res = MateriaDAO.getInstancia().findAll();
+		ArrayList<MateriaEntity> res = MateriaDAO.getInstancia().findAllSubjects();
 		for(MateriaEntity m : res){
 			System.out.println(m.getIdMateria());
 		}

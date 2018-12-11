@@ -7,6 +7,7 @@ import java.util.Calendar;
 import antlr.collections.List;
 import dao.AlumnoDAO;
 import dao.ClaseDAO;
+import dao.FacturaDAO;
 import dao.MateriaDAO;
 import dao.ProfesorDAO;
 import dao.ResenaDAO;
@@ -207,9 +208,10 @@ public class Controlador {
 	ArrayList<MateriaEntity> m=MateriaDAO.getInstancia().findByTeacher(idUsuario);
 	return toMaterias(m);
 	}
+	
 	public Factura buscarFactura(int idReserva) {
 		Reserva reserva=buscarReserva(idReserva);
-		Factura factura=FacturaDAO.findFacturaByReserva(idReserva);
+		Factura factura=FacturaDAO.findByReserva(idReserva).toFactura();
 		return factura;
 	}
 

@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import negocio.Factura;
+
 @Entity
 @Table(name="Factura")
 public class FacturaEntity {
@@ -104,6 +106,10 @@ public class FacturaEntity {
 
 	public void setReserva(ReservaEntity reserva) {
 		this.reserva = reserva;
+	}
+	
+	public Factura toFactura(){
+		return new Factura(fecha, monto, tipo, remitente, medioPago, nroFactura, reserva.toReserva());
 	}
 	
 }

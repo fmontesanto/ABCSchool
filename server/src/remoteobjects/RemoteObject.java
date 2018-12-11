@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import controller.Controlador;
 import dto.AlumnoDTO;
 import dto.ClaseDTO;
+import dto.FacturaDTO;
 import dto.MateriaDTO;
 import dto.ProfesorDTO;
 import dto.ResenaDTO;

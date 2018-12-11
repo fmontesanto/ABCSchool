@@ -48,7 +48,7 @@ public class MateriaDAO {
 		return m;
 	}
 	
-	public ArrayList<MateriaEntity> findAll()
+	public ArrayList<MateriaEntity> findAllSubjects()
 	{
 		SessionFactory sf = hibernateUtil.getSessionFactory();
 		Session session = sf.openSession();

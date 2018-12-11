@@ -31,7 +31,7 @@ public class FacturaDAO {
 		return f;
 	}
 	
-	public FacturaEntity findByReserva(Integer idReserva)
+	public static FacturaEntity findByReserva(Integer idReserva)
 	{
 		SessionFactory sf = hibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
