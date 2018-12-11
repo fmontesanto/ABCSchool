@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import controller.Controlador;
 import dto.AlumnoDTO;
 import dto.ClaseDTO;
+import dto.FacturaDTO;
 import dto.MateriaDTO;
 import dto.ProfesorDTO;
 import dto.ResenaDTO;
@@ -154,5 +155,9 @@ public class RemoteObject extends UnicastRemoteObject implements IRemota {
 			materiasDTO.add(materia.toDTO());
 		}
 		return materiasDTO;
+	}
+	public FacturaDTO buscarFactura(int idReserva) throws RemoteException {
+		FacturaDTO facturaDto=Controlador.getInstancia().buscarFactura(idReserva).toDTO();
+		return facturaDto;
 	}
 }
