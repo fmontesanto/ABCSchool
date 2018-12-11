@@ -32,7 +32,7 @@ public class Test {
 		ProfesorDAO.getInstancia().agregarProfesor(p);
 		//ClaseDAO.getInstancia().modificarClase(c);
 		//ClaseDAO.getInstancia().agregarClase(c);
-		//Alumno a=new Alumno("23832303","pepe","pepe@uade","234234242","domicilio",d,"123");
+		//Alumno a=new Alumno("1","pepe","pepe@uade","234234242","domicilio",d,"123");
 		//Reserva r = new Reserva(5, 57f, 2000f, 1, false, d, a);
 		//r.addClases(c);
 		//Factura f= new Factura(d,35f,"tipo a","remitente ","medio de pago",123,r);

@@ -6,9 +6,11 @@ import java.util.Date;
 
 import com.sun.jmx.snmp.daemon.CommunicationException;
 
+import dao.AlumnoDAO;
 import dao.MateriaDAO;
 import dao.ProfesorDAO;
 import delegates.BusinessDelegate;
+import negocio.Alumno;
 import negocio.Clase;
 import negocio.Materia;
 import negocio.Profesor;
@@ -31,6 +33,8 @@ public class Starter
 		MateriaDAO.getInstancia().agregarMateria(m4);
 		MateriaDAO.getInstancia().agregarMateria(m5);
 		Date d=Calendar.getInstance().getTime();
+		Alumno a=new Alumno("1","pepe","pepe@uade","234234242","domicilio",d,"123");
+		AlumnoDAO.getInstancia().agregarAlumno(a);
 		Profesor p=new Profesor("23803","pepe","pepe@uade","234234242","domicilio",d,"123","domicilio clase",3f);
 		Clase c =new Clase(2,34f,"Libre",p);
 		c.agregarProfesor(p);
@@ -42,7 +46,7 @@ public class Starter
 		materias.add(m4);
 		materias.add(m5);
 		p.setMaterias(materias);
-		ProfesorDAO.getInstancia().agregarMateriaDisponible(p);
+/*		ProfesorDAO.getInstancia().agregarMateriaDisponible(p);
 		try {
             BusinessDelegate.getInstancia().obtenerMateriasProfesor(1);
         } catch (CommunicationException e) {
@@ -51,6 +55,6 @@ public class Starter
         } catch (javax.naming.CommunicationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 }
