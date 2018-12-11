@@ -12,7 +12,7 @@ public class Profesor extends Usuario{
 	private Float anticipacionReserva;
 	private Float puntuacion;
 	private ArrayList<Resena> resenas;
-	private HashSet<Materia>materias;
+	private ArrayList<Materia> materias;
 	
 	public Profesor (String dni, String nombre, String mail, String telefono, String domicilio, Date fechaNacimiento,String contra, String domicilioClases,float anticipacion) {
 		super(dni,nombre,mail,telefono, domicilio, fechaNacimiento,contra);
@@ -54,12 +54,12 @@ public class Profesor extends Usuario{
 		return profView;	
 	}
 
-	public HashSet<Materia> getMaterias() {
+	public ArrayList<Materia> getMaterias() {
 		return materias;
 	}
 
-	public void setMaterias(HashSet<Materia> materias) {
-		this.materias = materias;
+	public void setMaterias(ArrayList<Materia> materias2) {
+		this.materias = materias2;
 	}
 
     public void save() {
