@@ -153,11 +153,21 @@ public class RemoteObject extends UnicastRemoteObject implements IRemota {
 		ArrayList<MateriaDTO> materiasDTO=new ArrayList<MateriaDTO>();
 		for (Materia materia:materias) {
 			materiasDTO.add(materia.toDTO());
+			//System.out.println(materia.toDTO().getIdMateria());
 		}
 		return materiasDTO;
 	}
 	public FacturaDTO buscarFactura(int idReserva) throws RemoteException {
 		FacturaDTO facturaDto=Controlador.getInstancia().buscarFactura(idReserva).toDTO();
 		return facturaDto;
+	}
+	
+	public ArrayList<MateriaDTO> obtenerTodasMaterias() throws RemoteException{
+		ArrayList<Materia> materias = Controlador.getInstancia().obtenerMaterias();
+		ArrayList<MateriaDTO> materiasDTO = new ArrayList<MateriaDTO>();
+		for(Materia m : materias){
+			materiasDTO.add(m.toDTO());
+		}
+		return materiasDTO;
 	}
 }

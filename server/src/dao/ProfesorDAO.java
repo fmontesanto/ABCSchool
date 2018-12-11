@@ -122,6 +122,7 @@ public class ProfesorDAO {
 		}
 		session.close();
 	}
+	
 	public void agregarMateriaDisponible(Profesor p)
 	{
 		SessionFactory sf = hibernateUtil.getSessionFactory();

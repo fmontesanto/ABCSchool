@@ -35,6 +35,19 @@ public class Reserva {
 		this.factura=null;
 	}
 	
+	public Reserva(Integer idReserva, Float descuento, Float monto, Integer cantAlum, boolean paga,
+			Date fecha) {
+		super();
+		this.idReserva = idReserva;
+		this.descuento = descuento;
+		this.monto = monto;
+		this.cantAlum = cantAlum;
+		this.paga = paga;
+		this.fecha = fecha;
+		this.clases = new ArrayList<Clase>();
+		this.factura=null;
+	}
+	
 	public boolean sosReserva(Integer id){
 		return idReserva == id;
 	}
@@ -148,11 +161,11 @@ public class Reserva {
 		return clasesDTO;
 	}
 	public ReservaDTO toDTO() {
-		List<Integer> clases = new ArrayList<Integer>();
+		/*List<Integer> clases = new ArrayList<Integer>();
 		for(Clase c : this.clases){
 			clases.add(c.getIdClase());
-		}
-		ReservaDTO dto=new ReservaDTO(idReserva,descuento,monto,cantAlum,paga,fecha,alumno.getDni(),factura.getNumero(),clases);
+		}*/
+		ReservaDTO dto=new ReservaDTO(idReserva,descuento,monto,cantAlum,paga,fecha);
 		return dto;
 	}
 }

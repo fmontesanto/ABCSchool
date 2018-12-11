@@ -215,5 +215,9 @@ public class Controlador {
 		return factura;
 	}
 
+	public ArrayList<Materia> obtenerMaterias(){
+		ArrayList<MateriaEntity> materias = MateriaDAO.getInstancia().findAllSubjects();
+		return toMaterias(materias);
+	}
 }
 

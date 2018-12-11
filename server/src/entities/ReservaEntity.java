@@ -158,7 +158,7 @@ public class ReservaEntity {
  			return -1f;
  	}
 	public Reserva toReserva(){
-		return new Reserva(idReserva, descuento, monto, cantAlum, paga, fecha, alumno.toAlumno());
+		return new Reserva(idReserva, descuento, monto, cantAlum, paga, fecha);
 	}
 }
 

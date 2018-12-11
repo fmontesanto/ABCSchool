@@ -7,13 +7,16 @@ import java.util.Date;
 import com.sun.jmx.snmp.daemon.CommunicationException;
 
 import dao.AlumnoDAO;
+import dao.ClaseDAO;
 import dao.MateriaDAO;
 import dao.ProfesorDAO;
+import dao.ReservaDAO;
 import delegates.BusinessDelegate;
 import negocio.Alumno;
 import negocio.Clase;
 import negocio.Materia;
 import negocio.Profesor;
+import negocio.Reserva;
 import server.Server;
 
 public class Starter
@@ -22,7 +25,7 @@ public class Starter
 	public static void main(String[] args)
 	{
 		new Server();
-		Materia m= new Materia("Lengua",1);
+		/*Materia m= new Materia("Lengua",1);
 		Materia m2= new Materia("Matematica",2);
 		Materia m3= new Materia("Fisica",3);
 		Materia m4= new Materia("Programacion",4);
@@ -39,6 +42,9 @@ public class Starter
 		Clase c =new Clase(2,34f,"Libre",p);
 		c.agregarProfesor(p);
 		ProfesorDAO.getInstancia().agregarProfesor(p);
+		Reserva r = new Reserva(1, 0f, 400f, 1, false, d, a);
+		r.addClase(c);
+		ReservaDAO.getInstancia().agregarReserva(r);
 		ArrayList <Materia> materias=new ArrayList<Materia>();
 		materias.add(m);
 		materias.add(m2);
@@ -47,14 +53,14 @@ public class Starter
 		materias.add(m5);
 		p.setMaterias(materias);
 		ProfesorDAO.getInstancia().agregarMateriaDisponible(p);
-		try {
-            BusinessDelegate.getInstancia().obtenerMateriasProfesor(1);
+		/*try {
+           BusinessDelegate.getInstancia().obtenerReservasAlumno("1");
         } catch (CommunicationException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (javax.naming.CommunicationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 }

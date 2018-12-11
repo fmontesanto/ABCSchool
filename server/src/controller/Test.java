@@ -5,12 +5,17 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import com.sun.jmx.snmp.daemon.CommunicationException;
+
 import dao.AlumnoDAO;
 import dao.ClaseDAO;
 import dao.FacturaDAO;
 import dao.MateriaDAO;
 import dao.ProfesorDAO;
 import dao.ReservaDAO;
+import delegates.BusinessDelegate;
+import dto.MateriaDTO;
+import dto.ReservaDTO;
 import entities.AlumnoEntity;
 import entities.ClaseEntity;
 import entities.FacturaEntity;
@@ -65,9 +70,27 @@ public class Test {
 			System.out.println(cl.getIdClase());
 		}*/
 		
-		ArrayList<MateriaEntity> res = MateriaDAO.getInstancia().findAllSubjects();
+		/*ArrayList<MateriaEntity> res = MateriaDAO.getInstancia().findAllSubjects();
 		for(MateriaEntity m : res){
 			System.out.println(m.getIdMateria());
+		}*/
+		
+		/*ArrayList<ReservaEntity> res = ReservaDAO.getInstancia().findByStudent("1");
+		for(ReservaEntity r : res){
+			System.out.println(r.getIdReserva());
+		}*/
+		
+		try {
+	           ArrayList<MateriaDTO> dto = BusinessDelegate.getInstancia().obtenerMateriasProfesor(1);
+	           for(MateriaDTO m : dto){
+	        	   System.out.println(m.getNombre());
+	           }
+	        } catch (CommunicationException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        } catch (javax.naming.CommunicationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 		}
 		
 		System.exit(0);
