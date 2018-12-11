@@ -197,7 +197,7 @@ public class Controlador {
 		return res;
 	}
 	public ArrayList<Materia> toMaterias (ArrayList<MateriaEntity> m){
-		ArrayList<Materia> m2=null;
+		ArrayList<Materia> m2=new ArrayList<Materia>();
 		for (MateriaEntity me:m) {
 			m2.add(me.toMateria());
 		}

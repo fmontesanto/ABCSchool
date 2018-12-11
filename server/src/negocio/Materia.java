@@ -72,8 +72,7 @@ public class Materia {
 	}*/
 
 	public MateriaDTO toDTO() {
-		MateriaDTO dto=new MateriaDTO(nombre,idMateria);
-		return dto;
+		return new MateriaDTO(nombre,idMateria);
 	}
 
 
