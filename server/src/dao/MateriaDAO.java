@@ -47,6 +47,21 @@ public class MateriaDAO {
 		session.close();
 		return m;
 	}
+	
+	public ArrayList<MateriaEntity> findAll()
+	{
+		SessionFactory sf = hibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		ArrayList<MateriaEntity> result = null;
+		result = (ArrayList<MateriaEntity>) sf.getCurrentSession().createCriteria(MateriaEntity.class).list();
+		session.close();		
+		return result;
+		//String hql = "from MateriaEntity";
+		//result = (ArrayList<MateriaEntity>)session.createQuery(hql).list();
+		//session.close();
+		//return result;
+	}	
+	
 	public ArrayList<MateriaEntity> findByTeacher(int idUsuario)
 	{
 		SessionFactory sf = hibernateUtil.getSessionFactory();

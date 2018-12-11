@@ -8,11 +8,13 @@ import java.util.List;
 import dao.AlumnoDAO;
 import dao.ClaseDAO;
 import dao.FacturaDAO;
+import dao.MateriaDAO;
 import dao.ProfesorDAO;
 import dao.ReservaDAO;
 import entities.AlumnoEntity;
 import entities.ClaseEntity;
 import entities.FacturaEntity;
+import entities.MateriaEntity;
 import entities.ProfesorEntity;
 import entities.ReservaEntity;
 import negocio.Alumno;
@@ -25,11 +27,11 @@ import negocio.Reserva;
 public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Date d=Calendar.getInstance().getTime();
-		Profesor p=new Profesor("23803","pepe","pepe@uade","234234242","domicilio",d,"123","domicilio clase",3f);
-		Clase c =new Clase(2,34f,"Libre",p);
-		c.agregarProfesor(p);
-		ProfesorDAO.getInstancia().agregarProfesor(p);
+		//Date d=Calendar.getInstance().getTime();
+		//Profesor p=new Profesor("23803","pepe","pepe@uade","234234242","domicilio",d,"123","domicilio clase",3f);
+		//Clase c =new Clase(2,34f,"Libre",p);
+		//c.agregarProfesor(p);
+		//ProfesorDAO.getInstancia().agregarProfesor(p);
 		//ClaseDAO.getInstancia().modificarClase(c);
 		//ClaseDAO.getInstancia().agregarClase(c);
 		//Alumno a=new Alumno("23832303","pepe","pepe@uade","234234242","domicilio",d,"123");
@@ -61,9 +63,15 @@ public class Test {
 		/*ArrayList<Clase> clases = Controlador.getInstancia().obtenerClasesProfesor("40");
 		for(Clase cl : clases){
 			System.out.println(cl.getIdClase());
+		}*/
+		
+		ArrayList<MateriaEntity> res = MateriaDAO.getInstancia().findAll();
+		for(MateriaEntity m : res){
+			System.out.println(m.getIdMateria());
 		}
+		
 		System.exit(0);
-		*/
+		
 
 	}
 }
