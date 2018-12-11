@@ -155,4 +155,8 @@ public class RemoteObject extends UnicastRemoteObject implements IRemota {
 		}
 		return materiasDTO;
 	}
+	public FacturaDTO buscarFactura(int idReserva) throws RemoteException {
+		FacturaDTO facturaDto=Controlador.getInstancia().buscarFactura(idReserva).toDTO();
+		return facturaDto;
+	}
 }
