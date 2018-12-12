@@ -106,7 +106,7 @@ public class Clase {
 	}
 
 	public ClaseDTO DTO() {
-		ClaseDTO dto=new ClaseDTO(materia.getNombre(), horario, estado, idClase, profesor.getDni());
+		ClaseDTO dto=new ClaseDTO(materia.getNombre(), horario, estado, idClase, profesor.getDni(), fecha);
 		return dto;
 	}
 }

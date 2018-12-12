@@ -219,5 +219,10 @@ public class Controlador {
 		ArrayList<MateriaEntity> materias = MateriaDAO.getInstancia().findAllSubjects();
 		return toMaterias(materias);
 	}
+	
+	public ArrayList<Clase> obtenerClasesReserva(int idReserva){
+		ArrayList<ClaseEntity> clases = ClaseDAO.getInstancia().findByReservation(idReserva);
+		return toClases(clases);
+	}
 }
 

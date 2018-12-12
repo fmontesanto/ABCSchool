@@ -129,6 +129,7 @@ public class ClaseDAO {
 		}
 		session.close();
 	}
+	
 	public ArrayList<ClaseEntity> findByTeacher(String dni){
 		int id = -1;
 		id = ProfesorDAO.getInstancia().findByDni(dni).getIdUsuario();
@@ -147,6 +148,7 @@ public class ClaseDAO {
 		else 
 			return null;
 	}
+	
 	public ArrayList<ClaseEntity> findAvailable(){
 			SessionFactory sf = hibernateUtil.getSessionFactory();
 			Session session = sf.openSession();
@@ -158,5 +160,15 @@ public class ClaseDAO {
 			result = (ArrayList<ClaseEntity>) q.list();
 			session.close();
 			return result;
-}
+	}
+
+	public ArrayList<ClaseEntity> findByReservation(Integer id){
+		SessionFactory sf = hibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		ArrayList<ClaseEntity> result = null;        
+		Query   q = session.createQuery("from ClaseEntity where idReserva = ?").setParameter(0, id);
+		result = (ArrayList<ClaseEntity>) q.list();
+		session.close();
+		return result;
+	}
 }

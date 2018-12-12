@@ -26,7 +26,7 @@ public class Materia {
 		this.nombre = nombre;
 		this.idMateria = idMateria;
 		this.profesores = new ArrayList<Profesor>();
-		this.clases = clases;
+		this.clases = new ArrayList<Clase>();
 	}
 
 	public String getNombre() {
